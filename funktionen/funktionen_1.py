@@ -30,6 +30,7 @@ def say_hello_to(name) -> None:
 
 
 say_hello_to("Paul")
+say_hello_to(name="Frank")
 
 
 # Es ist auch möglich mehrere Parameter zu übergeben
@@ -51,4 +52,7 @@ def get_highest_value(zahl1, zahl2):
 
 
 rtv = get_highest_value(4, 6)
+print(rtv)
+
+rtv = get_highest_value(zahl2=4, zahl1=6)
 print(rtv)
