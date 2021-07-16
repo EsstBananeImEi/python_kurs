@@ -1,5 +1,5 @@
 """
-    Es gibt 3 verschiedene test frameworks in Python
+    Es gibt 3 verschiedene testrunner in Python
     1. nose
     2. pytest
     3. unittest
