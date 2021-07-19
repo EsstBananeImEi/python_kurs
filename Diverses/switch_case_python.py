@@ -85,35 +85,35 @@ class PythonSwitchStatement:
 
     def switch(self, month):
         default = "Incorrect month"
-        return getattr(self, 'case_' + str(month), lambda: default)()
+        return getattr(self, '_case_' + str(month), lambda: default)()
 
-    def case_1(self):
+    def _case_1(self):
         return "January"
 
-    def case_2(self):
+    def _case_2(self):
         return "February"
 
-    def case_3(self):
+    def _case_3(self):
         return "March"
 
-    def case_4(self):
+    def _case_4(self):
         return "April"
 
-    def case_5(self):
+    def _case_5(self):
         return "May"
 
-    def case_6(self):
+    def _case_6(self):
         return "June"
 
-    def case_7(self):
+    def _case_7(self):
         return "July"
 
 
-s = PythonSwitchStatement()
+switch_class = PythonSwitchStatement()
 
-print(s.switch(3))
-print(s.switch(4))
-print(s.switch(10))
+print(switch_class.switch(3))
+print(switch_class.switch(4))
+print(switch_class.switch(10))
 
 """
     Im obigen Beispiel für den Switch-Fall erstellen Sie zunächst eine Klasse namens PythonSwitchStatement, 
