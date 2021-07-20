@@ -11,7 +11,6 @@ device_name = "My Thermostat"
 task_queue = multiprocessing.Queue()
 
 
-# display all incoming messages
 def on_message(client, userdata, message):
     payload = json.loads(message.payload)
     print(" < received message " + str(payload))
@@ -19,7 +18,6 @@ def on_message(client, userdata, message):
         task_queue.put(perform_restart)
 
 
-# simulate restart
 def perform_restart():
     print("Simulating device restart...")
     message = json.dumps({"temp": "thermostat 1",
@@ -34,7 +32,6 @@ def perform_restart():
     publish("send/temperature", message, wait_for_ack=True)
 
 
-# send temperature measurement
 def send_measurement():
     print("Sending temperature measurement...")
     temperature = random.randint(1, 5)
@@ -43,7 +40,6 @@ def send_measurement():
     publish("send/temperature", message)
 
 
-# publish a message
 def publish(topic, message, wait_for_ack=False):
     QoS = 2 if wait_for_ack else 0
     message_info = client.publish(topic, message, QoS)
@@ -53,19 +49,16 @@ def publish(topic, message, wait_for_ack=False):
         print(" < received ACK for {}".format(message_info.mid))
 
 
-# display all outgoing messages
 def on_publish(client, userdata, mid):
     print(" > published message: {}".format(mid))
 
 
-# main device loop
 def device_loop():
     while True:
         task_queue.put(send_measurement)
         time.sleep(2)
 
 
-# connect the client to Cumulocity IoT and register a device
 client = mqtt.Client(clientId)
 client.on_message = on_message
 client.on_publish = on_publish
