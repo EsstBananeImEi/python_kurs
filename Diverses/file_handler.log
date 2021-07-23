@@ -1,0 +1,6 @@
+19.07.2021 08:28:53 INFO: divide 200 / 0
+19.07.2021 08:28:53 ERROR: beim teilen von (200 / 0) ist ein fehler aufgetreten:
+Traceback (most recent call last):
+  File "C:\Users\bm\OneDrive\Documents\python-Kurs\Diverses\python_logging_3.py", line 22, in divide
+    quotient = divident / divisor
+ZeroDivisionError: division by zero
