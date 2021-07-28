@@ -8,5 +8,4 @@ def do_something():
 do_something()
 print("wohoo")
 
-# TODO 1: Bei den Datenstrukturen das Stack erstellen
 # TODO 2: Threads Weitermachen
