@@ -9,3 +9,4 @@ def fiblist(n):
     fib = [0, 1]
     for i in range(1, n):
         fib += [fib[-1] + fib[-2]]
+    return fib
