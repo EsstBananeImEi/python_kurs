@@ -11,3 +11,4 @@ Im Kurs werde ich versuchen alle Themen so gut es geht zu erklären und zu veran
 - Aufgaben in denen der Lernende Aktiv das gelernte anwenden muss
 - anschauliche und leicht verständliche beispiele
 - ...
+und andere Programme / Tools verwenden
