@@ -1,4 +1,3 @@
-
 """
 Frage 1: Wie können wir aus einer Liste das 3. Element entfernen ?
 
@@ -77,4 +76,3 @@ Frage 6: Was wird ausgegeben ?
     
     Richtige Lösung: C
 """
-

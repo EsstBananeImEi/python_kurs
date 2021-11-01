@@ -1,4 +1,3 @@
-
 """
 Frage 1: Welche von den folgenden Antworten ist ein "String"
 

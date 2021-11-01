@@ -1,4 +1,3 @@
-
 """
 Frage 1: Wie erstellt man eine Liste in Python
 

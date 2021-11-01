@@ -1,4 +1,3 @@
-
 """
 Frage 1: Was Gibt folgendes Programm aus ?
 

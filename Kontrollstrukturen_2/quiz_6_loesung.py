@@ -1,4 +1,3 @@
-
 """
 Frage 1: Wie lautet das Ergebnis nach dieser schleife ?
 
@@ -33,4 +32,3 @@ Frage 3: welche der folgenden schleifen ist korrekt ?
 
     Richtige Lösung: C
 """
-

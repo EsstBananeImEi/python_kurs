@@ -1,4 +1,3 @@
-
 """
 Frage 1: Welche der Folgenden Aussagen ist Korrekt ?
 

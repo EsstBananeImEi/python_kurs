@@ -1,5 +1,4 @@
 # Dictionarys können wie listen durchlaufen werden
-# und man kann hier das entpacken von Tupels gebrauchen
 
 kennzeichen = {"Köln": "K", "Koblenz": "KO", "München": "M", "Feuchtwangen": "FEU"}
 

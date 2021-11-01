@@ -1,4 +1,3 @@
-
 """
 Frage 1: Mit welchem Befehl können schleifen vorzeitig abgebrochen werden ?
 

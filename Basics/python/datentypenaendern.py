@@ -5,7 +5,7 @@
 # String -> Zahl
 a = "3"
 b = "7"
-print(int(a)+int(b))
+print(int(a) + int(b))
 # Zahlt -> String
 alter = 18
 print("Ich bin " + str(alter) + " Jahre alt")

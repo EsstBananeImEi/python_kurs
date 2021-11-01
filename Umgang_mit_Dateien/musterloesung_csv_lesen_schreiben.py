@@ -1,6 +1,6 @@
 d = {}
 
-with open("../Materialien/bundesländer.csv", "r") as csvfile:
+with open("../Materialien/bundeslaender.csv", "r") as csvfile:
     for line in csvfile.readlines():
         splitted = line.strip().split(";")
         if "Bundesland" in splitted:
