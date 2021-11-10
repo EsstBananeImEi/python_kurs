@@ -24,4 +24,4 @@ print(not a == b)
 
 print(a not in [1, 2, 3])
 print(a not in [1, 2, 3] and not 5 in [1, 2, 3, 4, 5])
-print(a not in [1, 2, 3, 4] or not 5 in [1, 2, 3, 4])
+print(a not in [1, 2, 3, 4] or 5 not in [1, 2, 3, 4])
