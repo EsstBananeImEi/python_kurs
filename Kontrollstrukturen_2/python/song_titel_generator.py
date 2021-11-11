@@ -7,7 +7,7 @@ part_1 = ["Rock", "Dance", "Old", "I", "It's", "Loves"]
 part_2 = ["With", "Like", "Just", "Wanna", "Still", "me Like"]
 part_3 = ["you.", "a Hurricane", "a Singer", "Rock", "Rock and Roll", "a Rock"]
 
-all_parts = [part_1,part_2,part_3]
+all_parts = [part_1, part_2, part_3]
 
 text = []
 
