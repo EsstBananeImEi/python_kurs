@@ -1,9 +1,9 @@
 d = {}
 
-with open("../Materialien/bundeslaender.csv", "r") as csvfile:
+with open("../../Materialien/bundeslaender.csv", "r") as csvfile:
     for line in csvfile.readlines():
         splitted = line.strip().split(";")
-        if "Bundesland" in splitted:
+        if "State" in splitted:
             continue
 
         federal_state = splitted[0]
@@ -27,5 +27,6 @@ for key, value in d.items():
         growth = value.get("growth")
         name_max_growth = key
 
-print("%s hat mit %s Menschen die Meisten Einwohner" % (name_max_citizen, amount))
+print("%s hat mit %s Menschen die Meisten Einwohner" %
+      (name_max_citizen, amount))
 print("%s hat mit %s %% den meisten zuwachs" % (name_max_growth, growth))

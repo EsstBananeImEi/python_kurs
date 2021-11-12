@@ -1,46 +1,40 @@
 # 1.)
 import json
 
-has_no_car_list = []
+person_without_car = None
+oldest_car_owner = None
+oldest_car_date = None
 car_dict = {}
 
-oldest_car_date = 2021
-oldest_car_owner = ""
 
-with open("../Materialien/data.json", "r") as json_file:
-    json_content = json.load(json_file)
-    for data in json_content:
-        name = f"{data.get('first_name')} {data.get('last_name')}"
-        for key, value in data.items():
-            if key == "car":
-                has_car = value["has_car"]
-                if not has_car:
-                    if name not in has_no_car_list:
-                        has_no_car_list.append(f"{data.get('first_name')} {data.get('last_name')}")
-                else:
-                    # 2.)
-                    date = value["manufacture_year"]
-                    if date is None:
-                        continue
+with open("../../Materialien/data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    # 1
+    person_without_car = [
+        f"{person.get('first_name')} {person.get('last_name')}" for person in json_data.get('personen_wihout_car')]
+    # 2
+    for person in json_data.get('personen_with_car'):
+        if oldest_car_date is None:
+            oldest_car_date = person['car'].get('manufacture_year')
+            oldest_car_owner = f"{person.get('first_name')} {person.get('last_name')}"
+        if oldest_car_date > person['car'].get('manufacture_year'):
+            oldest_car_date = person['car'].get('manufacture_year')
+            oldest_car_owner = f"{person.get('first_name')} {person.get('last_name')}"
+    # 3
+        manufacturer = person['car'].get("manufacturer")
+        if manufacturer not in car_dict:
+            car_dict[manufacturer] = 1
+        else:
+            car_dict[manufacturer] += 1
 
-                    if oldest_car_date > date:
-                        oldest_car_date = date
-                        oldest_car_owner = name
-                    # 2.) ende
 
-                    manufacturer = value["manufacturer"]
-                    if manufacturer not in car_dict:
-                        car_dict[manufacturer] = 1
-                    else:
-                        car_dict[manufacturer] += 1
-
-for person in has_no_car_list:
+for person in person_without_car:
     print(f"{person} besitzt kein Auto")
 
 print("\n############################")
 print(f"{oldest_car_owner}'s Auto ist das Älteste und wurde {oldest_car_date} gebaut")
-#
+
 print("\n############################")
-for key, val in car_dict.items():
-    if key in ["BMW", "Jeep", "Dodge"]:
-        print(key + ": " + str(car_dict[key]))
+for car_name, number_of_cars in car_dict.items():
+    if car_name in ["BMW", "Jeep", "Dodge"]:
+        print(f"{car_name}: {number_of_cars}")

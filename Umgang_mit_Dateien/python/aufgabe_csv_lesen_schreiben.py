@@ -1,5 +1,5 @@
 """
-    Aufgabe: lese die Datei bundesländer.csv aus und ermittle:
+    Aufgabe: lese die Datei ../../Materialien/bundesländer.csv aus und ermittle:
         1. Welches Bundesland hat die Meisten Einwohner
         2. Welches Bundesland hat den Stärksten zuwachs
 
