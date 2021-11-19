@@ -1,181 +1,86 @@
-###############################################  Aufgabe 1 ###########################################################
-
-
 """
-    Auto- und Fußgängerampeln weisen eine Reihe von Gemeinsamkeiten auf.
-    Beim Weiterschhalten durchlaufen beide zyklisch eine bestimmte Folge von Zuständen.
+    #### Aufgabe 1 ####
+    Es wird eine Klasse benötigt, mit der man Personen mit folgenden eigenschaften 
+    erstellen kann, die eigenschaften sollen nicht über den Konstruktor gesetzt werden:
 
-    Autoampel: Rot -> Rotgelb -> Grün -> Gelb
-                ^                          |
-                |                          |
-                ----------------------------
+    - Name
+    - Alter
+    - Geschlecht
 
-    Fußgängerampel: Rot -> Grün
-                     ^       |
-                     |       |
-                     ---------
+    Es wird für jede Eigenschaft eine Funktion benötigt um den wert zu setzen (Setter),
+    zudem soll es eine Funktion "birthday" geben, 
+    die das alter um 1 erhöht wenn sie aufgerufen wird und eine Funktion talk mit
+    der sich die person vorstellen kann (Mein name ist ... ich bin ... jahre alt).
 
-    Das Verhalten von Ampeln lässt sich verallgemeinernd mit dem folgenden Klassendiagramm beschreiben:
-
-    ##############################################
-    #                  Ampel                     #
-    ##############################################
-    # liste_zustaende: list of str               #
-    # index_aktueller_zustand: int               #
-    ##############################################
-    # Ampel(liste_ampel_zustaende): list of str) #
-    # schalten()                                 #
-    # get_zustand(): str                         #
-    # set_zustand(zustand: str)                  #
-    ##############################################
-
-"""
+    Nach der Implementierung teste deine Klasse:
+        1. Erzeuge ein Objekt der Klasse Person. Speichere dabei das Objekt in einer Variablen person.
+        2. Setze den Namen des Objekts auf Alice.
+        3. Setze das Alter des Objekts auf 22.
+        4. Lasse die Person sprechen.
+        5. Lasse die Person ihren Geburtstag feiern. 
+        6. Überprüfe mit der Methode talk(), ob das Alter
+            um eins erhöht wurde
 
 
-# Hier eine Implementierung zu dieser allgemeinen Ampel-Klasse.
-class Ampel(object):
-    def __init__(self, liste_ampel_zustaende):
-        self.liste_zustaende = liste_ampel_zustaende
-        self.index_aktueller_zustand = 0
 
-    def schalten(self):
-        if self.index_aktueller_zustand < len(self.liste_zustaende) - 1:
-            self.index_aktueller_zustand = self.index_aktueller_zustand + 1
-        else:
-            self.index_aktueller_zustand = 0
-
-    def get_zustand(self):
-        return self.liste_zustaende[self.index_aktueller_zustand]
-
-    def set_zustand(self, zustand):
-        self.index_aktueller_zustand = self.liste_zustaende.index(zustand)
-
-
-"""
-    Aufgabe 1
+    #### Aufgabe 2 ####
+    Es wird eine Neue Klasse namens Mensch gewünscht die ihre eigenschaften und methoden
+    an eine Person vererbt. Zudem wird eine Neue Eigenschaft "augenfarbe" gewünscht, 
+    sowie eine methode um die Augenfarbe zu setzen. Wenn die Person sich vorstellt,
+    soll die Augenfarbe ebenfalls vorkommen wenn sie gesetzt ist.
     
-    (a) Simuliere mit dieser Klasse das Verhalten einer Fußgängerampel.
+
+    Teste wieder deine Implementierung:
+        1. Erzeige ein Objekt der Klasse Person. Speichere das Objekt in der Variable "Petra"
+        2. Setze den Namen des Objekts auf Petra.
+        3. Setze das Alter des Objekts auf 44.
+        5. Lasse die Person sprechen.
+        7. Überprüfe mit der Methode talk(), ob das Alter
+            um eins erhöht wurde (ohne Augenfarbe)
+        7. Setze die Augenfarbe auf "Blau"
+        8. Überprüfe wieder über die Methode talk(), 
+            ob nun auch die Augenfarbe ausgegeben wird. 
+
+
+
+    #### Aufgabe 3 ####
+    Es wird ein Programm benötigt in dem wir einer Person 
+    (nennen wir die Person mal "Programmierer") ein Arbeitsgerät Laptop oder DesktopPc 
+    zugewiesen werden kann.
     
-    (b) Autoampeln in anderen Ländern (z.B. in Frankreich) verhalten sich manchmal etwas anders als in Deutschland. 
-        Benutze die Klasse Ampel zur Simulation einer solchen Ampel.
-        
-        Ampel Frankreich:  Rot -> Grün -> Gelb
-                            ^               |
-                            |               |
-                            -----------------
-    
-    Tip: 1. Schaue dir die Ampel-Klasse genau an und versuche nachzuvollziehen wie diese Klasse funktioniert
-         2. Vergiss an die Ampel zustände nicht!
-         3. du kannst schon einen zustand am anfang setzten
-         4. du hast eine liste, nutze die möglichkeit die einträge zu durchlaufen :-)
-    
-    Falls du zu der Ampel Klasse ein beispiel benötigst, um eine Ampelschaltung zu Simulieren Schaue in die Datei
-    "beispiel_aufgabe_klassen.py"
-    
-"""
+    Die Arbeitsgeräte benötigen die Eigenschaften und Methoden für:
 
-# a.)
+    - Eigenschaften:
+        - die Architekture (64 oder 32 bit)
+        - das Betriebssystem (Windows / Linx...)
+    - Methoden:
+        - das Starten eines Prozesses, dieser Prozess soll z.b folgendes ausgeben:
+            - Starte Laptop Prozess für \<Windows> <64 bit>
 
+    Für den Programmierer werden die Eigenschaften und Methoden:
 
-# b.)
+    - Eigenschaften:
+        - für den Name
+        - für das Team in dem er eingesetzt ist
+    - Methoden:
+        - für das aufnehmen seiner Arbeit, diese Funktion soll folgende aufgaben haben:
+            - Das ausgeben einer Nachricht, das er seine Arbeit beginnt
+            - Das ausführen der Funktion um den Prozess von Laptop oder DesktopPc zu starten
+        - um die Aktiven Programmierer anzuzeigen
 
+    Wenn er Programmierer seine Arbeit aufnimmt soll er einer Liste hinzugefügt 
+    werden um diese über eine Seperate Funktion abzufragen, 
+    die Funktion soll auch über die Klasse aufrufbar sein (Programmierer.deine_methode()).
+    Wenn ein Programmierer "Zerstört" wird, soll er aus der Liste entfernt werden.
 
-###############################################  Aufgabe 2 ###########################################################
-
-"""
-    Aus der allgemeinen Ampel-Klasse kann man durch eine Erweiterung Klassen für Auto- und Fußgängerampeln gewinnen.
-    
-                     ####################################################################
-                     #                  Ampel                                           #
-                     ####################################################################
-                     # liste_zustaende: list of str                                     #
-                     # index_aktueller_zustand: int                                     #
-                     ####################################################################
-                     # Ampel(liste_ampel_zustaende, anfangs_zustand): list of str, str) #
-                     # schalten()                                                       #
-                     # get_zustand(): str                                               #
-                     # set_zustand(zustand: str)                                        #
-                     ####################################################################
-                                                      ^
-                                                      |
-                                -----------------------------------------------
-                                |                                             |
-                                |                                             |      
-            ###########################################   ###########################################
-            #                  AmpelAuto              #   #             AmpelFussgaenger            #
-            ###########################################   ###########################################
-            #                                         #   #                                         #  
-            ###########################################   ########################################### 
-            # AmpelAuto(anfangs_zustand: str)         #   # AmpelFussgaenger(anfangs_zustand: str)  # 
-            # get_lampen(): (bool, bool, bool)        #   # get_lampen(): (bool, bool)              #
-            ###########################################   ###########################################
-            
-    Die Klassen AmpelAuto und AmpelFussgaenger sollen dabei sämtliche Attribute und Methoden der 
-    Basisklasse Ampel übernehmen (man sagt auch erben) und zusätzlich die im Klassendiagramm aufgeführten 
-    neuen Methoden (die Konstruktormethode und die Methode getLampen) vorsehen.
-
-    Hier eine Implementierung der beiden Klassen Ampel und AmpelAuto. 
-    Beachte die vererbung AmpelAuto(Ampel) bei der Deklaration der Klasse AmpelAuto.
+    - Tips:
+        1. Lasse Laptop und DesktopPc von einer Mutterklasse Erben, 
+            falls du nicht weißt was gemeint ist, 
+            überlege dir "Was ist ein Laptop und was ist ein DesktopPc im Allgemeinen"
+        2. Aktive Programmierer Anzeigen, denke daran das es verschiedene 
+            Arten von Methoden gibt staticmethod... 
+            mit einer dieser methoden kannst du dies umsetzen.
+        3. Zum Entfernen des Programmierers aus der liste, 
+            brauchst du den gegenpart zum Konstruktor.
         
 """
-
-
-class Ampel(object):
-    def __init__(self, liste_ampel_zustaende, anfangs_zustand):
-        self.liste_zustaende = liste_ampel_zustaende
-        self.index_aktueller_zustand = self.liste_zustaende.index(anfangs_zustand)
-
-    def schalten(self):
-        if self.index_aktueller_zustand < len(self.liste_zustaende) - 1:
-            self.index_aktueller_zustand = self.index_aktueller_zustand + 1
-        else:
-            self.index_aktueller_zustand = 0
-
-    def get_zustand(self):
-        return self.liste_zustaende[self.index_aktueller_zustand]
-
-    def set_zustand(self, zustand):
-        self.index_aktueller_zustand = self.liste_zustaende.index(zustand)
-
-
-class AmpelAuto(Ampel):
-    def __init__(self, anfangs_zustand):
-        super().__init__(['Rot', 'Rotgelb', 'Grün', 'Gelb'], anfangs_zustand)
-
-    def get_lampen(self):
-        lampen = None
-        zustand = self.liste_zustaende[self.index_aktueller_zustand]
-        if zustand == 'Rot':
-            lampen = (True, False, False)
-        elif zustand == 'Rotgelb':
-            lampen = (True, True, False)
-        elif zustand == 'Grün':
-            lampen = (False, False, True)
-        elif zustand == 'Gelb':
-            lampen = (False, True, False)
-        return lampen
-
-
-# Test
-a = AmpelAuto('Grün')
-print(a.get_zustand())
-print(a.get_lampen())
-print()
-for i in range(4):
-    a.schalten()
-    print(a.get_zustand())
-    print(a.get_lampen())
-    print()
-
-"""
-    Aufgabe 2
-    
-    (a) Führe das Programm selbst aus. Kannst du das Verhalten erklären?
-    
-    (b) Entwickle analog eine Klasse AmpelFussgaenger und teste sie.
-"""
-
-# a.)
-
-
-# b.)

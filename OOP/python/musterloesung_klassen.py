@@ -1,97 +1,144 @@
 ###############################################  Aufgabe 1 ###########################################################
 
-class Ampel(object):
-    def __init__(self, liste_ampel_zustaende):
-        self.liste_zustaende = liste_ampel_zustaende
-        self.index_aktueller_zustand = 0
-
-    def schalten(self):
-        if self.index_aktueller_zustand < len(self.liste_zustaende) - 1:
-            self.index_aktueller_zustand = self.index_aktueller_zustand + 1
-        else:
-            self.index_aktueller_zustand = 0
-
-    def get_zustand(self):
-        return self.liste_zustaende[self.index_aktueller_zustand]
-
-    def set_zustand(self, zustand):
-        self.index_aktueller_zustand = self.liste_zustaende.index(zustand)
+from abc import ABC, abstractmethod
 
 
-# a.) Fußgänger Ampel
-a = Ampel(['Rot', 'Grün'])
-a.set_zustand('Rot')
-print(a.get_zustand())
-for i in range(len(a.liste_zustaende)):
-    a.schalten()
-    print(a.get_zustand())
+class Person:
+    def __init__(self) -> None:
+        self.name = None
+        self.alter = None
+        self.geschlecht = None
 
-# b.) Französische Ampel
-print()
-a = Ampel(['Rot', 'Grün', "Gelb"])
-a.set_zustand('Rot')
-print(a.get_zustand())
-for i in range(len(a.liste_zustaende)):
-    a.schalten()
-    print(a.get_zustand())
+    def set_name(self, name: str) -> None:
+        self.name = name
+
+    def set_alter(self, alter: int) -> None:
+        self.alter = alter
+
+    def set_geschlecht(self, geschlecht: str) -> None:
+        self.geschlecht = geschlecht
+
+    def birthday(self) -> None:
+        self.alter += 1
+
+    def talk(self) -> None:
+        print(f"Mein Name ist {self.name} ich bin {self.alter} Jahre alt.")
+
+
+alice = Person()
+alice.set_name("Alice")
+alice.set_alter(22)
+alice.talk()
+alice.birthday()
+alice.talk()
 
 ###############################################  Aufgabe 2 ###########################################################
 
-"""
-       
-    a.) Führe das Programm selbst aus. Kannst du das Verhalten erklären?
-    was passiert alles:  
-        - Das AmpelAuto wird mit dem Startwert "Grün" inizialisiert
-           somit beginnt die Ampel bei Grün
-        - Es wird eine ausgabe des aktuellen zustands auf der Console gemacht
-        - Es wird die aktivität der lampen ausgegeben, also ob sie True oder False bzw an oder aus sind
-        - dann wird in einer for schleife 4x durchlaufen und für jeden zyklus wird die ampel geschalten also
-           der aktuelle index erhöht, der zustand und die aktivität der lampen ausgegeben
-        - in der get_lampen wird gebrüft wie der zustand ist und dementsprechend der zustand der lampen gesetzt
-    
-    
-"""
 
+class Mensch:
+    def __init__(self) -> None:
+        self.name = None
+        self.alter = None
+        self.geschlecht = None
+        self.augenfarbe = None
 
-# b.)
-class Ampel(object):
-    def __init__(self, liste_ampel_zustaende, anfangs_zustand):
-        self.liste_zustaende = liste_ampel_zustaende
-        self.index_aktueller_zustand = self.liste_zustaende.index(anfangs_zustand)
+    def set_name(self, name: str) -> None:
+        self.name = name
 
-    def schalten(self):
-        if self.index_aktueller_zustand < len(self.liste_zustaende) - 1:
-            self.index_aktueller_zustand = self.index_aktueller_zustand + 1
+    def set_alter(self, alter: int) -> None:
+        self.alter = alter
+
+    def set_geschlecht(self, geschlecht: str) -> None:
+        self.geschlecht = geschlecht
+
+    def set_augenfarbe(self, augenfarbe: str) -> None:
+        self.augenfarbe = augenfarbe
+
+    def birthday(self) -> None:
+        self.alter += 1
+
+    def talk(self) -> None:
+        if self.augenfarbe is not None:
+            print(
+                f"Mein Name ist {self.name} ich bin {self.alter} Jahre alt und meine Augenfarbe ist {self.augenfarbe}")
         else:
-            self.index_aktueller_zustand = 0
-
-    def get_zustand(self):
-        return self.liste_zustaende[self.index_aktueller_zustand]
-
-    def set_zustand(self, zustand):
-        self.index_aktueller_zustand = self.liste_zustaende.index(zustand)
+            print(f"Mein Name ist {self.name} ich bin {self.alter} Jahre alt.")
 
 
-class AmpelFussgaenger(Ampel):
-    def __init__(self, anfangs_zustand):
-        super().__init__(['Rot', 'Grün'], anfangs_zustand)
-
-    def get_lampen(self):
-        lampen = None
-        zustand = self.liste_zustaende[self.index_aktueller_zustand]
-        if zustand == 'Rot':
-            lampen = (True, False)
-        elif zustand == 'Grün':
-            lampen = (False, True)
-        return lampen
+class Person(Mensch):
+    pass
 
 
-a = AmpelFussgaenger('Rot')
-print(a.get_zustand())
-print(a.get_lampen())
-print()
-for i in range(2):
-    a.schalten()
-    print(a.get_zustand())
-    print(a.get_lampen())
-    print()
+petra = Person()
+petra.set_name("Petra")
+petra.set_alter(44)
+petra.talk()
+petra.set_augenfarbe("blau")
+petra.talk()
+
+###############################################  Aufgabe 3 ###########################################################
+
+
+class Computer(ABC):
+
+    def __init__(self, architecture: str, os_system: str) -> None:
+        self.architecture = architecture
+        self.os_system = os_system
+
+    @abstractmethod
+    def start_process(self) -> None:
+        pass
+
+
+class Laptop(Computer):
+    def start_process(self) -> None:
+        print(
+            f"Starte Laptop Prozess für {self.os_system} {self.architecture}")
+
+
+class Desktop(Computer):
+    def start_process(self) -> None:
+        print(
+            f"Starte Desktop Prozess für {self.os_system} {self.architecture}")
+
+
+class Programmer:
+    programmers = []
+
+    def __init__(self, name: str, team: str) -> None:
+        self.name = name
+        self.team = team
+
+    def __del__(self) -> None:
+        self.programmers.remove(self.name)
+
+    @classmethod
+    def get_aktive_programmers(cls) -> str:
+        if len(cls.programmers) == 0:
+            return "Kein Aktiver Programmierer"
+        return f"Aktive Programmierer: {', '.join(cls.programmers)}"
+
+    def beginn_work(self, computer: Computer) -> None:
+        print(f"{self.name} beginnt seine Arbeit")
+        if not self.name in self.programmers:
+            self.programmers.append(self.name)
+        computer.start_process()
+
+
+# Inizialisieren der Arbeitsgeräte
+laptop = Laptop("32 bit", "Linux")
+desktop = Desktop("64 bit", "Windows")
+
+# Inizialisieren der Programmierer
+heike = Programmer("Heike", "Python")
+peter = Programmer("Peter", "C#")
+martin = Programmer("Martin", "Java")
+
+heike.beginn_work(laptop)
+peter.beginn_work(desktop)
+martin.beginn_work(desktop)
+
+Programmer.get_aktive_programmers()
+
+peter = None
+Programmer.get_aktive_programmers()
