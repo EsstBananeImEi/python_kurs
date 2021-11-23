@@ -1,5 +1,6 @@
 """
-    Beim Schreiben von Code können wir immer wieder einmal fehler machen und es könnte ein verhalten auftreten das
+    Beim Schreiben von Code können wir immer wieder einmal fehler machen 
+    und es könnte ein verhalten auftreten das
     wir nicht erwartet haben.
 
     Wo könnten dinge passieren die wir nicht bedacht haben.
@@ -11,7 +12,8 @@
 
 """
     Python Syntax Errors:
-    Sind im Allgemeinen fehler die entstehen wenn gegen sogennate syntaktische Regeln verstoßen wird.
+    Sind im Allgemeinen fehler, 
+    die entstehen wenn gegen sogennate syntaktische Regeln verstoßen wird.
     Programme mit Syntaxfehlern werden von einem Compiler oder Interpreter zurückgewiesen
 """
 # if a < 3
@@ -19,8 +21,10 @@
 
 """
     Python Logical Errors (Exceptions):
-    Sind Fehler die zur laufzeit des Progammes entstehen, sie werden auch Exceptions oder logische fehler gennant
-    diese treten z.b beim öffnen einer Datei auf die nicht existiert, beim dividieren durch 0, oder wenn versucht
+    Sind Fehler die zur laufzeit des Progammes entstehen, 
+    sie werden auch Exceptions oder logische fehler gennant
+    diese treten z.b beim öffnen einer Datei auf die nicht existiert, 
+    beim dividieren durch 0, oder wenn versucht
     wird ein Module zu importieren das nicht existiert. 
 """
 # with open("text", "r"):
