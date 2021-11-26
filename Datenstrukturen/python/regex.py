@@ -1,8 +1,36 @@
 """
-    Eine Regular Expression ist ein Suchmuster, dass aus einer Sequenz aus Zeichen besteht.
-    Eine Regular expression wird für String-Operationen wie find() oder replace() benutzt
+  # Regular Expression
 
-    Python enthält ein integriertes Modul, welches extra auf Regual Expressions existiert.
+    Eine Sequenz aus Zeichen, die ein Suchmuster darstellen, werden in Python „regular expression“, oder auch Python RegEx genannt. Diese Muster werden verwendet, um Strings oder Substrings zu finden. Die „regular expression“ wird für String-Operationen wie find() und replace() verwendet.
+
+    Anders als in anderen Programmiersprachen, besitzt Python für Regular Expression das <code>re</code> modul.
+    Regular Expression werden in der regel mit sogenannten Metazeichen geschrieben, hier einige der am meisten genutzen mit ihrer verwendung:
+    
+    | Meta-Charakter        | Beschreibung                                                                          |
+    | \d	                | Eine Ziffer von 0 bis 9                                                               |
+    | [a-z] oder [A-Z0-0]   |	Eckige Klammern geben immer ein Set an Ziffern an                                   |
+    | \	                    | Backslash escaped Zeichen, die selbst ein regulärer Ausdruck sind                     |
+    | a+	                | Links vom + kann a ein oder mehrfach vorkommen                                        |
+    | Hallo*	            | Links vom * kann o nicht oder mehrfach vorkommen                                      |
+    | k{2,5}                | 	Zwei bis fünf k´s hintereinander                                                    |
+    | [^1-3]                | 	Keine 1 bis 3                                                                       |
+    | \w	                | Leerzeichen oder Absatz                                                               |
+    | aaa?	                | Das letzte a ist optional                                                             |
+    | (Sahne\|Obers)        |	oder                                                                                |
+    | ^a                    | Prüft ob der String mit a beginnt                                                     |
+    | $a                    | Prüft ob der String mit a endet                                                       |
+    | a.c                   | Prüft zwischen den Zeichen „a“ und „c“ ob genau ein weiteres Zeichen befindet         |
+    | a..c                  | Prüft zwischen den Zeichen „a“ und „c“ ob genau zwei weitere Zeichen befinden usw.    |
+    | (a\|b\|)cd            | vor cd kann ein a oder b vorkommen                                                    |
+    | b{n,m}                | b muss mindestens n mal vorkommen und maximal m mal vorkommen                         |
+
+    
+    Du kannst die folgenden Online-Tools als Sandkasten für Deine Regex-Code verwenden.
+    
+
+    - https://regexr.com/
+    - https://regex101.com/
+    - https://www.regextester.com/
 """
 
 import re

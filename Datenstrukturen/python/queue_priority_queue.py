@@ -37,7 +37,7 @@
 """ Eine Queue mit Priorität kann mittels der PriorityQueue-Klasse aus dem queue-Modul realisiert werden."""
 from queue import PriorityQueue
 
-queue = PriorityQueue()
+queue = PriorityQueue(maxsize=7)
 
 """ 
     Um Elemente hinzuzufügen, nutzen wir wie zuvor die put()-Funktion.
@@ -59,8 +59,8 @@ enqueue(3, "d")
 enqueue(4, "e")
 enqueue(1, "f")
 enqueue(2, "g")
-
 print(f"Queue ist leer: {queue.empty()}")
+print(f"Queue ist voll: {queue.full()}")
 print(f"Elemente in Queue: {queue.qsize()}")
 
 """
@@ -97,4 +97,5 @@ print(f"Elemente in Queue: {queue.qsize()}")
 print("###### Letzter Test der Queue #######")
 print(dequeue())
 first_element = dequeue()
+
 print("expected Priority: 4 -> current Priority " + str(first_element))
