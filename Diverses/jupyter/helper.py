@@ -1,5 +1,16 @@
+from dataclasses import dataclass
 from datetime import datetime, timezone
+from mailbox import FormatError
 from random import randint
+
+
+@dataclass
+class ConnectionMock:
+    url: str
+    connection_time: datetime
+
+    def start(self):
+        print(f"Connection to {self.url} established")
 
 
 class DbMock:
@@ -11,6 +22,14 @@ class DbMock:
     @staticmethod
     def complete_user_profile(name, client_name, plan):
         print(f"User {name} Created")
+
+    @staticmethod
+    def connect(url):
+        if not url:
+            raise ConnectionError(f"url is not defined!")
+        if isinstance(url, int):
+            raise TypeError()
+        return ConnectionMock(url=url, connection_time=datetime.utcnow())
 
 
 class RequestMock:
