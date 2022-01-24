@@ -1,20 +1,45 @@
+import json
+import zmq.asyncio
+import asyncio
 import zmq
 import random
-import sys
 import time
+from argparse import ArgumentParser
 
-port = "5556"
-if len(sys.argv) > 1:
-    port = sys.argv[1]
-    int(port)
 
-context = zmq.Context()
+""" Publisher """
+
+context = zmq.asyncio.Context()
 socket = context.socket(zmq.PUB)
-socket.bind("tcp://*:%s" % port)
 
-while True:
-    topic = random.randrange(9999, 10005)
-    messagedata = random.randrange(1, 215) - 80
-    print("%d %d" % (topic, messagedata))
-    socket.send_string("%d %d" % (topic, messagedata))
-    time.sleep(1)
+
+async def run(port):
+    socket.bind(f'tcp://127.0.0.1:{port}')
+    print(f"Server is ready listening on port {port}")
+    input("Press any key to start sending jobs!")
+    await send()
+
+
+async def send():
+    print("About to send jobs!")
+
+    for message_number in range(1, 100):
+        topic = random.randrange(9999, 10002)
+        messagedata = random.randrange(-20, 60)
+        json_data = {'topic': topic, 'data': messagedata,
+                     'message_number': message_number}
+        await socket.send_string(str(topic), flags=zmq.SNDMORE)
+        await socket.send_json(json_data)
+        print(json_data)
+        time.sleep(0.2)
+
+if __name__ == '__main__':
+    try:
+        parser = ArgumentParser()
+        parser.add_argument("-p", "--port", type=str, default="5556")
+        port = parser.parse_args().port
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(run(port))
+
+    except KeyboardInterrupt:
+        exit()

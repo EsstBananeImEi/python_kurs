@@ -1,35 +1,35 @@
+from argparse import ArgumentParser
+import json
+import zmq.asyncio
+from random import randint
+import asyncio
 import sys
 import zmq
 
-port = "5556"
-if len(sys.argv) > 1:
-    port = sys.argv[1]
-    int(port)
+""" Subscriber """
 
-if len(sys.argv) > 2:
-    port1 = sys.argv[2]
-    int(port1)
-
-# Socket to talk to server
-context = zmq.Context()
+context = zmq.asyncio.Context()
 socket = context.socket(zmq.SUB)
 
-print("Collecting updates from weather server...")
-socket.connect("tcp://localhost:%s" % port)
 
-if len(sys.argv) > 2:
-    socket.connect("tcp://localhost:%s" % port1)
+async def run(port, topic):
+    socket.setsockopt_string(zmq.SUBSCRIBE, topic)
+    socket.connect(f'tcp://127.0.0.1:5556')
+    print(f"Subscriber Connected to Server tcp://127.0.0.1:{port}")
 
-topicfilter = "10001"
-socket.setsockopt_string(zmq.SUBSCRIBE, topicfilter)
+    while True:
+        _, zmq_message = await socket.recv_multipart()
+        print(json.loads(zmq_message))
 
-# Process 5 updates
-total_value = 0
-for update_nbr in range(5):
-    string = socket.recv()
-    topic, messagedata = string.split()
-    total_value += int(messagedata)
-    print(topic, messagedata)
 
-print("Average messagedata value for topic '%s' was %dF" %
-      (topicfilter, total_value / update_nbr))
+if __name__ == '__main__':
+    try:
+        parser = ArgumentParser()
+        parser.add_argument("-p", "--port", type=str, default="5556")
+        parser.add_argument("-t", "--topic", type=str, default="10001")
+        port = parser.parse_args().port
+        topic = parser.parse_args().topic
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(run(port, topic))
+    except KeyboardInterrupt:
+        exit()
