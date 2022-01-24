@@ -73,29 +73,28 @@
         # WET-Code:
             # Variante A
             username = getUserName();
-            password= getPassword();
-            user = { username, password};
-            client.post(user).then(/*Variante A*/);
+            password = getPassword();
+            user = {'user': username, 'password': password};
+            client.post(user);
             
             # Variante B
-            let username = getUserName();
-            let password= getPassword();
-            let user = { username, password};
-            client.get(user).then(/*Variante B*/);
+            username = getUserName();
+            password = getPassword();
+            user = {'user': username, 'password': password};
+            client.get(user);
             
         # DRY-Code:
-            function getUser(){
+            def getUser():
               return {
-                user:getUserName();
-                password:getPassword();
+                'user':getUserName();
+                'password':getPassword();
               }
-            }
             
             //Variante A
-            client.post(getUser()).then(/*Variante A*/ );
+            client.post(getUser());
             
             //Variante B
-            client.get(getUser()).then(/*Variante B*/);
+            client.get(getUser());
         
     #### Principle of least astonishment surprise ####
         Eine Komponente eines Systems muss sich immer so verhalten wie es die meisten Menschen erwarten würden. 

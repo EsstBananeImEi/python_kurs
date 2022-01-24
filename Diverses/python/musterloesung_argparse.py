@@ -12,7 +12,7 @@
             |----------------|--------|-----------|--------------------------|
             | value1         | int    | 0         | gib die erste zahl an    |
             | value2         | int    | 0         | gib die zweite zahl an   |
-            | operation      | str    | add       | gib die Operation an     |
+            | operator       | str    | add       | gib die Operation an     |
             |----------------|--------|-----------|--------------------------|
         - erstelle eine Methode in der die Operation geprüft wird und an hand der Operation eine berechnung durchgeführt wird
 
@@ -22,27 +22,33 @@
 """
 
 import argparse
+from functools import reduce
 import sys
 
 
 def task():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--value1', type=int, default=0, help='gib die erste zahl an')
-    parser.add_argument('--value2', type=int, default=0, help='gib die zweite zahl an ')
-    parser.add_argument('--operation', type=str, default="add", help='gib die Operation an')
+    # parser.add_argument('--value1', type=float, default=0,
+    #                     help='gib die erste zahl an')
+    # parser.add_argument('--value2', type=float, default=0,
+    #                     help='gib die zweite zahl an ')
+    parser.add_argument('--values', nargs="+", default=0,
+                        help='gib die zweite zahl an ')
+    parser.add_argument('--operator', type=str,
+                        default="+", help='gib den operator an')
     arguments = parser.parse_args()
-    sys.stdout.write(str(calc(arguments)))
+    print(calc(arguments))
 
 
 def calc(arguments):
-    if arguments.operation == "add":
-        return arguments.value1 + arguments.value2
-    if arguments.operation == "sub":
-        return arguments.value1 - arguments.value2
-    if arguments.operation == "mul":
-        return arguments.value1 * arguments.value2
-    if arguments.operation == "div":
-        return arguments.value1 / arguments.value2
+    if arguments.operator == "+":
+        return reduce(lambda a, b: a + b, map(float, arguments.values))
+    if arguments.operator == "-":
+        return reduce(lambda a, b: a - b, map(float, arguments.values))
+    if arguments.operator == "*":
+        return reduce(lambda a, b: a * b, map(float, arguments.values))
+    if arguments.operator == "/":
+        return reduce(lambda a, b: a / b, map(float, arguments.values))
 
 
 if __name__ == '__main__':

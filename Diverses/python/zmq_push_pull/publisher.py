@@ -1,6 +1,5 @@
-""" Server """
+""" Publisher """
 import asyncio
-from time import sleep
 
 import zmq.asyncio
 
@@ -17,11 +16,9 @@ async def run():
 
 async def send():
     print("About to send jobs!")
-    for counter in range(100):
-        print(counter)
-        await socket.send_string(f"sending job {counter}")
-        sleep(0.5)
-
+    for counter in range(20001):
+        work_message = {'number': counter}
+        await socket.send_json(work_message)
 
 if __name__ == '__main__':
     try:
