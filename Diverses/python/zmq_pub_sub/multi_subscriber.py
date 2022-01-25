@@ -15,7 +15,11 @@ socket = context.socket(zmq.SUB)
 
 async def run(ports, topic):
     socket.setsockopt_string(zmq.SUBSCRIBE, topic)
-    socket.connect(f'tcp://127.0.0.1:5556')
+    print(f"Subscriber Connected to Servers:")
+    for port in ports:
+        con_str = f'tcp://127.0.0.1:{port}'
+        socket.connect(con_str)
+        print(con_str)
 
     while True:
         _, zmq_message = await socket.recv_multipart()
