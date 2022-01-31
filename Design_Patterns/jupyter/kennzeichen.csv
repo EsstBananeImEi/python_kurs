@@ -1,0 +1,789 @@
+﻿KZ;Name
+BD;Bundestag
+ROH;Rotenburg [Wümme
+WAK;Wartburgkreis (Bad Salzungen
+OS;Osnabrück [Landkreis]
+OSL;Oberspreewald-Lausitz (Senftenberg)
+OTT;Land Hadeln (Otterndorf)
+OTW;Ottweiler [Saar]
+OS;Osnabrück [Stadt]
+OP;Rhein-Wupper-Kreis (Opladen)
+OLD;Oldenburg [Holstein]
+OL;Oldenburg [Landkreis] (Wildeshausen)
+OL;Oldenburg [Stadt]
+OR;Oranienburg
+OPR;Ostprignitz-Ruppin (Neuruppin)
+PAN;Rottal-Inn (Pfarrkirchen)
+PAF;Pfaffenhofen an der Ilm
+PA;Passau
+PCH;Parchim
+PB;Paderborn
+PAR;Parsberg
+OVP;Ostvorpommern (Anklam)
+OVL;Obervogtland (Oelsnitz und Klingenthal)
+OVI;Oberviechtach
+P;Potsdam
+ÖHR;Öhringen [Württemberg]
+OZ;Oschatz
+NZ;Neustrelitz
+NY;Niesky
+NWM;Nordwestmecklenburg (Grevesmühlen)
+OB;Oberhausen [Rheinland] [Stadt]
+OAL;Ostallgäu (Marktoberdorf)
+OA;Oberallgäu (Sonthofen)
+NT;Nürtingen
+NRW;Nordrhein-Westfalen [Landesregierung und Landtag]
+NRÜ;Neustadt am Rübenberge
+NW;Neustadt [Weinstraße] [Stadt]
+NVP;Nordvorpommern (Grimmen)
+NU;Neu-Ulm
+OBB;Obernburg [Main]
+OHA;Osterode am Harz
+OH;Ostholstein (Eutin)
+OG;Ortenaukreis (Offenburg)
+OK;Ohrekreis (Haldensleben)
+OHZ;Osterholz (Osterholz-Scharmbeck)
+OHV;Oberhavel (Oranienburg)
+OCH;Ochsenfurt
+OC;Bördekreis (Oschersleben)
+OBG;Osterburg
+OF;Offenbach [Main]
+OE;Olpe
+OD;Stormarn (Bad Oldesloe)
+RL;Rochlitz
+RIE;Riesa
+RID;Riedenburg [Bayern]
+RO;Rosenheim
+RN;Rathenow
+RM;Röbel [Müritz]
+REI;Berchtesgadener Land (Bad Reichenhall)
+REH;Rehau
+REG;Regen
+RI;Grafschaft Schaumburg (Rinteln)
+RH;Roth
+RG;Riesa-Großenhain (Großenhain)
+RS;Remscheid [Stadt]
+RPL;Rheinland-Pfalz [Landesregierung und Landtag]
+ROW;Rotenburg [Wümme]
+RU;Rudolstadt
+RT;Reutlingen
+RSL;Roßlau [Elbe]
+ROK;Rockenhausen
+ROF;Rotenburg [Fulda]
+ROD;Roding
+ROT;Rothenburg ob der Tauber
+ROS;Rostock [Landkreis]
+ROL;Rottenburg [Laaber]
+RE;Recklinghausen
+PL;Plauen
+PK;Pritzwalk
+PIR;Sächsische Schweiz (Pirna)
+PN;Pößneck
+PM;Potsdam-Mittelmark (Belzig)
+PLÖ;Plön (Holstein)
+PER;Perleberg
+PEG;Pegnitz
+PE;Peine
+PI;Pinneberg
+PF;Enzkreis (Pforzheim)
+PF;Pforzheim [Stadt]
+RA;Rastatt
+R;Regensburg
+QLB;Quedlinburg
+RDG;Ribnitz-Damgarten
+RD;Rendsburg-Eckernförde (Rendsburg)
+RC;Reichenbach [Vogtland]
+PS;Pirmasens
+PRÜ;Prüm [Eifel]
+PR;Prignitz (Perleberg)
+QFT;Querfurt
+PZ;Prenzlau
+PW;Pasewalk
+MGN;Meiningen
+MGH;Bad Mergentheim
+MG;Mönchengladbach [Stadt]
+MI;Minden-Lübbecke (Minden [Westfalen])
+MHL;Mühlhausen
+MH;Mülheim [Ruhr] [Stadt]
+MEP;Meppen
+MEL;Melle
+MEK;Mittlerer Erzgebirgskreis (Marienberg)
+MET;Mellrichstadt
+MES;Hochsauerlandkreis (Meschede)
+MER;Merseburg
+MON;Monschau
+MOL;Märkisch-Oderland (Seelow)
+MOD;Ostallgäu (Marktoberdorf)
+MR;Marburg-Biedenkopf (Marburg [Lahn])
+MQ;Merseburg-Querfurt (Merseburg)
+MOS;Neckar-Odenwald-Kreis (Mosbach)
+ML;Mansfelder Land (Lutherstadt Eisleben)
+MK;Märkischer Kreis (Lüdenscheid)
+MIL;Miltenberg
+MO;Moers
+MN;Unterallgäu (Mindelheim)
+MM;Memmingen [Stadt]
+MEI;Meißen
+LUK;Luckenwalde
+LÜD;Lüdenscheid
+LU;Ludwigshafen [Rhein]
+M;München
+LWL;Ludwigslust
+LÜN;Lünen [Stadt]
+LS;Märkischer Kreis (Lüdenscheid)
+LR;Lahr [Schwarzwald]
+LP;Lippstadt
+LSZ;Bad Langensalza
+LSN;Sachsen [Landesregierung und Landtag]
+LSA;Sachsen-Anhalt [Landesregierung und Landtag]
+MD;Magdeburg
+MC;Malchin
+MB;Miesbach
+MEG;Melsungen
+MED;Süderdithmarschen (Meldorf)
+ME;Mettmann
+MAI;Mainburg
+MAB;Marienberg
+MA;Mannheim [Stadt]
+MAR;Marktheidenfeld
+MAL;Mallersdorf
+MAK;Marktredwitz [Stadt]
+NF;Nordfriesland (Husum)
+NEW;Neustadt an der Waldnaab
+NEU;Hochschwarzwald (Titisee-Neustadt)
+NIB;Süd-Tondern (Niebüll)
+NI;Nienburg [Weser]
+NH;Neuhaus [Rennsteig]
+NEB;Nebra [Unstrut]
+NEA;Neustadt an der Aisch-Bad Windsheim (Neustadt an der Aisch)
+NE;Neuss
+NES;Rhön-Grabfeld (Bad Neustadt [Saale])
+NEN;Neunburg vorm Wald
+NEC;Neustadt bei Coburg [Stadt]
+NOM;Northeim
+NOL;Niederschlesischer Oberlausitzkreis (Görlitz)
+NOH;Grafschaft Bentheim (Nordhorn)
+NR;Neuwied [Rhein]
+NP;Neuruppin
+NOR;Norden
+NM;Neumarkt [Oberpfalz]
+NL;Niedersachsen [Landesregierung und Landtag]
+NK;Neunkirchen [Saar]
+NÖ;Nördlingen
+NMS;Neumünster [Stadt]
+NMB;Naumburg [Saale]
+NDH;Nordhausen
+MÜL;Müllheim [Baden]
+MÜB;Münchberg [Oberfranken]
+MÜ;Mühldorf am Inn
+MVL;Mecklenburg-Vorpommern [Landesregierung und Landtag]
+MÜR;Müritz (Waren)
+MÜN;Münsingen [Württemberg]
+MST;Mecklenburg-Strelitz (Neustrelitz)
+MSP;Main-Spessart (Karlstadt)
+MS;Münster [Westfalen] [Stadt]
+MTL;Muldentalkreis (Grimma)
+MTK;Main-Taunus-Kreis (Hofheim am Taunus)
+MT;Westerwald (Montabaur)
+NAI;Naila
+NAB;Nabburg
+N;Nürnberg [Stadt]
+ND;Neuburg-Schrobenhausen (Neuburg [Donau])
+NB;Neubrandenburg
+NAU;Nauen
+MYK;Mayen-Koblenz (Koblenz)
+MY;Mayen
+MW;Mittweida
+MZG;Merzig-Wadern (Merzig [Saar])
+MZ;Mainz [Stadt]
+MZ;Mainz-Bingen (Mainz)
+WAR;Warburg [Westfalen]
+WAN;Wanne-Eickel [Stadt]
+WAF;Warendorf
+WBS;Worbis
+WB;Wittenberg
+WAT;Wattenscheid [Stadt]
+VOH;Vohenstrauß
+VOF;Vilshofen [Niederbayern]
+VL;Villingen [Schwarzwald]
+WA;Waldeck (Korbach)
+W;Wuppertal [Stadt]
+VS;Schwarzwald-Baar-Kreis (Villingen-Schwenningen)
+WER;Wertingen
+WEN;Weiden [Oberpfalz] [Stadt]
+WEM;Wesermünde (Bremerhaven)
+WG;Wangen [Allgäu]
+WF;Wolfenbüttel
+WES;Wesel
+WE;Weimar
+WDA;Werdau
+WD;Wiedenbrück
+WEL;Oberlahn-Kreis (Weilburg)
+WEG;Wegscheid [Niederbayern]
+WEB;Oberwesterwaldkreis (Westerburg)
+VK;Völklingen [Stadt]
+UER;Uecker-Randow (Pasewalk)
+UEM;Ueckermünde
+UE;Uelzen
+UL;Alb-Donau-Kreis (Ulm)
+UH;Unstrut-Hainich (Mühlhausen)
+UFF;Uffenheim
+TT;Tettnang [Württemberg]
+TS;Traunstein [Oberbayern]
+TR;Trier [Stadt]
+ÜB;Überlingen [Bodensee]
+TUT;Tuttlingen
+TÜ;Tübingen
+VER;Verden [Aller]
+VEC;Vechta
+VB;Vogelsbergkreis (Lauterbach [Hessen])
+VIT;Viechtach
+VIE;Viersen
+VIB;Vilsbiburg
+UN;Unna [Westfalen]
+UM;Uckermark (Prenzlau)
+UL;Ulm [Donau] [Stadt]
+VAI;Vaihingen [Enz]
+V;Vogtlandkreis (Plauen)
+USI;Usingen [Taunus]
+WUR;Wurzen
+WUN;Wunsiedel
+WÜM;Waldmünchen
+WZL;Wanzleben
+WZ;Wetzlar
+WW;Westerwaldkreis (Montabaur)
+WTM;Wittmund
+WTL;Wittlage (Bad Essen)
+WT;Waldshut (Waldshut-Tiengen)
+WUG;Weißenburg-Gunzenhausen (Weißenburg [Bayern])
+WÜ;Würzburg [Landkreis]
+WÜ;Würzburg [Stadt]
+ZP;Zschopau
+ZIG;Ziegenhain (Schwalmstadt)
+ZI;Löbau-Zittau (Zittau)
+ZW;Zweibrücken [Stadt]
+ZS;Zossen
+ZR;Zeulenroda
+Z;Zwickauer Land (Werdau)
+Y;Bundeswehr
+X;Bundeswehr für Fahrzeuge der NATO-Hauptquartiere
+ZEL;Zell [Mosel]
+ZE;Zerbst
+Z;Zoll
+WSW;Weißwasser
+WLG;Wolgast
+WL;Harburg (Winsen [Luhe])
+WK;Wittstock
+WN;Rems-Murr-Kreis (Waiblingen)
+WMS;Wolmirstedt
+WM;Weilheim-Schongau (Weilheim [Oberbayern])
+WIL;Bernkastel-Wittlich (Wittlich)
+WI;Wiesbaden [Stadt]
+WHV;Wilhelmshaven [Stadt]
+WIZ;Witzenhausen
+WIT;Witten [Ruhr] [Stadt]
+WIS;Wismar [Landkreis]
+WRN;Waren
+WR;Wernigerode
+WOS;Wolfstein (Freyung [Wald])
+WST;Ammerland (Westerstede)
+WSF;Weißenfels
+WS;Wasserburg [Inn]
+WOB;Wolfsburg [Stadt]
+WO;Worms [Stadt]
+WND;St. Wendel [Saar]
+WOR;Wolfratshausen
+WOL;Wolfach
+WOH;Wolfhagen [Bezirk Kassel]
+SGH;Sangerhausen
+SG;Solingen [Stadt]
+SFT;Staßfurt
+SHG;Schaumburg (Stadthagen)
+SHA;Schwäbisch Hall
+SH;Schleswig-Holstein [Landesregierung und Landtag]
+SEL;Selb [Stadt]
+SEF;Scheinfeld
+SEE;Seelow
+SFB;Senftenberg
+SFA;Soltau-Fallingbostel (Fallingbostel)
+SF;Oberallgäu (Sonthofen)
+SLF;Saalfeld-Rudolstadt (Saalfeld)
+SLE;Schleiden [Eifel]
+SL;Schleswig-Flensburg (Schleswig)
+SLS;Saarlouis
+SLN;Schmölln
+SLG;Saulgau
+SI;Siegen
+SHL;Suhl
+SHK;Saale-Holzland-Kreis (Eisenberg)
+SK;Saalkreis
+SIM;Rhein-Hunsrück-Kreis (Simmern)
+SIG;Sigmaringen
+SEB;Sebnitz
+SAB;Saarburg [Bezirk Trier]
+S;Stuttgart
+RZ;Herzogtum Lauenburg (Ratzeburg)
+SAL;Saarland [Landesregierung und Landtag]
+SÄK;Säckingen
+SAD;Schwandorf
+RV;Ravensburg
+RÜG;Rügen (Bergen)
+RÜD;Rheingau-Taunus-Kreis (Rüdesheim [Rhein])
+RY;Rheydt [Stadt]
+RWL;Nordrhein-Westfalen [Landesregierung und Landtag]
+RW;Rottweil
+SDH;Sondershausen
+SD;Stade
+SCZ;Schleiz
+SE;Segeberg (Bad Segeberg)
+SDT;Schwedt [Oder]
+SDL;Stendal
+SB;Saarbrücken
+SAW;Altmarkkreis (Salzwedel)
+SAN;Stadtsteinach
+SC;Schwabach [Stadt]
+SBK;Schönebeck [Elbe]
+SBG;Strasburg
+SWA;Rheingau-Taunus-Kreis (Bad Schwalbach)
+SW;Schweinfurt
+SÜW;Südliche Weinstraße (Landau [Pfalz])
+SZB;Schwarzenberg
+SZ;Salzgitter [Stadt]
+SY;Grafschaft Hoya (Syke)
+STL;Stollberg
+STH;Schaumburg-Lippe (Stadthagen)
+STE;Staffelstein
+SUL;Sulzbach-Rosenberg
+SU;Rhein-Sieg-Kreis (Siegburg)
+STO;Stockach [Baden]
+TÖL;Bad Tölz-Wolfratshausen (Bad Tölz)
+TO;Torgau-Oschatz (Torgau)
+TIR;Tirschenreuth
+TR;Trier-Saarburg (Trier)
+TP;Templin [Uckermark]
+TÖN;Eiderstedt (Tönning)
+TET;Teterow
+TE;Tecklenburg
+TBB;Main-Tauber-Kreis (Tauberbischofsheim)
+THL;Thüringen [Landesregierung und Landtag]
+TG;Torgau
+TF;Teltow-Fläming (Luckenwalde)
+STD;Stade
+SOG;Schongau
+SOB;Schrobenhausen
+SO;Soest
+SÖM;Sömmerda
+SOL;Soltau
+SOK;Saale-Orla-Kreis (Schleiz)
+SM;Schmalkalden-Meiningen (Meiningen)
+SLZ;Bad Salzungen
+SLÜ;Schlüchtern
+SNH;Sinsheim [Elsenz]
+SN;Schwerin
+SMÜ;Schwabmünchen
+SRO;Stadtroda
+SRB;Strausberg
+SR;Straubing-Bogen (Straubing)
+STB;Sternberg
+STA;Starnberg
+ST;Steinfurt
+SPB;Spremberg
+SP;Speyer [Stadt]
+SON;Sonneberg
+SR;Straubing [Stadt]
+SPR;Springe [Deister]
+SPN;Spree-Neiße (Forst)
+LOS;Oder-Spree (Beeskow)
+DIZ;Unterlahnkreis (Diez)
+DIN;Dinslaken
+DIL;Dillkreis (Dillenburg)
+DLG;Dillingen [Donau]
+DL;Döbeln
+DKB;Dinkelsbühl
+DEL;Delmenhorst [Stadt]
+DEG;Deggendorf
+DE;Dessau
+DI;Dieburg
+DH;Diepholz
+DGF;Dingolfing-Landau (Dingolfing)
+DÜW;Bad Dürkheim [Weinstraße]
+DUD;Duderstadt
+DU;Duisburg [Stadt]
+E;Essen [Stadt]
+DZ;Delitzsch
+DW;Weißeritzkreis (Dippoldiswalde)
+DO;Dortmund [Stadt]
+DN;Düren
+DM;Demmin
+DT;Lippe (Detmold)
+DS;Donaueschingen
+DON;Donau-Ries (Donauwörth)
+DD;Dresden
+CLP;Cloppenburg
+CHA;Cham [Oberpfalz]
+CE;Celle
+COC;Cochem-Zell (Cochem)
+CO;Coburg
+CLZ;Clausthal-Zellerfeld (Zellerfeld)
+CA;Calau
+C;Chemnitz
+BZA;Bergzabern
+CB;Cottbus
+CB;Cottbus [Landkreis]
+CAS;Castrop-Rauxel [Stadt]
+DAN;Lüchow-Dannenberg (Lüchow)
+DAH;Dachau
+DA;Darmstadt
+DBR;Bad Doberan
+DB;Deutsche Bundesbahn
+DAU;Daun [Eifel]
+CUX;Cuxhaven
+CR;Crailsheim
+COE;Coesfeld [Westfalen]
+DA;Darmstadt-Dieburg (Darmstadt)
+D;Düsseldorf [Stadt]
+CW;Calw
+F;Frankfurt am Main [Stadt]
+EW;Eberswalde
+EUT;Eutin
+FD;Fulda
+FB;Wetteraukreis (Friedberg [Hessen])
+FAL;Soltau-Fallingbostel (Fallingbostel)
+ESA;Eisenach
+ES;Esslingen [Neckar]
+ERK;Erkelenz
+EU;Euskirchen
+ESW;Werra-Meißner-Kreis (Eschwege)
+ESB;Eschenbach [Oberpfalz]
+FKB;Frankenberg [Eder]
+FI;Finsterwalde
+FH;Main-Taunus-Kreis (Frankfurt am Main-Höchst)
+FN;Bodenseekreis (Friedrichshafen)
+FLÖ;Flöha
+FL;Flensburg [Stadt]
+FEU;Feuchtwangen
+FDS;Freudenstadt
+FDB;Friedberg [Bayern]
+FG;Freiberg [Sachsen]
+FFB;Fürstenfeldbruck
+FF;Frankfurt [Oder] [Stadt]
+ERH;Erlangen-Höchstadt (Erlangen)
+EG;Eggenfelden
+EF;Erfurt
+EE;Elbe-Elster (Herzberg)
+EI;Eichstätt
+EHI;Ehingen [Donau]
+EH;Eisenhüttenstadt
+EBN;Ebern
+EBE;Ebersberg
+EB;Eilenburg
+ED;Erding
+ECK;Eckernförde
+EBS;Ebermannstadt
+EMS;Rhein-Lahn-Kreis (Bad Ems)
+EMD;Emden [Stadt]
+EM;Emmendingen
+ERB;Odenwaldkreis (Erbach [Odenwald])
+ER;Erlangen [Stadt]
+EN;Ennepe-Ruhr-Kreis (Schwelm)
+EIL;Eisleben
+EIH;Eichstätt
+EIC;Eichsfeld (Heiligenstadt)
+EL;Emsland (Meppen)
+EIS;Eisenberg
+EIN;Einbeck
+AZ;Alzey-Worms (Alzey)
+AW;Ahrweiler (Bad Neuenahr-Ahrweiler)
+AUR;Aurich
+BA;Bamberg
+B;Berlin
+AZE;Anhalt-Zerbst (Coswig)
+ASL;Aschersleben-Staßfurter Landkreis (Aschersleben)
+ASD;Aschendorf-Hümmling (Papenburg-Aschendorf)
+AS;Amberg-Sulzbach (Amberg)
+AU;Aue
+AT;Altentreptow
+ASZ;Schwarzenberg (Aue)
+BED;Brand-Erbisdorf
+BE;Beckum [Westfalen]
+BCH;Buchen [Odenwald]
+BER;Bernau [bei Berlin]
+BEL;Belzig
+BEI;Beilngries
+BB;Böblingen
+BAR;Barnim (Eberswalde)
+BAD;Baden-Baden [Stadt]
+BC;Biberach [Riß]
+BBL;Brandenburg [Landesregierung und Landtag]
+BBG;Bernburg
+ART;Artern
+AIC;Aichach-Friedberg (Aichach)
+AIB;Bad Aibling
+AH;Ahaus
+ALF;Alfeld [Leine]
+AL;Altena [Westfalen]
+AK;Altenkirchen [Westerwald]
+AB;Aschaffenburg
+AA;Ostalbkreis (Aalen)
+A;Augsburg
+AE;Auerbach
+AC;Aachen
+ABG;Altenburger Land (Altenburg)
+AP;Weimarer Land (Apolda)
+AÖ;Altötting
+ANK;Anklam
+ARN;Arnstadt
+AR;Arnsberg [Westfalen]
+APD;Apolda
+AM;Amberg
+ALZ;Alzenau [Unterfranken]
+ALS;Alsfeld [Oberhessen]
+ANG;Angermünde
+ANA;Annaberg (Annaberg-Buchholz)
+AN;Ansbach
+BRV;Bremervörde
+BRL;Blankenburg (Braunlage [Harz])
+BRK;Bad Brückenau
+BSK;Beeskow
+BSB;Bersenbrück
+BS;Braunschweig [Stadt]
+BRA;Wesermarsch (Brake [Unterweser])
+BR;Bruchsal
+BP;Deutsche Bundespost
+BRI;Brilon
+BRG;Burg
+BRB;Brandenburg
+BW;Bundes-Wasser- und Schiffahrtsverwaltung
+BÜZ;Bützow
+BÜS;Büsingen am Hochrhein
+BZ;Bautzen
+BYL;Bayern [Landesregierung und Landtag]
+BWL;Baden-Württemberg [Landesregierung und Landtag]
+BU;Burgdorf
+BTF;Bitterfeld
+BT;Bayreuth
+BÜR;Büren [Westfalen]
+BUL;Burglengenfeld
+BÜD;Büdingen [Oberhessen]
+BOT;Bottrop [Stadt]
+BIR;Birkenfeld [Nahe]
+BIN;Bingen [Rhein]
+BID;Biedenkopf
+BK;Backnang
+BIW;Bischofswerda
+BIT;Bitburg-Prüm (Bitburg)
+BGD;Berchtesgaden
+BG;Bundesgrenzschutz
+BF;Steinfurt (Burgsteinfurt)
+BI;Bielefeld [Stadt]
+BH;Bühl [Baden]
+BGL;Berchtesgadener Land (Bad Reichenhall)
+BÖ;Bördekreis (Oschersleben)
+BO;Bochum [Stadt]
+BNA;Borna
+BOR;Borken
+BOH;Bocholt [Stadt]
+BOG;Bogen
+BLB;Wittgenstein (Bad Berleburg)
+BL;Zollernalbkreis (Balingen)
+BKS;Bernkastel (Bernkastel-Kues)
+BN;Bonn [Stadt]
+BM;Erftkreis (Bergheim)
+BLK;Burgenlandkreis (Naumburg)
+FO;Forchheim
+KAR;Main-Spessart-Kreis (Karlstadt)
+KA;Karlsruhe
+K;Köln [Stadt]
+KE;Kempten [Allgäu] [Stadt]
+KC;Kronach
+KB;Waldeck-Frankenberg (Korbach)
+JE;Jessen
+JB;Jüterbog
+J;Jena
+JÜL;Jülich
+JL;Jerichower Land (Burg b. Magdeburg)
+JEV;Friesland (Jever)
+KK;Kempen-Krefeld (Kempen [Niederrhein])
+KIB;Donnersbergkreis (Kirchheimbolanden)
+KI;Kiel [Stadt]
+KLZ;Klötze
+KLE;Kleve
+KL;Kaiserslautern
+KEM;Kemnath
+KEL;Kehl
+KEH;Kelheim
+KH;Bad Kreuznach
+KG;Bad Kissingen
+KF;Kaufbeuren [Stadt]
+IZ;Steinburg (Itzehoe)
+HU;Main-Kinzig-Kreis (Hanau)
+HST;Hansestadt Stralsund
+HSK;Hochsauerlandkreis (Meschede)
+HV;Havelberg
+HUS;Husum
+HÜN;Hünfeld
+HP;Bergstraße (Heppenheim [Bergstraße])
+HOT;Hohenstein-Ernstthal
+HÖS;Höchstadt [Aisch]
+HS;Heinsberg
+HRO;Hansestadt Rostock
+HR;Schwalm-Eder-Kreis (Homberg [Efze])
+IL;Ilmenau
+IK;Ilmkreis (Arnstadt)
+IGB;St. Ingbert [Stadt]
+IS;Iserlohn
+IN;Ingolstadt
+ILL;Illertissen
+HWI;Hansestadt Wismar
+HW;Halle [Westfalen]
+HVL;Havelland (Rathenow)
+HZ;Herzberg
+HY;Hoyerswerda
+HX;Höxter
+LEV;Leverkusen [Stadt]
+LER;Leer [Ostfriesland]
+LEO;Leonberg [Württemberg]
+LH;Lüdinghausen
+LG;Lüneburg
+LF;Laufen [Salzach]
+LD;Landau [Pfalz]
+LC;Luckau
+LBZ;Lübz
+LE;Lemgo
+LDS;Dahme-Spreewald (Lübben)
+LDK;Lahn-Dill-Kreis (Wetzlar)
+LN;Lübben
+LM;Limburg-Weilburg (Limburg [Lahn])
+LL;Landsberg [Lech]
+LOH;Lohr [Main]
+LÖB;Sächsischer Oberlausitzkreis (Löbau)
+LÖ;Lörrach
+LIF;Lichtenfels
+LIB;Bad Liebenwerda
+LI;Lindau [Bodensee]
+LK;Lübbecke [Westfalen]
+LIP;Lippe (Detmold)
+LIN;Lingen [Ems]
+LBS;Lobenstein
+KS;Kassel
+KRU;Krumbach [Schwaben]
+KR;Krefeld [Stadt]
+KÜN;Hohenlohe-Kreis (Künzelsau)
+KU;Kulmbach
+KT;Kitzingen
+KO;Koblenz
+KN;Konstanz
+KM;Kamenz
+KÖZ;Kötzting
+KÖT;Köthen [Anhalt]
+KÖN;Königshofen [Grabfeld]
+LAN;Landau [Isar]
+LA;Landshut [Bayern]
+L;Leipzig [Stadt]
+LB;Ludwigsburg
+LAU;Nürnberger Land (Lauf [Pegnitz])
+LAT;Vogelsberg-Kreis (Lauterbach [Hessen])
+KY;Kyritz
+KW;Königs Wusterhausen
+KUS;Kusel
+L;Lahn-Dill-Kreis (Wetzlar)
+L;Leipziger Land
+KYF;Kyffhäuserkreis (Sondershausen)
+GM;Oberbergischer Kreis (Gummersbach)
+GLA;Gladbeck [Westfalen] (Stadt)
+GL;Rheinisch-Bergischer Kreis (Bergisch Gladbach)
+GNT;Genthin
+GN;Gelnhausen
+GMN;Grimmen
+GHA;Geithain
+GG;Groß-Gerau
+GF;Gifhorn
+GK;Geilenkirchen-Heinsberg (Erkelenz)
+GI;Gießen
+GHC;Gräfenhainichen
+GRM;Grimma
+GRI;Griesbach Rottal
+GRH;Großenhain
+GS;Goslar
+GRZ;Greiz
+GRS;Gransee
+GOH;Sankt Goarshausen
+GOA;Sankt Goar
+GÖ;Göttingen
+GRA;Grafenau
+GR;Görlitz
+GP;Göppingen
+GER;Germersheim
+FTL;Freital
+FT;Frankenthal [Pfalz] [Stadt]
+FS;Freising
+FW;Fürstenwalde
+FÜS;Füssen
+FÜ;Fürth [Bayern]
+FR;Freiburg [Breisgau]
+FR;Breisgau-Hochschwarzwald (Freiburg [Breisgau])
+FOR;Forst
+FRW;Bad Freienwalde
+FRI;Friesland (Jever)
+FRG;Freyung-Grafenau (Freyung)
+GE;Gelsenkirchen [Stadt]
+GDB;Gadebusch
+GD;Schwäbisch Gmünd
+GEO;Gerolzhofen
+GEM;Gemünden [Main]
+GEL;Geldern
+GA;Gardelegen
+G;Gera
+FZ;Fritzlar-Homberg (Fritzlar)
+GC;Chemnitzer Land (Glauchau)
+GAP;Garmisch-Partenkirchen
+GAN;Gandersheim (Bad Gandersheim)
+HGW;Hansestadt Greifswald
+HGN;Hagenow
+HG;Hochtaunuskreis (Bad Homburg vor der Höhe)
+HI;Hildesheim
+HHM;Hohenmölsen
+HH;Hansestadt Hamburg
+HEL;Hessen [Landesregierung und Landtag]
+HEI;Dithmarschen (Heide [Holstein])
+HEF;Hersfeld-Rotenburg (Bad Hersfeld)
+HF;Herford
+HET;Hettstedt
+HER;Herne [Stadt]
+HOH;Hofheim [Unterfranken]
+HOG;Hofgeismar
+HO;Hof [Saale]
+HOR;Horb [Neckar]
+HOM;Saar-Pfalz-Kreis (Homburg [Saar])
+HOL;Holzminden
+HL;Hansestadt Lübeck
+HIP;Hilpoltstein [Mittelfranken]
+HIG;Heiligenstadt
+HN;Heilbronn [Neckar]
+HMÜ;Hannoversch Münden
+HM;Hameln-Pyrmont (Hameln)
+HEB;Hersbruck
+GZ;Günzburg
+GW;Greifswald [Landkreis]
+GVM;Grevesmühlen
+HAB;Hammelburg
+HA;Hagen [Westfalen] [Stadt]
+H;Hannover
+GÜ;Güstrow
+GTH;Gotha
+GT;Gütersloh
+GV;Grevenbroich
+GUN;Gunzenhausen
+GUB;Guben
+HD;Rhein-Neckar-Kreis [Heidelberg]
+HCH;Hechingen
+HC;Hainichen
+HE;Helmstedt
+HDL;Haldensleben
+HDH;Heidenheim [Brenz]
+HAS;Haßberge (Haßfurt)
+HAM;Hamm [Westfalen] [Stadt]
+HAL;Halle [Saale] [Stadt]
+HBS;Halberstadt
+HBN;Hildburghausen
+HB;Hansestadt Bremen und Bremerhaven
