@@ -5,3 +5,5 @@
 venv
 my_python_env
 *.log
+*.coverage
+*htmlcov

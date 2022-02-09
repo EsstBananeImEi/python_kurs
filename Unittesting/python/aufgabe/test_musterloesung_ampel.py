@@ -1,11 +1,9 @@
-import nose
-from mock import patch
+import unittest
 
-from Unittesting.aufgabe.code.ampel import Ampel
+from ampel import Ampel
 
 
-class TestMusterloesungAmpel(object):
-
+class TestMusterloesungAmpel(unittest.TestCase):
     def test__init__(self):
         ampel = Ampel(["a", "b", "c"], "a")
 
@@ -33,3 +31,7 @@ class TestMusterloesungAmpel(object):
         ampel = Ampel(["a", "b", "c"], "a")
         ampel.set_zustand("c")
         assert ampel.index_aktueller_zustand == 2
+
+
+if __name__ == "__main__":
+    unittest.main()

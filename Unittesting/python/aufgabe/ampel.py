@@ -1,5 +1,5 @@
 class Ampel(object):
-    def __init__(self, liste_ampel_zustaende, anfangs_zustand):
+    def __init__(self, liste_ampel_zustaende: list[str], anfangs_zustand: str):
         self.liste_zustaende = liste_ampel_zustaende
         self.index_aktueller_zustand = self.liste_zustaende.index(anfangs_zustand)
 
@@ -12,5 +12,5 @@ class Ampel(object):
     def get_zustand(self):
         return self.liste_zustaende[self.index_aktueller_zustand]
 
-    def set_zustand(self, zustand):
+    def set_zustand(self, zustand: str):
         self.index_aktueller_zustand = self.liste_zustaende.index(zustand)

@@ -3,13 +3,12 @@ import string
 
 
 class User:
-
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self.name = name
-        self.id = ''.join(random.choices(string.ascii_lowercase, k=10))
-        self._status = 'logged out'
+        self.id = "".join(random.choices(string.ascii_lowercase, k=10))
+        self._status = "logged out"
 
-    def set_status(self, status) -> None:
+    def set_status(self, status: str) -> None:
         self._status = status
 
     def get_status(self) -> str:
@@ -17,14 +16,17 @@ class User:
 
 
 class Verificator_Email:
-
     def __init__(self) -> None:
         self._verified = False
-        self._verification_code = None
+        self._verification_code: str = ""
 
-    def _generate_verification_code(self):
-        self._verification_code = ''.join(random.choices(
-            string.ascii_letters + string.digits + "!@#$%^&*()", k=10))
+    def generate_verification_code(self) -> None:
+        self._verification_code = "".join(
+            random.choices(string.ascii_letters + string.digits + "!@#$%^&*()", k=10)
+        )
+
+    def get_verification_code(self) -> str:
+        return self._verification_code
 
     def verify(self):
         verification_code = input("Enter Verification Code from Email: ")
@@ -35,16 +37,13 @@ class Verificator_Email:
 
 
 class LoginProcessor:
-
-    def login(self, user) -> None:
+    def login(self, user: User) -> None:
         verificator = Verificator_Email()
-        verificator._generate_verification_code()
+        verificator.generate_verification_code()
         verificator.verify()
         if not verificator.is_verified():
             raise Exception("Verification Failed")
-        print(f"User: {user.name} \n"
-              "ID: {user.id} \n"
-              "Loggin ID: {user.id}")
+        print(f"User: {user.name} \n" "ID: {user.id} \n" "Loggin ID: {user.id}")
         user.set_status("logged in")
 
 
@@ -52,3 +51,9 @@ class LoginProcessor:
 #     user = User("Melanie")
 #     processor = LoginProcessor()
 #     processor.login(user)
+
+"""
+Coverage generieren: 
+    > coverage run ***_test.py
+    > coverage html
+"""

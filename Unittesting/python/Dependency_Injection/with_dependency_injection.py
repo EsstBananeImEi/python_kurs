@@ -3,13 +3,12 @@ import string
 
 
 class User:
-
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self.name = name
-        self.id = ''.join(random.choices(string.ascii_lowercase, k=10))
-        self._status = 'logged out'
+        self.id = "".join(random.choices(string.ascii_lowercase, k=10))
+        self._status = "logged out"
 
-    def set_status(self, status) -> None:
+    def set_status(self, status: str) -> None:
         self._status = status
 
     def get_status(self) -> str:
@@ -17,14 +16,17 @@ class User:
 
 
 class Verificator_Email:
-
     def __init__(self) -> None:
         self._verified = False
-        self._verification_code = None
+        self._verification_code = ""
 
-    def _generate_verification_code(self):
-        self._verification_code = ''.join(random.choices(
-            string.ascii_letters + string.digits + "!@#$%^&*()", k=10))
+    def generate_verification_code(self):
+        self._verification_code = "".join(
+            random.choices(string.ascii_letters + string.digits + "!@#$%^&*()", k=10)
+        )
+
+    def get_verification_code(self) -> str:
+        return self._verification_code
 
     def verify(self):
         verification_code = input("Enter Verification Code from Email: ")
@@ -35,16 +37,14 @@ class Verificator_Email:
 
 
 class LoginProcessor:
-
     def __init__(self, verificator: Verificator_Email) -> None:
         self.verificator = verificator
 
-    def login(self, user) -> None:
+    def login(self, user: User) -> None:
         self.verificator.verify()
         if not self.verificator.is_verified():
             raise Exception("Verification Failed")
-        print(f"User: {user.name} \n"
-              f"ID: {user.id} \n")
+        print(f"User: {user.name} \n" f"ID: {user.id} \n")
         user.set_status("logged in")
 
 

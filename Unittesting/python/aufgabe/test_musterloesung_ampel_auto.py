@@ -1,11 +1,9 @@
-import nose
-from mock import patch
+import unittest
 
-from Unittesting.aufgabe.code.ampel_auto import AmpelAuto
+from ampel_auto import AmpelAuto
 
 
-class TestMusterloesungAmpelAuto(object):
-
+class TestMusterloesungAmpelAuto(unittest.TestCase):
     def test__init__(self):
         auto_ampel = AmpelAuto("Rot")
         assert auto_ampel.index_aktueller_zustand == 0
@@ -41,3 +39,7 @@ class TestMusterloesungAmpelAuto(object):
         assert rot is True
         assert gelb is True
         assert gruen is False
+
+
+if __name__ == "__main__":
+    unittest.main()
