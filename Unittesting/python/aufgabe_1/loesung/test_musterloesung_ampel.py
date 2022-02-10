@@ -1,6 +1,6 @@
 import unittest
 
-from ampel import Ampel
+from Unittesting.python.aufgabe_1.loesung.ampel_loesung import Ampel
 
 
 class TestMusterloesungAmpel(unittest.TestCase):

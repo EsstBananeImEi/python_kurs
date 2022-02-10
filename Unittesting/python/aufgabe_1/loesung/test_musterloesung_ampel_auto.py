@@ -1,6 +1,7 @@
 import unittest
 
-from ampel_auto import AmpelAuto
+from Unittesting.python.aufgabe_1.loesung.ampel_auto_loesung import AmpelAuto
+
 
 
 class TestMusterloesungAmpelAuto(unittest.TestCase):
