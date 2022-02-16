@@ -2,7 +2,7 @@ Aufgabe 2: Test Driven Development
 
 Dein Kollege musste die arbeit verlassen und du sollst die letzte benötigte Funktion in der Klasse "Account" implementieren
 
-Dein Kollege hat dir einen hinterlassen.
+Dein Kollege hat dir einen Zettel hinterlassen.
 
 Zettel:
     Hey Digga,
@@ -18,8 +18,10 @@ Zettel:
 
     danke Digga, bis morgen
 
-    ps: 80% Coverage ist gut aber 100% ist besser :)
+    ps: 80% Coverage für die Klasse Account ist gut aber 100% wäre besser :)
 
+
+TIP: 
 
 als du bemerkst das du keine ahnung hast was du tun sollst, bekommst du eine email deines
 Kollegen.
