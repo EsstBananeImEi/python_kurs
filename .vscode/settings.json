@@ -10,4 +10,17 @@
         "-p",
         "*_test.py"
     ],
+    "sync.autoUpload": true,
+    "bracketPairColorizer.depreciation-notice": false,
+    "vscode-edge-devtools.mirrorEdits": true,
+    "vscode-edge-devtools.themes": "Dark",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
+    "python.languageServer": "Pylance",
+    "notebook.output.textLineLimit": 35,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoSearchPaths": true,
+    "jupyter.jupyterServerType": "local",
 }
