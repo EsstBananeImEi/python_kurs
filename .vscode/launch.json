@@ -7,7 +7,4 @@
             "url": "" // Provide your project's url to finish configuring
         }
     ],
-    "env": {
-        "PYTHONPATH": "${workspaceRoot}"
-    }
 }
