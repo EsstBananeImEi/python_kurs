@@ -7,16 +7,15 @@
 # print(result_list)
 
 #######
+from my_module import fibo, hello
 
-import my_module
-
-result = my_module.fibo.fib(4)
+result = fibo.fib(10)
 print(result)
 
-result_list = my_module.fibo.fiblist(4)
+result_list = fibo.fiblist(4)
 print(result_list)
 
-my_module.hello.say_hello()
+hello.say_hello()
 
 #######
 

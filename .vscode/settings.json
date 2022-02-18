@@ -23,4 +23,7 @@
     "python.analysis.typeCheckingMode": "strict",
     "python.analysis.autoSearchPaths": true,
     "jupyter.jupyterServerType": "local",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/"
+    ]
 }
