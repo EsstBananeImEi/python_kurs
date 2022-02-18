@@ -8,15 +8,15 @@
 
 #######
 
-import Meine_Module
+import my_module
 
-result = Meine_Module.fibo.fib(4)
+result = my_module.fibo.fib(4)
 print(result)
 
-result_list = Meine_Module.fibo.fiblist(4)
+result_list = my_module.fibo.fiblist(4)
 print(result_list)
 
-Meine_Module.hello.say_hello()
+my_module.hello.say_hello()
 
 #######
 
