@@ -23,4 +23,8 @@
     "python.analysis.typeCheckingMode": "strict",
     "python.analysis.autoSearchPaths": true,
     "jupyter.jupyterServerType": "local",
+    "editor.fontSize": 16,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#0e7777"
+    }
 }
