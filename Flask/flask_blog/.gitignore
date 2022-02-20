@@ -1,0 +1,9 @@
+*.idea
+*.pyc
+*.ipynb_checkpoints
+*__pycache__
+env
+my_python_env
+*.log
+*.coverage
+*htmlcov
