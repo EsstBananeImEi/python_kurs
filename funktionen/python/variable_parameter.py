@@ -1,5 +1,6 @@
 # in python ist es auch möglich eine variable anzahl an parametern zu übergegen
 
+
 def summiere2(a, b):
     pass
 
@@ -20,7 +21,7 @@ def summiere4(a, b, c, d):
 """
 
 
-def summiere(a, b, c, *args):
+def summiere(a: int, b: int, c: int, *args: int):
     return a, b, c, args
 
 
@@ -70,6 +71,6 @@ def func(required_arg, *args, **kwargs):
 
 func("run1")
 print()
-func("run2", 1, 2, '3')
+func("run2", 1, 2, "3")
 print()
-func("run3", 1, 2, '3', 4, 5, keyword0=[1, 3, 4], keyword1=4, keyword2="foo")
+func("run3", 1, 2, "3", 4, 5, keyword0=[1, 3, 4], keyword1=4, keyword2="foo")
