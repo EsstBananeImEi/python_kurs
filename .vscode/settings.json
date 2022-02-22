@@ -20,7 +20,7 @@
     },
     "python.languageServer": "Pylance",
     "notebook.output.textLineLimit": 35,
-    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.typeCheckingMode": "basic",
     "python.analysis.autoSearchPaths": true,
     "jupyter.jupyterServerType": "local",
     "editor.fontSize": 16,
