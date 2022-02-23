@@ -1,6 +1,16 @@
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "$3cr37K3y"
+
+
+class NameForm(FlaskForm):
+    name: StringField = StringField("Wie ist dein name", validators=[DataRequired()])
+    submit: SubmitField = SubmitField("Submit")
+
 
 """
 Filters:
@@ -44,3 +54,13 @@ def page_not_found(error):
 @app.errorhandler(500)
 def internal_server_error(error):
     return render_template("500.html"), 500
+
+
+@app.route("/name", methods=["GET", "POST"])
+def name_form() -> str:
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ""
+    return render_template("name.html", name=name, form=form)
