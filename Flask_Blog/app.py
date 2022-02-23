@@ -5,4 +5,4 @@ blog = Flask(__name__)
 
 @blog.route("/")
 def index() -> str:
-    return render_template("")
+    return render_template("index.html")
