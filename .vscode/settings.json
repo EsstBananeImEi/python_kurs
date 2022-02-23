@@ -26,5 +26,6 @@
     "editor.fontSize": 16,
     "workbench.colorCustomizations": {
         "titleBar.activeBackground": "#0e7777"
-    }
+    },
+    "auto-close-tag.enableAutoCloseTag": true
 }
