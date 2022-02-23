@@ -9,7 +9,9 @@ Filters:
     capitalize: Erster Buchstabe groß
     safe: erlaubt html von außen
     striptags: entfernt html aus text
+    https://jinja.palletsprojects.com/en/3.0.x/templates/#builtin-filters
 """
+
 
 @app.route("/")
 def index():
@@ -18,14 +20,14 @@ def index():
     my_title_text = "Das ist mein HTML text"
 
     favorit_pizza: list[str] = ["Pepperoni", "Cheese", "Fungi", "Salami", "Hawai"]
-    my_number = 42
+    my_numbers: list[int] = [1,2,3,4,5,6,7]
     return render_template(
         "index.html",
         first_name=first_name,
         my_html_text=my_html_text,
         my_title_text=my_title_text,
         favorit_pizza=favorit_pizza,
-        my_number=my_number,
+        my_numbers=my_numbers,
     )
 
 
