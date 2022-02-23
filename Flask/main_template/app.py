@@ -20,7 +20,7 @@ def index():
     my_title_text = "Das ist mein HTML text"
 
     favorit_pizza: list[str] = ["Pepperoni", "Cheese", "Fungi", "Salami", "Hawai"]
-    my_numbers: list[int] = [1,2,3,4,5,6,7]
+    my_numbers: list[int] = [1, 2, 3, 4, 5, 6, 7]
     return render_template(
         "index.html",
         first_name=first_name,
@@ -34,3 +34,13 @@ def index():
 @app.route("/user/<name>")
 def user(name):
     return render_template("user.html", user_name=name)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template("500.html"), 500
