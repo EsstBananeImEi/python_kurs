@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, flash, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -10,11 +10,6 @@ app.config["SECRET_KEY"] = "$3cr37K3y"
 class NameForm(FlaskForm):
     name: StringField = StringField("Wie ist dein name", validators=[DataRequired()])
     submit: SubmitField = SubmitField("Submit")
-
-
-"""
-
-"""
 
 
 @app.route("/")
@@ -57,4 +52,6 @@ def name_form() -> str:
     if form.validate_on_submit():
         name = form.name.data
         form.name.data = ""
+        flash("Formular Erfolgreich Versendet")
+
     return render_template("name.html", name=name, form=form)
