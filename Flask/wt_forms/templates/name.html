@@ -7,16 +7,10 @@
         <br/> 
         <form method='POST'>
             {{ form.hidden_tag() }}
-            {{ form.name.label(
-                class="form-label"
-            ) }}
-            {{ form.name(
-                class="form-control"
-            ) }}
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
             <br/> 
-            {{ form.submit(
-                class="btn btn-secondary"
-            ) }}
+            {{ form.submit(class="btn btn-secondary") }}
         </form>
     {% endif %}
 {% endblock %}
