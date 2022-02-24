@@ -10,6 +10,10 @@
 
     {% if name %}
         <h1>Hello {{ name|title }}</h1>
+        <br/>
+        <img 
+            src="{{ url_for('static', filename='images/example_image.jpg') }}"
+            width=1100>
     {% else %}
         <h1>Wie ist dein Name?</h1>
         <br/> 
