@@ -14,6 +14,9 @@
         <img 
             src="{{ url_for('static', filename='images/example_image.jpg') }}"
             width=1100>
+        <br/>
+        <p id="demo"> Wir lernen Flask</p>
+        <script src=" {{ url_for('static', filename='js/myfile.js') }}"/>
     {% else %}
         <h1>Wie ist dein Name?</h1>
         <br/> 
