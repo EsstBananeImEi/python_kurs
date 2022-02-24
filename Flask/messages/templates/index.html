@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Hello World</h1>
+    <p>Das ist meine Erste Website</p>
+    <p>Mein name ist {{ first_name }}</p>
+
+    <p> {{ my_html_text|safe }} </p>
+    <p> {{ my_html_text|striptags }} </p>
+    <p> {{ my_title_text|title }} </p>
+
+    <h3>Meine Lieblings Pizzen sind:</h3>
+    {% for pizza in favorit_pizza %}
+        {% if pizza == "Fungi" %}
+            {{ pizza }} - aber nur mit Zwiebeln!! <br />
+        {% else %}
+            {{ pizza }} <br />
+        {% endif %}
+    {% endfor %}
+
+    <h2>{{ favorit_pizza.2 }}</h2>
+
+    <h2>Die summe der liste ist: {{ my_numbers|sum() }}</h2>
+{% endblock %}
