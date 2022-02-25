@@ -3,13 +3,31 @@ from datetime import datetime
 from flask import Flask, flash, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
+from sqlalchemy import Column, DateTime, Integer, String
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///my_database.db"
 app.config["SECRET_KEY"] = "$3cr37K3y"
 database = SQLAlchemy(app)
+
+
+class Users(database.Model):  # type: ignore
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50), nullable=False)
+    email = Column(String(80), nullable=False, unique=True)
+    date_added = Column(DateTime, default=datetime.utcnow)
+
+    def __repr__(self) -> str:
+        return f"<Name {self.name}>"
+
+
+class UserForm(FlaskForm):
+    name: StringField = StringField("Name", validators=[DataRequired()])
+    email: StringField = StringField("Email", validators=[DataRequired()])
+    submit: SubmitField = SubmitField("Submit")
 
 
 class NameForm(FlaskForm):
@@ -60,3 +78,8 @@ def name_form() -> str:
         flash("Formular Erfolgreich Versendet")
 
     return render_template("name.html", name=name, form=form)
+
+
+@app.route("/add", methods=["GET", "POST"])
+def add_user() -> str:
+    return render_template("add_user.html")
