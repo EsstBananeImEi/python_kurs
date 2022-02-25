@@ -5,7 +5,7 @@ my_database = mysql.connector.connect(
 )
 
 cursor = my_database.cursor()
-cursor.execute("CREATE DATABASE my_users")
+# cursor.execute("CREATE DATABASE my_users")
 
 cursor.execute("SHOW DATABASES")
 for database in cursor:
