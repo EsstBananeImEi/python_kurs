@@ -1,19 +1,9 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-"""
-Filters:
-    upper: Alles Großgeschrieben
-    lower: Alles Kleingeschrieben
-    capitalize: Erster Buchstabe groß
-    safe: erlaubt html von außen
-    striptags: entfernt html aus text
-    https://jinja.palletsprojects.com/en/3.0.x/templates/#builtin-filters
-"""
+from app import app
+from flask import render_template
 
 
 @app.route("/")
+@app.route("/index")
 def index():
     first_name = "John"
     my_html_text = "Das ist mein <strong>HTML</strong> text"
@@ -34,13 +24,3 @@ def index():
 @app.route("/user/<name>")
 def user(name):
     return render_template("user.html", user_name=name)
-
-
-@app.errorhandler(404)
-def page_not_found(error):
-    return render_template("404.html"), 404
-
-
-@app.errorhandler(500)
-def internal_server_error(error):
-    return render_template("500.html"), 500
