@@ -80,6 +80,7 @@ def name_form() -> str:
     return render_template("name.html", name=name, form=form)
 
 
-@app.route("/add", methods=["GET", "POST"])
+@app.route("/user/add", methods=["GET", "POST"])
 def add_user() -> str:
-    return render_template("add_user.html")
+    form = UserForm()
+    return render_template("add_user.html", form=form)
