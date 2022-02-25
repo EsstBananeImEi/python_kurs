@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///my_database.db"
 app.config["SECRET_KEY"] = "$3cr37K3y"
+database = SQLAlchemy(app)
 
 
 class NameForm(FlaskForm):
