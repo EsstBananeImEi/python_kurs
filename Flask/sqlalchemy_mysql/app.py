@@ -9,7 +9,7 @@ from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///my_database.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://python_kurs:1234@localhost/my_users"
 app.config["SECRET_KEY"] = "$3cr37K3y"
 database = SQLAlchemy(app)
 
