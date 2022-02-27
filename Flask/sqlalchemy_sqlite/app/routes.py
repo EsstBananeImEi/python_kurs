@@ -1,9 +1,13 @@
+from datetime import datetime
+from xmlrpc.client import DateTime
+
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import LoginForm, NameForm, RegistrationForm, UserForm
+from app.forms import EditUserForm, LoginForm, NameForm, RegistrationForm, UserForm
 from app.models import User
 
 
@@ -18,10 +22,10 @@ def index():
         },
         {"author": {"username": "Susanne"}, "body": "Der neue Avengers war sooo Geil!"},
     ]
-    return render_template("index.html", title="Home", posts=posts)
+    return render_template("restricted_pages/index.html", title="Home", posts=posts)
 
 
-@app.route("/user/<name>")
+@app.route("/user/name/<name>")
 def user(name):
     return render_template("user.html", user_name=name)
 
@@ -53,7 +57,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != "":
             next_page = url_for("index")
         return redirect(next_page)
-    return render_template("login.html", title="Sign In", form=form)
+    return render_template("user/login.html", title="Sign In", form=form)
 
 
 @app.route("/logout")
@@ -68,18 +72,75 @@ def register():
         return redirect(url_for("index"))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)  # type: ignore
+        user = User(firstname=form.firstname.data, lastname=form.lastname.data, username=form.username.data, email=form.email.data)  # type: ignore
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("Congratulations, you are now a registered user!")
+        flash("Gratulation, Sie sind jetzt ein Registrierter Nutzer!")
         return redirect(url_for("login"))
-    return render_template("register.html", title="Register", form=form)
+    return render_template("user/register.html", title="Register", form=form)
 
 
 @app.route("/user/list", methods=["GET"])
 @login_required
 def view_users() -> str:
     form = UserForm()
-    users = User.query.order_by(User.date_added)
-    return render_template("view_users.html", form=form, users=users)
+    users = User.query.order_by(User.id)
+    return render_template("restricted_pages/view_users.html", form=form, users=users)
+
+
+@app.route("/user/list/<int:id>")
+@login_required
+def delete(id):
+    print(id)
+    user = User.query.get_or_404(id)
+    form = UserForm()
+    users = None
+    try:
+        db.session.delete(user)
+        db.session.commit()
+        flash("Nutzer wurde erfolgreich gelöscht!")
+        users = User.query.order_by(User.id)
+    except:
+        flash("Whoops! Es gab ein Problem!")
+    finally:
+        return render_template(
+            "restricted_pages/view_users.html", form=form, users=users
+        )
+
+
+@app.route("/edit/<int:id>", methods=["GET", "POST"])
+@login_required
+def edit(id):
+    form = EditUserForm()
+    user = User.query.get_or_404(id)
+    users = User.query.order_by(User.id)
+    is_admin = user.administrator == 1
+    if request.method == "POST":
+        user.username = request.form["username"]
+        user.email = request.form["email"]
+        user.administrator = True if request.form.get("admin") == "y" else False
+        if len(request.form["password"]) != 0:
+            user.password_hash = generate_password_hash(request.form["password"])
+
+        user.last_modify = datetime.now()
+        try:
+            if form.validate_on_submit():
+                db.session.commit()
+                flash(f"Nutzer: {user.username} Erfolgreich bearbeitet!")
+                users = User.query.order_by(User.id)
+                return render_template(
+                    "restricted_pages/view_users.html", form=form, users=users
+                )
+            return render_template(
+                "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
+            )
+        except:
+            flash("Error! Ein Problem ist aufgetreten!")
+            return render_template(
+                "restricted_pages/view_users.html", form=form, users=users
+            )
+    else:
+        return render_template(
+            "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
+        )
