@@ -75,3 +75,11 @@ def register():
         flash("Congratulations, you are now a registered user!")
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
+
+
+@app.route("/user/list", methods=["GET"])
+@login_required
+def view_users() -> str:
+    form = UserForm()
+    users = User.query.order_by(User.date_added)
+    return render_template("view_users.html", form=form, users=users)
