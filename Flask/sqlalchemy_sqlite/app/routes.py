@@ -7,8 +7,33 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import AdminForm, EditUserForm, LoginForm, NameForm, RegistrationForm
+from app.forms import (
+    AdminForm,
+    EditProfileForm,
+    EditUserForm,
+    LoginForm,
+    NameForm,
+    RegistrationForm,
+)
 from app.models import User
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template("errors/404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template("errors/500.html"), 500
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:  # type: ignore
+        current_user.last_seen = datetime.now()
+        db.session.commit()
 
 
 @app.route("/")
@@ -30,10 +55,66 @@ def index():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {"author": user, "body": "Test post #1"},
-        {"author": user, "body": "Test post #2"},
+        {
+            "author": user,
+            "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "timestamp": datetime.now(),
+        },
+        {
+            "author": user,
+            "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "timestamp": datetime.now(),
+        },
     ]
-    return render_template("restricted_pages/user.html", user=user, posts=posts)
+    return render_template("user/user.html", user=user, posts=posts)
+
+
+@app.context_processor
+def utility_processor():
+    def last_seen(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
+        if date is None:
+            return "User not seen yet"
+        last_seen = datetime.strptime(date.strftime(format), format)
+        diff = datetime.now() - last_seen
+
+        if diff.total_seconds() <= 30:
+            return "Now Online"
+        return date.strftime(format)
+
+    def format_date(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
+        return datetime.strptime(date.strftime(format), format)
+
+    return dict(last_seen=last_seen, format_date=format_date)
+
+
+@app.route("/edit_profile/<int:id>", methods=["GET", "POST"])
+@login_required
+def edit_profile(id):
+    form = EditProfileForm(current_user.username)
+    user = User.query.get_or_404(id)
+    form.about_me.data = user.about_me
+    if request.method == "POST":
+        user.firstname = request.form["firstname"]
+        user.lastname = request.form["lastname"]
+        user.username = request.form["username"]
+        user.email = request.form["email"]
+        user.about_me = request.form["about_me"]
+        if len(request.form["password"]) != 0:
+            user.password_hash = generate_password_hash(request.form["password"])
+
+        user.last_modify = datetime.now()
+
+        if form.validate_on_submit():
+            db.session.commit()
+            flash("Deine änderungen wurden gespeichert.")
+            user = User.query.get_or_404(id)
+            return redirect(url_for("edit_profile", id=user.id))
+        return render_template(
+            "user/edit_profile.html", title="Edit Profile", form=form, user=user
+        )
+    return render_template(
+        "user/edit_profile.html", title="Edit Profile", form=form, user=user
+    )
 
 
 @app.route("/name", methods=["GET", "POST"])

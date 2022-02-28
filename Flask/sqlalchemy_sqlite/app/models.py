@@ -1,5 +1,6 @@
 from datetime import datetime
 from hashlib import md5
+
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -17,6 +18,8 @@ class User(UserMixin, db.Model):  # type: ignore
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     last_modify = db.Column(db.DateTime, default=datetime.utcnow)
     administrator = db.Column(db.Boolean, default=False)
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return "<User {}>".format(self.username)
@@ -29,9 +32,7 @@ class User(UserMixin, db.Model):  # type: ignore
 
     def avatar(self, size):
         digest = md5(self.email.lower().encode("utf-8")).hexdigest()
-        return "https://www.gravatar.com/avatar/{}?d=identicon&s={}".format(
-            digest, size
-        )
+        return f"https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}"
 
 
 @login.user_loader

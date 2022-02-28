@@ -3,53 +3,56 @@
 
     <h1>User List</h1>    
     
-    <a href="{{ url_for('add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
-    <br>
-    <br>
-    
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-            <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Vorname</th>
-            <th scope="col">Nachname</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Admin</th>
-            {% if current_user.administrator %}
-                <th scope="col">Actions</th>
-            {% endif %}
-
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
+        <a href="{{ url_for('add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
+        <br>
+        <br>
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
                 <tr>
-                    <th> {{ user.id }} </th>
-                    <td>{{ user.firstname }} </td>
-                    <td>{{ user.lastname }}</td>
-                    <td>{{ user.username }} </td>
-                    <td>{{ user.email}}</td>
-                    <td>
-                        {{ form.admin(class="form-check-input", checked=user.administrator==True, disabled=True) }}
-                    </td>
-                    {% if current_user.administrator %}
-                    <td>
-                        <form method="post" action="/">
-                            <a type="button" class="btn btn-danger" href="{{ url_for('delete', id=user.id)}}" aria-label="Close">
-                            Delete
-                            </a>
-                            <a type="button" class="btn btn-primary" href="{{ url_for('edit', id=user.id)}}" aria-label="Close">
-                            Edit
-                            </a>
-                        </form>
-                    </td>
-                        
-                    {% endif %}
-                </tr>
-            {% endfor %}
+                <th scope="col">Id</th>
+                <th scope="col">Vorname</th>
+                <th scope="col">Nachname</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">About Me</th>
+                <th scope="col">Last Seen</th>
+                <th scope="col">Admin</th>
+                {% if current_user.administrator %}
+                    <th scope="col">Actions</th>
+                {% endif %}
 
-            
-        </tbody>
-    </table>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th> {{ user.id }} </th>
+                        <td>{{ user.firstname }} </td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.username }} </td>
+                        <td>{{ user.email}}</td>
+                        <td>{{ user.about_me}}</td>
+                        <td>{{ last_seen(user.last_seen) }}</td>
+                        <td>
+                            {{ form.admin(class="form-check-input", checked=user.administrator==True, disabled=True) }}
+                        </td>
+                        {% if current_user.administrator %}
+                        <td>
+                            <form method="post" action="/">
+                                <a type="button" class="btn btn-danger" href="{{ url_for('delete', id=user.id)}}" aria-label="Close">
+                                Delete
+                                </a>
+                                <a type="button" class="btn btn-primary" href="{{ url_for('edit', id=user.id)}}" aria-label="Close">
+                                Edit
+                                </a>
+                            </form>
+                        </td>
+                            
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+                
+            </tbody>
+        </table>
 {% endblock %}
