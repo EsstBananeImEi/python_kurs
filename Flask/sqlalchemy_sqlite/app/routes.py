@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import EditUserForm, LoginForm, NameForm, RegistrationForm, UserForm
+from app.forms import AdminForm, EditUserForm, LoginForm, NameForm, RegistrationForm
 from app.models import User
 
 
@@ -84,7 +84,7 @@ def register():
 @app.route("/user/list", methods=["GET"])
 @login_required
 def view_users() -> str:
-    form = UserForm()
+    form = AdminForm()
     users = User.query.order_by(User.id)
     return render_template("restricted_pages/view_users.html", form=form, users=users)
 
@@ -94,7 +94,7 @@ def view_users() -> str:
 def delete(id):
     print(id)
     user = User.query.get_or_404(id)
-    form = UserForm()
+    form = AdminForm()
     users = None
     try:
         db.session.delete(user)
