@@ -81,6 +81,28 @@ def register():
     return render_template("user/register.html", title="Register", form=form)
 
 
+@app.route("/register/user", methods=["GET", "POST"])
+@login_required
+def add_user():
+    form = EditUserForm()
+    if form.validate_on_submit():
+        user = User(
+            firstname=request.form.get("firstname"),
+            lastname=request.form.get("lastname"),
+            username=request.form.get("username"),
+            email=request.form.get("email"),
+            administrator=True if request.form.get("admin") == "y" else False,
+        )  # type: ignore
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash("Nutzer wurde hinzugefügt!")
+        return redirect(url_for("view_users"))
+    return render_template(
+        "restricted_pages/add_user.html", title="Add New User", form=form
+    )
+
+
 @app.route("/user/list", methods=["GET"])
 @login_required
 def view_users() -> str:
