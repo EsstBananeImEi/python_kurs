@@ -11,6 +11,7 @@ from app.forms import (
     AdminForm,
     EditProfileForm,
     EditUserForm,
+    EmptyForm,
     LoginForm,
     NameForm,
     RegistrationForm,
@@ -66,7 +67,8 @@ def user(username):
             "timestamp": datetime.now(),
         },
     ]
-    return render_template("user/user.html", user=user, posts=posts)
+    form = EmptyForm()
+    return render_template("user/user.html", user=user, posts=posts, form=form)
 
 
 @app.context_processor
@@ -90,8 +92,10 @@ def utility_processor():
 @app.route("/edit_profile/<int:id>", methods=["GET", "POST"])
 @login_required
 def edit_profile(id):
-    form = EditProfileForm(current_user.username)
+    form = EditProfileForm(current_user.username)  # type: ignore
     user = User.query.get_or_404(id)
+    if not id == current_user.id:  # type: ignore
+        return redirect(url_for("user", username=current_user.username))  # type: ignore
     form.about_me.data = user.about_me
     if request.method == "POST":
         user.firstname = request.form["firstname"]
@@ -203,6 +207,9 @@ def view_users() -> str:
 def delete(id):
     print(id)
     user = User.query.get_or_404(id)
+    if id == current_user.id:  # type: ignore
+        flash("Den eigenen Nutzer Löschen ist nicht erlaubt!")
+        return redirect(url_for("view_users"))  # type: ignore
     form = AdminForm()
     users = None
     try:
@@ -253,3 +260,43 @@ def edit(id):
         return render_template(
             "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
         )
+
+
+@app.route("/follow/<username>", methods=["POST"])
+@login_required
+def follow(username):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash("User {} not found.".format(username))
+            return redirect(url_for("index"))
+        if user == current_user:
+            flash("You cannot follow yourself!")
+            return redirect(url_for("user", username=username))
+        current_user.follow(user)  # type: ignore
+        db.session.commit()
+        flash("You are following {}!".format(username))
+        return redirect(url_for("user", username=username))
+    else:
+        return redirect(url_for("index"))
+
+
+@app.route("/unfollow/<username>", methods=["POST"])
+@login_required
+def unfollow(username):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash("User {} not found.".format(username))
+            return redirect(url_for("index"))
+        if user == current_user:
+            flash("You cannot unfollow yourself!")
+            return redirect(url_for("user", username=username))
+        current_user.unfollow(user)  # type: ignore
+        db.session.commit()
+        flash("You are not following {}.".format(username))
+        return redirect(url_for("user", username=username))
+    else:
+        return redirect(url_for("index"))

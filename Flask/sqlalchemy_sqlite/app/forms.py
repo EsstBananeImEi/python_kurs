@@ -13,6 +13,10 @@ from wtforms.validators import (
 from app.models import User
 
 
+class EmptyForm(FlaskForm):
+    submit = SubmitField("Submit")
+
+
 class NameForm(FlaskForm):
     name: StringField = StringField("Wie ist dein name", validators=[DataRequired()])
     submit: SubmitField = SubmitField("Submit")
