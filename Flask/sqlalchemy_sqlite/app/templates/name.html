@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    {% if name %}
+        <h1>Hello {{ name|title }}</h1>
+        <br/>
+        <img 
+            src="{{ url_for('static', filename='images/example_image.jpg') }}"
+            width=1100>
+        <br/>
+        <p id="demo"> Wir lernen Flask</p>
+        <script src=" {{ url_for('static', filename='js/myfile.js') }}"/>
+    {% else %}
+        <h1>Wie ist dein Name?</h1>
+        <br/> 
+        <form method='POST'>
+            {{ form.hidden_tag() }}
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control") }}
+            <br/> 
+            {{ form.submit(class="btn btn-secondary") }}
+        </form>
+    {% endif %}
+{% endblock %}
