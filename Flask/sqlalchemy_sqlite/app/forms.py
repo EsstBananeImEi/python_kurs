@@ -24,6 +24,29 @@ class PostForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    submit = SubmitField("Request Password Reset")
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField(
+        "Password",
+        validators=[
+            DataRequired(),
+            Length(min=8, message="Password be at least 8 characters"),
+            Regexp("^(?=.*[a-z])", message="Passwort muss Kleinbuchstaben enthalten"),
+            Regexp("^(?=.*[A-Z])", message="Passwort muss Großbuchstaben enthalten"),
+            Regexp("^(?=.*\\d)", message="Passwort muss Zahlen enthalten"),
+            Regexp("(?=.*[@$!%*#?&])", message="Passwort muss Zeichen enthalten"),
+        ],
+    )
+    password2 = PasswordField(
+        "Repeat Password", validators=[DataRequired(), EqualTo("password")]
+    )
+    submit = SubmitField("Request Password Reset")
+
+
 class NameForm(FlaskForm):
     name: StringField = StringField("Wie ist dein name", validators=[DataRequired()])
     submit: SubmitField = SubmitField("Submit")

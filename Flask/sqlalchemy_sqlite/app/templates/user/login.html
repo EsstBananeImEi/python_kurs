@@ -23,5 +23,9 @@
         <p>{{ form.remember_me(class="form-check-input") }} {{ form.remember_me.label(class="form-check-label") }}</p>
         <p>{{ form.submit(class="btn btn-secondary") }}</p>
     </form>
+    <p>
+        Forgot Your Password?
+        <a href="{{ url_for('reset_password_request') }}" class="link-secondary">Click to Reset It</a>
+    </p>
     <p>Noch nicht Regististriert? <a href="{{ url_for('register') }}" class="link-secondary">Click to Register!</a></p>
 {% endblock %}
