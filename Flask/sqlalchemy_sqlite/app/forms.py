@@ -17,6 +17,13 @@ class EmptyForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
+class PostForm(FlaskForm):
+    post = TextAreaField(
+        "Deine Nachricht", validators=[DataRequired(), Length(min=1, max=140)]
+    )
+    submit = SubmitField("Submit")
+
+
 class NameForm(FlaskForm):
     name: StringField = StringField("Wie ist dein name", validators=[DataRequired()])
     submit: SubmitField = SubmitField("Submit")

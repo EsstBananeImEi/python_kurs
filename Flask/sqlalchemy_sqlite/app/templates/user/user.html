@@ -40,8 +40,14 @@
             {% include '_post.html' %} 
         {% endfor %}
     </ol>
-
-
+    
+    {% if next_url %}
+    <a href="{{ next_url }} "class="btn btn-dark bi bi-arrow-left-square"></a>  
+    {% endif %}
+    {% if prev_url %}
+    <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
+    {% endif %}
+    <a href="{{ url_for('explore') }} "class="btn btn-dark bi bi-signpost-split">Explore</a>
     
 
 {% endblock %}

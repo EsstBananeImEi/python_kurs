@@ -6,7 +6,7 @@
     </div>
 </li> -->
 
- <a href="#" class="d-flex list-group-item list-group-item-action list-group-item-dark">
+ <a href="{{ url_for('user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action list-group-item-dark">
     <picture>
         <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1  me-3" alt="...">
     </picture>
@@ -18,5 +18,4 @@
         <p class="mb-1">{{ post.body }}</p>
     </div>
 
-    
   </a>
