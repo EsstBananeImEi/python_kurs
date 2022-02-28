@@ -25,48 +25,19 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Sign In")
 
 
-class UserForm(FlaskForm):
+class BasicForm(FlaskForm):
     username: StringField = StringField("Username", validators=[DataRequired()])
     firstname: StringField = StringField("Vorname", validators=[DataRequired()])
     lastname: StringField = StringField("Nachname", validators=[DataRequired()])
     email = StringField("Email", validators=[DataRequired(), Email()])
-    admin = BooleanField("Administrator", validators=[])
     submit: SubmitField = SubmitField("Submit")
 
 
-class EditUserForm(FlaskForm):
-    firstname: StringField = StringField("Vorname", validators=[DataRequired()])
-    lastname: StringField = StringField("Nachname", validators=[DataRequired()])
-    username: StringField = StringField("Username", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired(), Email()])
-    password = PasswordField(
-        "Passwort",
-        validators=[
-            Optional(),
-            Length(min=8, message="Password be at least 8 characters"),
-            Regexp("^(?=.*[a-z])", message="Passwort muss Kleinbuchstaben enthalten"),
-            Regexp("^(?=.*[A-Z])", message="Passwort muss Großbuchstaben enthalten"),
-            Regexp("^(?=.*\\d)", message="Passwort muss Zahlen enthalten"),
-            Regexp("(?=.*[@$!%*#?&])", message="Passwort muss Zeichen enthalten"),
-        ],
-    )
-    password2 = PasswordField(
-        "Passwort wiederholen", validators=[Optional(), EqualTo("password")]
-    )
+class AdminForm(BasicForm):
     admin = BooleanField("Administrator", validators=[])
-    submit: SubmitField = SubmitField("Submit")
 
 
-class RegistrationForm(FlaskForm):
-    firstname: StringField = StringField(
-        "Vorname",
-        validators=[
-            DataRequired(),
-        ],
-    )
-    lastname: StringField = StringField("Nachname", validators=[DataRequired()])
-    username = StringField("Username", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired(), Email()])
+class RegistrationForm(BasicForm):
     password = PasswordField(
         "Passwort",
         validators=[
@@ -81,7 +52,6 @@ class RegistrationForm(FlaskForm):
     password2 = PasswordField(
         "Repeat Password", validators=[DataRequired(), EqualTo("password")]
     )
-    submit = SubmitField("Register")
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
@@ -92,3 +62,20 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError("Please use a different email address.")
+
+
+class EditUserForm(AdminForm):
+    password = PasswordField(
+        "Passwort",
+        validators=[
+            Optional(),
+            Length(min=8, message="Password be at least 8 characters"),
+            Regexp("^(?=.*[a-z])", message="Passwort muss Kleinbuchstaben enthalten"),
+            Regexp("^(?=.*[A-Z])", message="Passwort muss Großbuchstaben enthalten"),
+            Regexp("^(?=.*\\d)", message="Passwort muss Zahlen enthalten"),
+            Regexp("(?=.*[@$!%*#?&])", message="Passwort muss Zeichen enthalten"),
+        ],
+    )
+    password2 = PasswordField(
+        "Passwort wiederholen", validators=[Optional(), EqualTo("password")]
+    )
