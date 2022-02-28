@@ -7,27 +7,157 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 from app import app, db
-from app.forms import AdminForm, EditUserForm, LoginForm, NameForm, RegistrationForm
-from app.models import User
+from app.forms import (
+    AdminForm,
+    EditProfileForm,
+    EditUserForm,
+    EmptyForm,
+    LoginForm,
+    NameForm,
+    PostForm,
+    RegistrationForm,
+)
+from app.models import Post, User
 
 
-@app.route("/")
-@app.route("/index")
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template("errors/404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template("errors/500.html"), 500
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:  # type: ignore
+        current_user.last_seen = datetime.now()
+        db.session.commit()
+
+
+@app.route("/", methods=["GET", "POST"])
+@app.route("/index", methods=["GET", "POST"])
 @login_required
 def index():
-    posts = [
-        {
-            "author": {"username": "Daniel"},
-            "body": "Ein Wunderschöner Tag auf in Deutschland",
-        },
-        {"author": {"username": "Susanne"}, "body": "Der neue Avengers war sooo Geil!"},
-    ]
-    return render_template("restricted_pages/index.html", title="Home", posts=posts)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash("Your post is now live!")
+        return redirect(url_for("index"))
+    page = request.args.get("page", 1, type=int)
+    posts = current_user.followed_posts().paginate(page, app.config["POSTS_PER_PAGE"], False)  # type: ignore
+    next_url = url_for("index", page=posts.next_num) if posts.has_next else None
+    prev_url = url_for("index", page=posts.prev_num) if posts.has_prev else None
+    return render_template(
+        "restricted_pages/index.html",
+        title="Home",
+        form=form,
+        posts=posts.items,
+        next_url=next_url,
+        prev_url=prev_url,
+    )
 
 
-@app.route("/user/name/<name>")
-def user(name):
-    return render_template("user.html", user_name=name)
+@app.route("/explore")
+@login_required
+def explore():
+    page = request.args.get("page", 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config["POSTS_PER_PAGE"], False
+    )
+    next_url = url_for("explore", page=posts.next_num) if posts.has_next else None
+    prev_url = url_for("explore", page=posts.prev_num) if posts.has_prev else None
+    return render_template(
+        "restricted_pages/index.html",
+        title="Explore",
+        posts=posts.items,
+        next_url=next_url,
+        prev_url=prev_url,
+    )
+
+
+@app.route("/user/<username>")
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    page = request.args.get("page", 1, type=int)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page, app.config["POSTS_PER_PAGE"], False
+    )
+    next_url = (
+        url_for("user", username=user.username, page=posts.next_num)
+        if posts.has_next
+        else None
+    )
+    prev_url = (
+        url_for("user", username=user.username, page=posts.prev_num)
+        if posts.has_prev
+        else None
+    )
+    form = EmptyForm()
+    return render_template(
+        "user/user.html",
+        user=user,
+        posts=posts.items,
+        next_url=next_url,
+        prev_url=prev_url,
+        form=form,
+    )
+
+
+@app.context_processor
+def utility_processor():
+    def last_seen(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
+        if date is None:
+            return "User not seen yet"
+        last_seen = datetime.strptime(date.strftime(format), format)
+        diff = datetime.now() - last_seen
+
+        if diff.total_seconds() <= 30:
+            return "Now Online"
+        return date.strftime(format)
+
+    def format_date(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
+        return datetime.strptime(date.strftime(format), format)
+
+    return dict(last_seen=last_seen, format_date=format_date)
+
+
+@app.route("/edit_profile/<int:id>", methods=["GET", "POST"])
+@login_required
+def edit_profile(id):
+    form = EditProfileForm(current_user.username)  # type: ignore
+    user = User.query.get_or_404(id)
+    if not id == current_user.id:  # type: ignore
+        return redirect(url_for("user", username=current_user.username))  # type: ignore
+    form.about_me.data = user.about_me
+    if request.method == "POST":
+        user.firstname = request.form["firstname"]
+        user.lastname = request.form["lastname"]
+        user.username = request.form["username"]
+        user.email = request.form["email"]
+        user.about_me = request.form["about_me"]
+        if len(request.form["password"]) != 0:
+            user.password_hash = generate_password_hash(request.form["password"])
+
+        user.last_modify = datetime.now()
+
+        if form.validate_on_submit():
+            db.session.commit()
+            flash("Deine änderungen wurden gespeichert.")
+            user = User.query.get_or_404(id)
+            return redirect(url_for("edit_profile", id=user.id))
+        return render_template(
+            "user/edit_profile.html", title="Edit Profile", form=form, user=user
+        )
+    return render_template(
+        "user/edit_profile.html", title="Edit Profile", form=form, user=user
+    )
 
 
 @app.route("/name", methods=["GET", "POST"])
@@ -81,6 +211,28 @@ def register():
     return render_template("user/register.html", title="Register", form=form)
 
 
+@app.route("/register/user", methods=["GET", "POST"])
+@login_required
+def add_user():
+    form = EditUserForm()
+    if form.validate_on_submit():
+        user = User(
+            firstname=request.form.get("firstname"),
+            lastname=request.form.get("lastname"),
+            username=request.form.get("username"),
+            email=request.form.get("email"),
+            administrator=True if request.form.get("admin") == "y" else False,
+        )  # type: ignore
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash("Nutzer wurde hinzugefügt!")
+        return redirect(url_for("view_users"))
+    return render_template(
+        "restricted_pages/add_user.html", title="Add New User", form=form
+    )
+
+
 @app.route("/user/list", methods=["GET"])
 @login_required
 def view_users() -> str:
@@ -94,6 +246,9 @@ def view_users() -> str:
 def delete(id):
     print(id)
     user = User.query.get_or_404(id)
+    if id == current_user.id:  # type: ignore
+        flash("Den eigenen Nutzer Löschen ist nicht erlaubt!")
+        return redirect(url_for("view_users"))  # type: ignore
     form = AdminForm()
     users = None
     try:
@@ -144,3 +299,43 @@ def edit(id):
         return render_template(
             "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
         )
+
+
+@app.route("/follow/<username>", methods=["POST"])
+@login_required
+def follow(username):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash("User {} not found.".format(username))
+            return redirect(url_for("index"))
+        if user == current_user:
+            flash("You cannot follow yourself!")
+            return redirect(url_for("user", username=username))
+        current_user.follow(user)  # type: ignore
+        db.session.commit()
+        flash("You are following {}!".format(username))
+        return redirect(url_for("user", username=username))
+    else:
+        return redirect(url_for("index"))
+
+
+@app.route("/unfollow/<username>", methods=["POST"])
+@login_required
+def unfollow(username):
+    form = EmptyForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            flash("User {} not found.".format(username))
+            return redirect(url_for("index"))
+        if user == current_user:
+            flash("You cannot unfollow yourself!")
+            return redirect(url_for("user", username=username))
+        current_user.unfollow(user)  # type: ignore
+        db.session.commit()
+        flash("You are not following {}.".format(username))
+        return redirect(url_for("user", username=username))
+    else:
+        return redirect(url_for("index"))

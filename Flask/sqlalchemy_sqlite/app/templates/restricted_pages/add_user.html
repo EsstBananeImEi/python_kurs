@@ -40,6 +40,12 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+         <div class="form-check form-switch">
+            {{ form.admin(class="form-check-input") }}
+            {{ form.admin.label(class="form-check-label") }}
+        </div>
+        
+		<br/>
         <p>{{ form.submit(class="btn btn-secondary") }}</p>
     </form>
 {% endblock %}
