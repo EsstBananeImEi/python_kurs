@@ -265,7 +265,7 @@ def add_user():
         flash(_("User was successfully created!"))
         return redirect(url_for("view_users"))
     return render_template(
-        "restricted_pages/add_user.html", title="Add New User", form=form
+        "restricted_pages/add_user.html", title=_("Add New User"), form=form
     )
 
 
@@ -318,7 +318,9 @@ def edit(id):
         try:
             if form.validate_on_submit():
                 db.session.commit()
-                flash(_("{username} Successfully edited!").format(username=user.username))
+                flash(
+                    _("{username} Successfully edited!").format(username=user.username)
+                )
                 users = User.query.order_by(User.id)
                 return render_template(
                     "restricted_pages/view_users.html", form=form, users=users

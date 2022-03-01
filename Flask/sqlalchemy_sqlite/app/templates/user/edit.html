@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1>_('User:') {{user.username}}</h1>
+<h1>{{_('User:')}} {{user.username}}</h1>
 <div class="shadow p-3 mb-5 bg-body rounded">
 	<form action="/edit/{{ user.id }}" method="POST">
 		{{ form.hidden_tag() }}
@@ -48,7 +48,7 @@
 		
 		{{ form.submit(class="btn btn-secondary") }}
 
-		<a href="{{ url_for('delete', id=id)}}" class="btn btn-danger">_('Delete')</a>
+		<a href="{{ url_for('delete', id=id)}}" class="btn btn-danger">{{_('Delete')}}</a>
 
 
 	</form>

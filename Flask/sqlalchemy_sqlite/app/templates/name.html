@@ -8,10 +8,10 @@
             src="{{ url_for('static', filename='images/example_image.jpg') }}"
             width=1100>
         <br/>
-        <p id="demo">_('We learn Flask')</p>
+        <p id="demo">{{_('We learn Flask')}}</p>
         <script src=" {{ url_for('static', filename='js/myfile.js') }}"/>
     {% else %}
-        <h1>_('What is your name?')</h1>
+        <h1>{{_('What is your name?')}}</h1>
         <br/> 
         <form method='POST'>
             {{ form.hidden_tag() }}
