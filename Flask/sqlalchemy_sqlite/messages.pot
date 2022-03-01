@@ -1,0 +1,183 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-03-01 14:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/__init__.py:22
+msgid "Please log in to access this page."
+msgstr ""
+
+#: app/forms.py:18 app/forms.py:26 app/forms.py:66 app/forms.py:81
+msgid "Submit"
+msgstr ""
+
+#: app/forms.py:23
+msgid "Your Message"
+msgstr ""
+
+#: app/forms.py:30 app/forms.py:80
+msgid "Email"
+msgstr ""
+
+#: app/forms.py:31 app/forms.py:59
+msgid "Request Password Reset"
+msgstr ""
+
+#: app/forms.py:36 app/forms.py:71 app/forms.py:90
+msgid "Password"
+msgstr ""
+
+#: app/forms.py:39 app/forms.py:93 app/forms.py:130
+msgid "Password be at least 8 characters"
+msgstr ""
+
+#: app/forms.py:42 app/forms.py:96 app/forms.py:133
+msgid "Password must contain lowercase letters"
+msgstr ""
+
+#: app/forms.py:46 app/forms.py:100 app/forms.py:137
+msgid "Password must contain capital letters"
+msgstr ""
+
+#: app/forms.py:48 app/forms.py:102 app/forms.py:139
+msgid "Password must contain numbers"
+msgstr ""
+
+#: app/forms.py:51 app/forms.py:105 app/forms.py:142
+msgid "Password must contain characters"
+msgstr ""
+
+#: app/forms.py:56 app/forms.py:110 app/forms.py:147
+msgid "Repeat Password"
+msgstr ""
+
+#: app/forms.py:64
+msgid "What is your name"
+msgstr ""
+
+#: app/forms.py:70 app/forms.py:77
+msgid "Username"
+msgstr ""
+
+#: app/forms.py:72
+msgid "Remember Me"
+msgstr ""
+
+#: app/forms.py:73
+msgid "Sign In"
+msgstr ""
+
+#: app/forms.py:78
+msgid "Firstname"
+msgstr ""
+
+#: app/forms.py:79
+msgid "Lastname"
+msgstr ""
+
+#: app/forms.py:85
+msgid "Administrator"
+msgstr ""
+
+#: app/forms.py:117 app/forms.py:162
+msgid "Please use a different username."
+msgstr ""
+
+#: app/forms.py:122
+msgid "Please use a different email address."
+msgstr ""
+
+#: app/forms.py:152
+msgid "About me"
+msgstr ""
+
+#: app/routes.py:55
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+
+#: app/routes.py:73
+msgid "Your password has been reset."
+msgstr ""
+
+#: app/routes.py:87
+msgid "Your post is now live!"
+msgstr ""
+
+#: app/routes.py:114 app/templates/navbar.html:20
+msgid "Explore"
+msgstr ""
+
+#: app/routes.py:188
+msgid "Your changes have been saved."
+msgstr ""
+
+#: app/routes.py:206
+msgid "Form Successfully Sent"
+msgstr ""
+
+#: app/routes.py:219
+msgid "Invalid username or password"
+msgstr ""
+
+#: app/routes.py:245
+msgid "Congratulations, you are now a registered user!"
+msgstr ""
+
+#: app/routes.py:265
+msgid "User was successfully created!"
+msgstr ""
+
+#: app/routes.py:286
+msgid "Deleting the own user is not allowed!"
+msgstr ""
+
+#: app/routes.py:293
+msgid "User was successfully deleted!"
+msgstr ""
+
+#: app/routes.py:296
+msgid "Whoops! There was a problem!"
+msgstr ""
+
+#: app/routes.py:321
+msgid "{username} Successfully edited!"
+msgstr ""
+
+#: app/routes.py:330
+msgid "Error! A problem has occurred!"
+msgstr ""
+
+#: app/routes.py:347 app/routes.py:367
+msgid "User {username} not found."
+msgstr ""
+
+#: app/routes.py:350
+msgid "You cannot follow yourself!"
+msgstr ""
+
+#: app/routes.py:354
+msgid "You are following {username}!"
+msgstr ""
+
+#: app/routes.py:370
+msgid "You cannot unfollow yourself!"
+msgstr ""
+
+#: app/routes.py:374
+msgid "You are not following {username}."
+msgstr ""
+
