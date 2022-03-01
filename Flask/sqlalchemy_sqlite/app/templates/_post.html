@@ -12,7 +12,7 @@
     </picture>
     <div class="w-100">
         <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{ post.author.username }}</h5>
+        <strong class="mb-1">{{ post.author.username }} said {{ moment(post.timestamp).fromNow() }}:</strong>
         <small>{{ format_date(post.timestamp) }}</small>
         </div>
         <p class="mb-1">{{ post.body }}</p>
