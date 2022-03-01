@@ -124,7 +124,7 @@ class RegistrationForm(BasicForm):
 
 class EditUserForm(AdminForm):
     password = PasswordField(
-        "Passwort",
+        _l("Password"),
         validators=[
             Optional(),
             Length(min=8, message=_l("Password be at least 8 characters")),

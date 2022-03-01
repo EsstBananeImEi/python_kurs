@@ -1,10 +1,11 @@
 import logging
 import os
 from logging.handlers import RotatingFileHandler
-from flask_babel import lazy_gettext as _l
+
 from config import Config
 from flask import Flask, request
 from flask_babel import Babel
+from flask_babel import lazy_gettext as _l
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_mail import Mail

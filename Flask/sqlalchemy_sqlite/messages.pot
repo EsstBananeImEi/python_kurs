@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-01 15:13+0100\n"
+"POT-Creation-Date: 2022-03-01 16:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/__init__.py:22
+#: app/__init__.py:23
 msgid "Please log in to access this page."
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
-#: app/forms.py:36 app/forms.py:71 app/forms.py:90
+#: app/forms.py:36 app/forms.py:71 app/forms.py:90 app/forms.py:127
 msgid "Password"
 msgstr ""
 
@@ -144,6 +144,10 @@ msgstr ""
 msgid "User was successfully created!"
 msgstr ""
 
+#: app/routes.py:268
+msgid "Add New User"
+msgstr ""
+
 #: app/routes.py:286
 msgid "Deleting the own user is not allowed!"
 msgstr ""
@@ -156,31 +160,31 @@ msgstr ""
 msgid "Whoops! There was a problem!"
 msgstr ""
 
-#: app/routes.py:321
+#: app/routes.py:322
 msgid "{username} Successfully edited!"
 msgstr ""
 
-#: app/routes.py:330
+#: app/routes.py:332
 msgid "Error! A problem has occurred!"
 msgstr ""
 
-#: app/routes.py:347 app/routes.py:367
+#: app/routes.py:349 app/routes.py:369
 msgid "User {username} not found."
 msgstr ""
 
-#: app/routes.py:350
+#: app/routes.py:352
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/routes.py:354
+#: app/routes.py:356
 msgid "You are following {username}!"
 msgstr ""
 
-#: app/routes.py:370
+#: app/routes.py:372
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/routes.py:374
+#: app/routes.py:376
 msgid "You are not following {username}."
 msgstr ""
 
@@ -194,6 +198,10 @@ msgstr ""
 
 #: app/templates/name.html:14
 msgid "What is your name?"
+msgstr ""
+
+#: app/templates/navbar.html:4
+msgid "Flask Basics"
 msgstr ""
 
 #: app/templates/navbar.html:12
@@ -338,6 +346,10 @@ msgstr ""
 
 #: app/templates/user/user.html:10
 msgid "User"
+msgstr ""
+
+#: app/templates/user/user.html:13
+msgid "Last seen on:"
 msgstr ""
 
 #: app/templates/user/user.html:15
