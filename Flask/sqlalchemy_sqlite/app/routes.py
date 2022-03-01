@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Callable
 from xmlrpc.client import DateTime
 
 from flask import flash, redirect, render_template, request, url_for
@@ -146,21 +147,20 @@ def user(username):
 
 
 @app.context_processor
-def utility_processor():
-    def last_seen(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
-        if date is None:
-            return "User not seen yet"
-        last_seen = datetime.strptime(date.strftime(format), format)
-        diff = datetime.now() - last_seen
+def utility_processor() -> dict[str, Callable]:
+    """
+    Utility Processor ermöglicht die benutzung von eigenen Funktionen im HTML
+    usage:
+        @app.context_processor
+        def utility_processor() -> dict[str, Callable]:
+            def myFunction(arg):
+                ...
+                return
+            return dict(myFunction=myFunction)
 
-        if diff.total_seconds() <= 30:
-            return "Now Online"
-        return date.strftime(format)
-
-    def format_date(date: datetime, format="%d.%m.%Y - %H:%M:%S"):
-        return datetime.strptime(date.strftime(format), format)
-
-    return dict(last_seen=last_seen, format_date=format_date)
+    return: dict[str, Callable]
+    """
+    return dict()
 
 
 @app.route("/edit_profile/<int:id>", methods=["GET", "POST"])

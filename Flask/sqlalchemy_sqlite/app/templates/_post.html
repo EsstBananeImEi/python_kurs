@@ -6,14 +6,13 @@
     </div>
 </li> -->
 
- <a href="{{ url_for('user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action list-group-item-dark">
+ <a href="{{ url_for('user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
     <picture>
-        <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1  me-3" alt="...">
+        <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
     </picture>
     <div class="w-100">
         <div class="d-flex w-100 justify-content-between">
-        <strong class="mb-1">{{ post.author.username }} said {{ moment(post.timestamp).fromNow() }}:</strong>
-        <small>{{ format_date(post.timestamp) }}</small>
+        <p class="mb-1"><strong>{{ post.author.username }} </strong> said {{ moment(post.timestamp).fromNow() }}:</p>
         </div>
         <p class="mb-1">{{ post.body }}</p>
     </div>
