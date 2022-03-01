@@ -11,9 +11,7 @@ class Config(object):
     MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    # MAIL_SERVER = "smtp.gmail.com"
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS = True
     SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    LANGUAGES = ["en", "de"]
