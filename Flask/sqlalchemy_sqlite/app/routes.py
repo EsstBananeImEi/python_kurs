@@ -3,6 +3,7 @@ from typing import Callable
 from xmlrpc.client import DateTime
 
 from flask import flash, redirect, render_template, request, url_for
+from flask_babel import _
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
@@ -51,7 +52,7 @@ def reset_password_request():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
-        flash("Check your email for the instructions to reset your password")
+        flash(_("Check your email for the instructions to reset your password"))
         return redirect(url_for("login"))
     return render_template(
         "user/reset_password_request.html", title="Reset Password", form=form
@@ -69,7 +70,7 @@ def reset_password(token):
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
-        flash("Your password has been reset.")
+        flash(_("Your password has been reset."))
         return redirect(url_for("login"))
     return render_template("user/reset_password.html", form=form)
 
@@ -83,7 +84,7 @@ def index():
         post = Post(body=form.post.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash("Your post is now live!")
+        flash(_("Your post is now live!"))
         return redirect(url_for("index"))
     page = request.args.get("page", 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config["POSTS_PER_PAGE"], False)  # type: ignore
@@ -110,7 +111,7 @@ def explore():
     prev_url = url_for("explore", page=posts.prev_num) if posts.has_prev else None
     return render_template(
         "restricted_pages/index.html",
-        title="Explore",
+        title=_("Explore"),
         posts=posts.items,
         next_url=next_url,
         prev_url=prev_url,
@@ -184,7 +185,7 @@ def edit_profile(id):
 
         if form.validate_on_submit():
             db.session.commit()
-            flash("Your changes have been saved.")
+            flash(_("Your changes have been saved."))
             user = User.query.get_or_404(id)
             return redirect(url_for("edit_profile", id=user.id))
         return render_template(
@@ -202,7 +203,7 @@ def name_form() -> str:
     if form.validate_on_submit():
         name = form.name.data
         form.name.data = ""
-        flash("Form Successfully Sent")
+        flash(_("Form Successfully Sent"))
 
     return render_template("name.html", name=name, form=form)
 
@@ -215,7 +216,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash("Invalid username or password")
+            flash(_("Invalid username or password"))
             return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get("next")
@@ -241,7 +242,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("Congratulations, you are now a registered user!")
+        flash(_("Congratulations, you are now a registered user!"))
         return redirect(url_for("login"))
     return render_template("user/register.html", title="Register", form=form)
 
@@ -261,7 +262,7 @@ def add_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("User was successfully created!")
+        flash(_("User was successfully created!"))
         return redirect(url_for("view_users"))
     return render_template(
         "restricted_pages/add_user.html", title="Add New User", form=form
@@ -282,17 +283,17 @@ def delete(id):
     print(id)
     user = User.query.get_or_404(id)
     if id == current_user.id:  # type: ignore
-        flash("Deleting the own user is not allowed!")
+        flash(_("Deleting the own user is not allowed!"))
         return redirect(url_for("view_users"))  # type: ignore
     form = AdminForm()
     users = None
     try:
         db.session.delete(user)
         db.session.commit()
-        flash("User was successfully deleted!")
+        flash(_("User was successfully deleted!"))
         users = User.query.order_by(User.id)
     except:
-        flash("Whoops! There was a problem!")
+        flash(_("Whoops! There was a problem!"))
     finally:
         return render_template(
             "restricted_pages/view_users.html", form=form, users=users
@@ -317,7 +318,7 @@ def edit(id):
         try:
             if form.validate_on_submit():
                 db.session.commit()
-                flash(f"{user.username} Successfully edited!")
+                flash(_(f"{user.username} Successfully edited!"))
                 users = User.query.order_by(User.id)
                 return render_template(
                     "restricted_pages/view_users.html", form=form, users=users
@@ -326,7 +327,7 @@ def edit(id):
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
         except:
-            flash("Error! A problem has occurred!")
+            flash(_("Error! A problem has occurred!"))
             return render_template(
                 "restricted_pages/view_users.html", form=form, users=users
             )
@@ -343,14 +344,14 @@ def follow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
-            flash("User {} not found.".format(username))
+            flash(_(f"User {username} not found."))
             return redirect(url_for("index"))
         if user == current_user:
-            flash("You cannot follow yourself!")
+            flash(_("You cannot follow yourself!"))
             return redirect(url_for("user", username=username))
         current_user.follow(user)  # type: ignore
         db.session.commit()
-        flash("You are following {}!".format(username))
+        flash(_(f"You are following {username}!"))
         return redirect(url_for("user", username=username))
     else:
         return redirect(url_for("index"))
@@ -363,14 +364,14 @@ def unfollow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
-            flash("User {} not found.".format(username))
+            flash(_(f"User {username} not found."))
             return redirect(url_for("index"))
         if user == current_user:
-            flash("You cannot unfollow yourself!")
+            flash(_("You cannot unfollow yourself!"))
             return redirect(url_for("user", username=username))
         current_user.unfollow(user)  # type: ignore
         db.session.commit()
-        flash("You are not following {}.".format(username))
+        flash(_(f"You are not following {username}."))
         return redirect(url_for("user", username=username))
     else:
         return redirect(url_for("index"))
