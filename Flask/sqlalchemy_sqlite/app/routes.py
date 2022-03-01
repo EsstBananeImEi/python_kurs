@@ -184,7 +184,7 @@ def edit_profile(id):
 
         if form.validate_on_submit():
             db.session.commit()
-            flash("Deine änderungen wurden gespeichert.")
+            flash("Your changes have been saved.")
             user = User.query.get_or_404(id)
             return redirect(url_for("edit_profile", id=user.id))
         return render_template(
@@ -202,7 +202,7 @@ def name_form() -> str:
     if form.validate_on_submit():
         name = form.name.data
         form.name.data = ""
-        flash("Formular Erfolgreich Versendet")
+        flash("Form Successfully Sent")
 
     return render_template("name.html", name=name, form=form)
 
@@ -241,7 +241,7 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("Gratulation, Sie sind jetzt ein Registrierter Nutzer!")
+        flash("Congratulations, you are now a registered user!")
         return redirect(url_for("login"))
     return render_template("user/register.html", title="Register", form=form)
 
@@ -261,7 +261,7 @@ def add_user():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("Nutzer wurde hinzugefügt!")
+        flash("User was successfully created!")
         return redirect(url_for("view_users"))
     return render_template(
         "restricted_pages/add_user.html", title="Add New User", form=form
@@ -282,17 +282,17 @@ def delete(id):
     print(id)
     user = User.query.get_or_404(id)
     if id == current_user.id:  # type: ignore
-        flash("Den eigenen Nutzer Löschen ist nicht erlaubt!")
+        flash("Deleting the own user is not allowed!")
         return redirect(url_for("view_users"))  # type: ignore
     form = AdminForm()
     users = None
     try:
         db.session.delete(user)
         db.session.commit()
-        flash("Nutzer wurde erfolgreich gelöscht!")
+        flash("User was successfully deleted!")
         users = User.query.order_by(User.id)
     except:
-        flash("Whoops! Es gab ein Problem!")
+        flash("Whoops! There was a problem!")
     finally:
         return render_template(
             "restricted_pages/view_users.html", form=form, users=users
@@ -317,7 +317,7 @@ def edit(id):
         try:
             if form.validate_on_submit():
                 db.session.commit()
-                flash(f"Nutzer: {user.username} Erfolgreich bearbeitet!")
+                flash(f"{user.username} Successfully edited!")
                 users = User.query.order_by(User.id)
                 return render_template(
                     "restricted_pages/view_users.html", form=form, users=users
@@ -326,7 +326,7 @@ def edit(id):
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
         except:
-            flash("Error! Ein Problem ist aufgetreten!")
+            flash("Error! A problem has occurred!")
             return render_template(
                 "restricted_pages/view_users.html", form=form, users=users
             )
