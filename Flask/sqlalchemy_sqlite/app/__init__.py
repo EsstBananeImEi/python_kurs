@@ -1,7 +1,7 @@
 import logging
 import os
 from logging.handlers import RotatingFileHandler
-
+from flask_babel import lazy_gettext 
 from config import Config
 from flask import Flask, request
 from flask_babel import Babel
@@ -19,6 +19,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = "login"  # type: ignore Type cannot be assigned to type "None"
+login.login_message = lazy_gettext("Please log in to access this page.") # type: ignore
 mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app)

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>User List</h1>    
+    <h1>_('User List')</h1>    
     
         <a href="{{ url_for('add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
         <br>
@@ -8,16 +8,16 @@
         <table class="table table-hover table-bordered table-striped">
             <thead>
                 <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">About Me</th>
-                <th scope="col">Last Seen</th>
-                <th scope="col">Admin</th>
+                <th scope="col">_('Id')</th>
+                <th scope="col">_('Firstname')</th>
+                <th scope="col">_('Lastname')</th>
+                <th scope="col">_('Username')</th>
+                <th scope="col">_('Email')</th>
+                <th scope="col">_('About Me')</th>
+                <th scope="col">_('Last Seen')</th>
+                <th scope="col">_('Admin')</th>
                 {% if current_user.administrator %}
-                    <th scope="col">Actions</th>
+                    <th scope="col">_('Actions')</th>
                 {% endif %}
 
                 </tr>
@@ -39,10 +39,10 @@
                         <td>
                             <form method="post" action="/">
                                 <a type="button" class="btn btn-danger" href="{{ url_for('delete', id=user.id)}}" aria-label="Close">
-                                Delete
+                                _('Delete')
                                 </a>
                                 <a type="button" class="btn btn-primary" href="{{ url_for('edit', id=user.id)}}" aria-label="Close">
-                                Edit
+                                _('Edit')
                                 </a>
                             </form>
                         </td>
