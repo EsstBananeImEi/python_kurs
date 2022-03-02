@@ -24,9 +24,13 @@ mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app)
 
+from app.auth import auth_blueprint
 from app.errors import error_blueprint
 
 app.register_blueprint(error_blueprint)
+
+app.register_blueprint(auth_blueprint, url_prefix="/auth")
+
 
 if not app.debug:
     if not os.path.exists("logs"):
@@ -49,6 +53,3 @@ if not app.debug:
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(app.config["LANGUAGES"])
-
-
-from app import forms, models, routes

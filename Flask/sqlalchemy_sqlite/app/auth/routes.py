@@ -2,15 +2,9 @@ from datetime import datetime
 from typing import Callable
 from xmlrpc.client import DateTime
 
-from flask import flash, g, redirect, render_template, request, url_for
-from flask_babel import _, get_locale
-from flask_login import current_user, login_required, login_user, logout_user
-from werkzeug.security import check_password_hash, generate_password_hash
-from werkzeug.urls import url_parse
-
 from app import app, db
-from app.email import send_password_reset_email
-from app.forms import (
+from app.auth.email import send_password_reset_email
+from app.auth.forms import (
     AdminForm,
     EditProfileForm,
     EditUserForm,
@@ -23,6 +17,11 @@ from app.forms import (
     ResetPasswordRequestForm,
 )
 from app.models import Post, User
+from flask import flash, g, redirect, render_template, request, url_for
+from flask_babel import _, get_locale
+from flask_login import current_user, login_required, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.urls import url_parse
 
 
 @app.errorhandler(404)
@@ -56,7 +55,7 @@ def reset_password_request():
         flash(_("Check your email for the instructions to reset your password"))
         return redirect(url_for("login"))
     return render_template(
-        "user/reset_password_request.html", title="Reset Password", form=form
+        "auth/reset_password_request.html", title="Reset Password", form=form
     )
 
 
@@ -73,7 +72,7 @@ def reset_password(token):
         db.session.commit()
         flash(_("Your password has been reset."))
         return redirect(url_for("login"))
-    return render_template("user/reset_password.html", form=form)
+    return render_template("auth/reset_password.html", form=form)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -224,7 +223,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != "":
             next_page = url_for("index")
         return redirect(next_page)
-    return render_template("user/login.html", title="Sign In", form=form)
+    return render_template("auth/login.html", title="Sign In", form=form)
 
 
 @app.route("/logout")
@@ -245,7 +244,7 @@ def register():
         db.session.commit()
         flash(_("Congratulations, you are now a registered user!"))
         return redirect(url_for("login"))
-    return render_template("user/register.html", title="Register", form=form)
+    return render_template("auth/register.html", title="Register", form=form)
 
 
 @app.route("/register/user", methods=["GET", "POST"])
