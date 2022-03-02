@@ -26,10 +26,12 @@ babel = Babel(app)
 
 from app.auth import auth_blueprint
 from app.errors import error_blueprint
+from app.main import main_blueprint
 
 app.register_blueprint(error_blueprint)
 
 app.register_blueprint(auth_blueprint, url_prefix="/auth")
+app.register_blueprint(main_blueprint)
 
 
 if not app.debug:
