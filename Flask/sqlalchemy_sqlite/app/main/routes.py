@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Callable
 
 from app import db
 from app.main import main_blueprint
@@ -8,6 +9,23 @@ from flask import current_app, flash, g, redirect, render_template, request, url
 from flask_babel import _, get_locale
 from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash
+
+
+@main_blueprint.context_processor
+def utility_processor() -> dict[str, Callable]:
+    """
+    Utility Processor ermöglicht die benutzung von eigenen Funktionen im HTML
+    usage:
+        @app.context_processor
+        def utility_processor() -> dict[str, Callable]:
+            def myFunction(arg):
+                ...
+                return
+            return dict(myFunction=myFunction)
+
+    return: dict[str, Callable]
+    """
+    return dict()
 
 
 @main_blueprint.before_request

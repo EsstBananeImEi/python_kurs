@@ -22,17 +22,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 
-@app.errorhandler(404)
-def not_found_error(error) -> tuple[str, Literal[404]]:
-    return render_template("errors/404.html"), 404
-
-
-@app.errorhandler(500)
-def internal_error(error) -> tuple[str, Literal[500]]:
-    db.session.rollback()
-    return render_template("errors/500.html"), 500
-
-
 @app.route("/reset_password_request", methods=["GET", "POST"])
 def reset_password_request() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
@@ -63,23 +52,6 @@ def reset_password(token) -> str | Response:
         flash(_("Your password has been reset."))
         return redirect(url_for("login"))
     return render_template("auth/reset_password.html", form=form)
-
-
-@app.context_processor
-def utility_processor() -> dict[str, Callable]:
-    """
-    Utility Processor ermöglicht die benutzung von eigenen Funktionen im HTML
-    usage:
-        @app.context_processor
-        def utility_processor() -> dict[str, Callable]:
-            def myFunction(arg):
-                ...
-                return
-            return dict(myFunction=myFunction)
-
-    return: dict[str, Callable]
-    """
-    return dict()
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -119,92 +91,3 @@ def register() -> str | Response:
         flash(_("Congratulations, you are now a registered user!"))
         return redirect(url_for("login"))
     return render_template("auth/register.html", title="Register", form=form)
-
-
-@app.route("/register/user", methods=["GET", "POST"])
-@login_required
-def add_user() -> str | Response:
-    form = EditUserForm()
-    if form.validate_on_submit():
-        user = User(
-            firstname=request.form.get("firstname"),
-            lastname=request.form.get("lastname"),
-            username=request.form.get("username"),
-            email=request.form.get("email"),
-            administrator=True if request.form.get("admin") == "y" else False,
-        )  # type: ignore
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash(_("User was successfully created!"))
-        return redirect(url_for("view_users"))
-    return render_template("admin/add_user.html", title=_("Add New User"), form=form)
-
-
-@app.route("/user/list", methods=["GET"])
-@login_required
-def view_users() -> str | Response:
-    if not current_user.administrator:  # type: ignore
-        return redirect(url_for("main.index"))
-    form = AdminForm()
-    users = User.query.order_by(User.id)
-    return render_template("admin/view_users.html", form=form, users=users)
-
-
-@app.route("/user/list/<int:id>")
-@login_required
-def delete(id):
-    print(id)
-    user = User.query.get_or_404(id)
-    if id == current_user.id:  # type: ignore
-        flash(_("Deleting the own user is not allowed!"))
-        return redirect(url_for("view_users"))  # type: ignore
-    form = AdminForm()
-    users = None
-    try:
-        db.session.delete(user)
-        db.session.commit()
-        flash(_("User was successfully deleted!"))
-        users = User.query.order_by(User.id)
-    except:
-        flash(_("Whoops! There was a problem!"))
-    finally:
-        return render_template("admin/view_users.html", form=form, users=users)
-
-
-@app.route("/edit/<int:id>", methods=["GET", "POST"])
-@login_required
-def edit(id):
-    if not current_user.administrator:  # type: ignore
-        return redirect(url_for("main.index"))
-    form = EditUserForm()
-    user = User.query.get_or_404(id)
-    users = User.query.order_by(User.id)
-    is_admin = user.administrator == 1
-    if request.method == "POST":
-        user.username = request.form["username"]
-        user.email = request.form["email"]
-        if not current_user.id == id:  # type: ignore
-            user.administrator = True if request.form.get("admin") == "y" else False
-        if len(request.form["password"]) != 0:
-            user.password_hash = generate_password_hash(request.form["password"])
-
-        user.last_modify = datetime.now()
-        try:
-            if form.validate_on_submit():
-                db.session.commit()
-                flash(
-                    _("{username} Successfully edited!").format(username=user.username)
-                )
-                return redirect(url_for("view_users"))
-
-            return render_template(
-                "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
-            )
-        except:
-            flash(_("Error! A problem has occurred!"))
-            return redirect(url_for("main.index"))
-    else:
-        return render_template(
-            "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
-        )

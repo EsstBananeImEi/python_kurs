@@ -24,14 +24,15 @@ mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app)
 
+from app.admin import admin_blueprint
 from app.auth import auth_blueprint
 from app.errors import error_blueprint
 from app.main import main_blueprint
 
 app.register_blueprint(error_blueprint)
-
-app.register_blueprint(auth_blueprint, url_prefix="/auth")
 app.register_blueprint(main_blueprint)
+app.register_blueprint(auth_blueprint, url_prefix="/auth")
+app.register_blueprint(admin_blueprint, url_prefix="/admin")
 
 
 if not app.debug:
