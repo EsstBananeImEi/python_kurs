@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-01 16:13+0100\n"
+"POT-Creation-Date: 2022-03-02 07:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/__init__.py:23
+#: app/__init__.py:22
 msgid "Please log in to access this page."
 msgstr ""
 
@@ -107,89 +107,93 @@ msgstr ""
 msgid "About me"
 msgstr ""
 
-#: app/routes.py:55
+#: app/routes.py:56
 msgid "Check your email for the instructions to reset your password"
 msgstr ""
 
-#: app/routes.py:73
+#: app/routes.py:74
 msgid "Your password has been reset."
 msgstr ""
 
-#: app/routes.py:87
+#: app/routes.py:88
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/routes.py:114 app/templates/navbar.html:20
+#: app/routes.py:115 app/templates/navbar.html:20
 #: app/templates/restricted_pages/index.html:31 app/templates/user/user.html:52
 msgid "Explore"
 msgstr ""
 
-#: app/routes.py:188
+#: app/routes.py:189
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/routes.py:206
+#: app/routes.py:207
 msgid "Form Successfully Sent"
 msgstr ""
 
-#: app/routes.py:219
+#: app/routes.py:220
 msgid "Invalid username or password"
 msgstr ""
 
-#: app/routes.py:245
+#: app/routes.py:246
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/routes.py:265
+#: app/routes.py:266
 msgid "User was successfully created!"
 msgstr ""
 
-#: app/routes.py:268
+#: app/routes.py:269
 msgid "Add New User"
 msgstr ""
 
-#: app/routes.py:286
+#: app/routes.py:287
 msgid "Deleting the own user is not allowed!"
 msgstr ""
 
-#: app/routes.py:293
+#: app/routes.py:294
 msgid "User was successfully deleted!"
 msgstr ""
 
-#: app/routes.py:296
+#: app/routes.py:297
 msgid "Whoops! There was a problem!"
 msgstr ""
 
-#: app/routes.py:322
+#: app/routes.py:323
 msgid "{username} Successfully edited!"
 msgstr ""
 
-#: app/routes.py:332
+#: app/routes.py:333
 msgid "Error! A problem has occurred!"
 msgstr ""
 
-#: app/routes.py:349 app/routes.py:369
+#: app/routes.py:350 app/routes.py:370
 msgid "User {username} not found."
 msgstr ""
 
-#: app/routes.py:352
+#: app/routes.py:353
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/routes.py:356
+#: app/routes.py:357
 msgid "You are following {username}!"
 msgstr ""
 
-#: app/routes.py:372
+#: app/routes.py:373
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/routes.py:376
+#: app/routes.py:377
 msgid "You are not following {username}."
 msgstr ""
 
 #: app/templates/_post.html:15
 msgid "said"
+msgstr ""
+
+#: app/templates/name.html:5
+msgid "Hello"
 msgstr ""
 
 #: app/templates/name.html:11
@@ -262,19 +266,19 @@ msgstr ""
 msgid "The Flask Blog Team"
 msgstr ""
 
-#: app/templates/errors/404.html:4
+#: app/templates/errors/404.html:5
 msgid "File Not Found"
 msgstr ""
 
-#: app/templates/errors/404.html:5 app/templates/errors/500.html:6
+#: app/templates/errors/404.html:6 app/templates/errors/500.html:7
 msgid "Back"
 msgstr ""
 
-#: app/templates/errors/500.html:4
+#: app/templates/errors/500.html:5
 msgid "An unexpected error has occurred"
 msgstr ""
 
-#: app/templates/errors/500.html:5
+#: app/templates/errors/500.html:6
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
 

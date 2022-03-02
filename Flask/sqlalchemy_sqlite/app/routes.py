@@ -92,7 +92,7 @@ def index():
     next_url = url_for("index", page=posts.next_num) if posts.has_next else None
     prev_url = url_for("index", page=posts.prev_num) if posts.has_prev else None
     return render_template(
-        "restricted_pages/index.html",
+        "index.html",
         title="Home",
         form=form,
         posts=posts.items,
@@ -111,7 +111,7 @@ def explore():
     next_url = url_for("explore", page=posts.next_num) if posts.has_next else None
     prev_url = url_for("explore", page=posts.prev_num) if posts.has_prev else None
     return render_template(
-        "restricted_pages/index.html",
+        "index.html",
         title=_("Explore"),
         posts=posts.items,
         next_url=next_url,
@@ -265,9 +265,7 @@ def add_user():
         db.session.commit()
         flash(_("User was successfully created!"))
         return redirect(url_for("view_users"))
-    return render_template(
-        "restricted_pages/add_user.html", title=_("Add New User"), form=form
-    )
+    return render_template("admin/add_user.html", title=_("Add New User"), form=form)
 
 
 @app.route("/user/list", methods=["GET"])
@@ -275,7 +273,7 @@ def add_user():
 def view_users() -> str:
     form = AdminForm()
     users = User.query.order_by(User.id)
-    return render_template("restricted_pages/view_users.html", form=form, users=users)
+    return render_template("admin/view_users.html", form=form, users=users)
 
 
 @app.route("/user/list/<int:id>")
@@ -296,9 +294,7 @@ def delete(id):
     except:
         flash(_("Whoops! There was a problem!"))
     finally:
-        return render_template(
-            "restricted_pages/view_users.html", form=form, users=users
-        )
+        return render_template("admin/view_users.html", form=form, users=users)
 
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
@@ -323,17 +319,13 @@ def edit(id):
                     _("{username} Successfully edited!").format(username=user.username)
                 )
                 users = User.query.order_by(User.id)
-                return render_template(
-                    "restricted_pages/view_users.html", form=form, users=users
-                )
+                return render_template("admin/view_users.html", form=form, users=users)
             return render_template(
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
         except:
             flash(_("Error! A problem has occurred!"))
-            return render_template(
-                "restricted_pages/view_users.html", form=form, users=users
-            )
+            return render_template("admin/view_users.html", form=form, users=users)
     else:
         return render_template(
             "user/edit.html", form=form, user=user, id=id, is_admin=is_admin

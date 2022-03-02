@@ -2,7 +2,7 @@
 {% block content %}
     
     {% if name %}
-        <h1>_('Hello') {{ name|title }}</h1>
+        <h1>{{_('Hello')}} {{ name|title }}</h1>
         <br/>
         <img 
             src="{{ url_for('static', filename='images/example_image.jpg') }}"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-01 16:13+0100\n"
+"POT-Creation-Date: 2022-03-02 07:31+0100\n"
 "PO-Revision-Date: 2022-03-01 15:30+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/__init__.py:23
+#: app/__init__.py:22
 msgid "Please log in to access this page."
 msgstr "Bitte melden Sie sich an, um auf diese Seite zuzugreifen."
 
@@ -108,92 +108,96 @@ msgstr "Bitte verwenden Sie eine andere E-Mail-Adresse."
 msgid "About me"
 msgstr "Über mich"
 
-#: app/routes.py:55
+#: app/routes.py:56
 msgid "Check your email for the instructions to reset your password"
 msgstr ""
 "Überprüfen Sie Ihre E-Mail auf die Anweisungen zum Zurücksetzen Ihres "
 "Passworts"
 
-#: app/routes.py:73
+#: app/routes.py:74
 msgid "Your password has been reset."
 msgstr "Ihr Passwort wurde zurückgesetzt."
 
-#: app/routes.py:87
+#: app/routes.py:88
 msgid "Your post is now live!"
 msgstr "Ihr Beitrag ist jetzt live!"
 
-#: app/routes.py:114 app/templates/navbar.html:20
+#: app/routes.py:115 app/templates/navbar.html:20
 #: app/templates/restricted_pages/index.html:31 app/templates/user/user.html:52
 msgid "Explore"
 msgstr "Erkunden"
 
-#: app/routes.py:188
+#: app/routes.py:189
 msgid "Your changes have been saved."
 msgstr "Ihre Änderungen wurden gespeichert."
 
-#: app/routes.py:206
+#: app/routes.py:207
 msgid "Form Successfully Sent"
 msgstr "Formular erfolgreich gesendet"
 
-#: app/routes.py:219
+#: app/routes.py:220
 msgid "Invalid username or password"
 msgstr "Ungültiger Benutzername oder Passwort"
 
-#: app/routes.py:245
+#: app/routes.py:246
 msgid "Congratulations, you are now a registered user!"
 msgstr "Herzlichen Glückwunsch, Sie sind jetzt ein registrierter Benutzer!"
 
-#: app/routes.py:265
+#: app/routes.py:266
 msgid "User was successfully created!"
 msgstr "Benutzer wurde erfolgreich erstellt!"
 
-#: app/routes.py:268
+#: app/routes.py:269
 msgid "Add New User"
 msgstr "Neuen Benutzer hinzufügen"
 
-#: app/routes.py:286
+#: app/routes.py:287
 msgid "Deleting the own user is not allowed!"
 msgstr "Das Löschen des eigenen Benutzers ist nicht erlaubt!"
 
-#: app/routes.py:293
+#: app/routes.py:294
 msgid "User was successfully deleted!"
 msgstr "Benutzer wurde erfolgreich gelöscht!"
 
-#: app/routes.py:296
+#: app/routes.py:297
 msgid "Whoops! There was a problem!"
 msgstr "Huch! Es gab ein Problem!"
 
-#: app/routes.py:322
+#: app/routes.py:323
 msgid "{username} Successfully edited!"
 msgstr "{username} Erfolgreich bearbeitet!"
 
-#: app/routes.py:332
+#: app/routes.py:333
 msgid "Error! A problem has occurred!"
 msgstr "Fehler! Es ist ein Problem aufgetreten!"
 
-#: app/routes.py:349 app/routes.py:369
+#: app/routes.py:350 app/routes.py:370
 msgid "User {username} not found."
 msgstr "Benutzer {username} nicht gefunden."
 
-#: app/routes.py:352
+#: app/routes.py:353
 msgid "You cannot follow yourself!"
 msgstr "Sie können sich selbst nicht folgen!"
 
-#: app/routes.py:356
+#: app/routes.py:357
 msgid "You are following {username}!"
 msgstr "Sie folgen {username}!"
 
-#: app/routes.py:372
+#: app/routes.py:373
 msgid "You cannot unfollow yourself!"
 msgstr "Sie können sich nicht selbst entfolgen!"
 
-#: app/routes.py:376
+#: app/routes.py:377
 msgid "You are not following {username}."
 msgstr "Sie folgen {username} nicht."
 
 #: app/templates/_post.html:15
 msgid "said"
 msgstr "sagte"
+
+#: app/templates/name.html:5
+msgid "Hello"
+msgstr "Hallo"
 
 #: app/templates/name.html:11
 msgid "We learn Flask"
@@ -269,19 +273,19 @@ msgstr "Mit freundlichen Grüßen,"
 msgid "The Flask Blog Team"
 msgstr "Das Flask Blog Team"
 
-#: app/templates/errors/404.html:4
+#: app/templates/errors/404.html:5
 msgid "File Not Found"
 msgstr "Datei nicht gefunden"
 
-#: app/templates/errors/404.html:5 app/templates/errors/500.html:6
+#: app/templates/errors/404.html:6 app/templates/errors/500.html:7
 msgid "Back"
 msgstr "Zurück"
 
-#: app/templates/errors/500.html:4
+#: app/templates/errors/500.html:5
 msgid "An unexpected error has occurred"
 msgstr "Es ist ein unerwarteter Fehler aufgetreten"
 
-#: app/templates/errors/500.html:5
+#: app/templates/errors/500.html:6
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
 "Der Administrator wurde benachrichtigt. Entschuldigung für die "
