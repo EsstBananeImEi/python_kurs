@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Sign In</h1>
+    <h1>{{_('Sign In')}}</h1>
     <form action="" method="post" validate>
         {{ form.hidden_tag() }}
         <p>
@@ -24,8 +24,11 @@
         <p>{{ form.submit(class="btn btn-secondary") }}</p>
     </form>
     <p>
-        Forgot Your Password?
-        <a href="{{ url_for('reset_password_request') }}" class="link-secondary">Click to Reset It</a>
+        {{ _('Forgot Your Password?') }}
+        <a href="{{ url_for('reset_password_request') }}" class="link-secondary">{{_('Click to Reset It')}}</a>
     </p>
-    <p>Noch nicht Regististriert? <a href="{{ url_for('register') }}" class="link-secondary">Click to Register!</a></p>
+    <p>
+        {{_('Not yet registered?')}}
+        <a href="{{ url_for('register') }}" class="link-secondary">{{_('Click to Register!')}}</a>
+    </p>
 {% endblock %}

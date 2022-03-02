@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hallo, {{ current_user.username | title }}!</h1>
+    <h1>{{_('Hello,')}} {{ current_user.username | title }}!</h1>
     {% if form %}
         <form action="" method="post">
             {{ form.hidden_tag() }}
@@ -28,5 +28,5 @@
     {% if prev_url %}
     <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
     {% endif %}
-    <a href="{{ url_for('explore') }} "class="btn btn-dark bi bi-signpost-split">Explore</a>
+    <a href="{{ url_for('explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>
 {% endblock %}
