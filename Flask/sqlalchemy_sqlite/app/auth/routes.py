@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Callable
+from typing import Callable, Literal
 from xmlrpc.client import DateTime
 
 from app import app, db
@@ -17,23 +17,24 @@ from app.models import Post, User
 from flask import flash, g, redirect, render_template, request, url_for
 from flask_babel import _, get_locale
 from flask_login import current_user, login_required, login_user, logout_user
+from werkzeug import Response
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 
 @app.errorhandler(404)
-def not_found_error(error):
+def not_found_error(error) -> tuple[str, Literal[404]]:
     return render_template("errors/404.html"), 404
 
 
 @app.errorhandler(500)
-def internal_error(error):
+def internal_error(error) -> tuple[str, Literal[500]]:
     db.session.rollback()
     return render_template("errors/500.html"), 500
 
 
 @app.route("/reset_password_request", methods=["GET", "POST"])
-def reset_password_request():
+def reset_password_request() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
     form = ResetPasswordRequestForm()
@@ -49,7 +50,7 @@ def reset_password_request():
 
 
 @app.route("/reset_password/<token>", methods=["GET", "POST"])
-def reset_password(token):
+def reset_password(token) -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
     user = User.verify_reset_password_token(token)
@@ -81,20 +82,8 @@ def utility_processor() -> dict[str, Callable]:
     return dict()
 
 
-@app.route("/name", methods=["GET", "POST"])
-def name_form() -> str:
-    name = None
-    form = NameForm()
-    if form.validate_on_submit():
-        name = form.name.data
-        form.name.data = ""
-        flash(_("Form Successfully Sent"))
-
-    return render_template("name.html", name=name, form=form)
-
-
 @app.route("/login", methods=["GET", "POST"])
-def login():
+def login() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
     form = LoginForm()
@@ -112,13 +101,13 @@ def login():
 
 
 @app.route("/logout")
-def logout():
+def logout() -> Response:
     logout_user()
     return redirect(url_for("main.index"))
 
 
 @app.route("/register", methods=["GET", "POST"])
-def register():
+def register() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
     form = RegistrationForm()
@@ -134,7 +123,7 @@ def register():
 
 @app.route("/register/user", methods=["GET", "POST"])
 @login_required
-def add_user():
+def add_user() -> str | Response:
     form = EditUserForm()
     if form.validate_on_submit():
         user = User(
@@ -154,7 +143,9 @@ def add_user():
 
 @app.route("/user/list", methods=["GET"])
 @login_required
-def view_users() -> str:
+def view_users() -> str | Response:
+    if not current_user.administrator:  # type: ignore
+        return redirect(url_for("main.index"))
     form = AdminForm()
     users = User.query.order_by(User.id)
     return render_template("admin/view_users.html", form=form, users=users)
@@ -184,6 +175,8 @@ def delete(id):
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 @login_required
 def edit(id):
+    if not current_user.administrator:  # type: ignore
+        return redirect(url_for("main.index"))
     form = EditUserForm()
     user = User.query.get_or_404(id)
     users = User.query.order_by(User.id)
@@ -191,7 +184,8 @@ def edit(id):
     if request.method == "POST":
         user.username = request.form["username"]
         user.email = request.form["email"]
-        user.administrator = True if request.form.get("admin") == "y" else False
+        if not current_user.id == id:  # type: ignore
+            user.administrator = True if request.form.get("admin") == "y" else False
         if len(request.form["password"]) != 0:
             user.password_hash = generate_password_hash(request.form["password"])
 
@@ -202,14 +196,14 @@ def edit(id):
                 flash(
                     _("{username} Successfully edited!").format(username=user.username)
                 )
-                users = User.query.order_by(User.id)
-                return render_template("admin/view_users.html", form=form, users=users)
+                return redirect(url_for("view_users"))
+
             return render_template(
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
         except:
             flash(_("Error! A problem has occurred!"))
-            return render_template("admin/view_users.html", form=form, users=users)
+            return redirect(url_for("main.index"))
     else:
         return render_template(
             "user/edit.html", form=form, user=user, id=id, is_admin=is_admin

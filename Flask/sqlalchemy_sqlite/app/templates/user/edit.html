@@ -40,10 +40,13 @@
             <span style="color: red;">[{{ error }}]</span><br>
         {% endfor %}
 
-        <div class="form-check form-switch">
-            {{ form.admin(class="form-check-input", checked=is_admin) }}
+        <div class="form-check form-switch" >
+            {{ form.admin(class="form-check-input", checked=is_admin, disabled=current_user.id == user.id) }}
             {{ form.admin.label(class="form-check-label") }}
         </div>
+            {% if current_user.id == user.id %}
+            <span style="color: red;">{{ _("You cannot remove the admin from yourself") }}</span><br>
+            {% endif %}
 		<br/>
 		
 		{{ form.submit(class="btn btn-secondary") }}

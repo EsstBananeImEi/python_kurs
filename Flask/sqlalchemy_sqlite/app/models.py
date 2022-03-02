@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):  # type: ignore
     last_modify = db.Column(db.DateTime, default=datetime.utcnow)
     administrator = db.Column(db.Boolean, default=False)
     about_me = db.Column(db.String(140))
-    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+    last_seen = db.Column(db.DateTime)
     followed = db.relationship(
         "User",
         secondary=followers,
