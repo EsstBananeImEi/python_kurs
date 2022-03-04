@@ -2,6 +2,7 @@ import logging
 import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
+from config import Config
 from flask import Flask, current_app, request
 from flask_babel import Babel
 from flask_babel import lazy_gettext as _l
@@ -21,10 +22,10 @@ moment = Moment()
 babel = Babel()
 
 
-def init_app(config):
+def init_app():
     """Initialize the core application."""
-    app: Flask = Flask(__name__)
-    app.config.from_object(config)
+    app: Flask = Flask(__name__, instance_relative_config=False)
+    app.config.from_object(Config)
 
     db.init_app(app)
     migrate.init_app(app, db)
@@ -86,6 +87,3 @@ def init_app(config):
 @babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(current_app.config["LANGUAGES"])
-
-
-from app import models
