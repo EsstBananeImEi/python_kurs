@@ -2,7 +2,8 @@ from datetime import datetime
 from typing import Callable, Literal
 from xmlrpc.client import DateTime
 
-from app import app, db
+from app import db
+from app.auth import auth_blueprint
 from app.auth.email import send_password_reset_email
 from app.auth.forms import (
     AdminForm,
@@ -22,7 +23,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 
-@app.route("/reset_password_request", methods=["GET", "POST"])
+@auth_blueprint.route("/reset_password_request", methods=["GET", "POST"])
 def reset_password_request() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
@@ -32,13 +33,13 @@ def reset_password_request() -> str | Response:
         if user:
             send_password_reset_email(user)
         flash(_("Check your email for the instructions to reset your password"))
-        return redirect(url_for("login"))
+        return redirect(url_for("auth.login"))
     return render_template(
         "auth/reset_password_request.html", title="Reset Password", form=form
     )
 
 
-@app.route("/reset_password/<token>", methods=["GET", "POST"])
+@auth_blueprint.route("/reset_password/<token>", methods=["GET", "POST"])
 def reset_password(token) -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
@@ -50,11 +51,11 @@ def reset_password(token) -> str | Response:
         user.set_password(form.password.data)
         db.session.commit()
         flash(_("Your password has been reset."))
-        return redirect(url_for("login"))
+        return redirect(url_for("auth.login"))
     return render_template("auth/reset_password.html", form=form)
 
 
-@app.route("/login", methods=["GET", "POST"])
+@auth_blueprint.route("/login", methods=["GET", "POST"])
 def login() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
@@ -63,7 +64,7 @@ def login() -> str | Response:
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash(_("Invalid username or password"))
-            return redirect(url_for("login"))
+            return redirect(url_for("auth.login"))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get("next")
         if not next_page or url_parse(next_page).netloc != "":
@@ -72,13 +73,13 @@ def login() -> str | Response:
     return render_template("auth/login.html", title="Sign In", form=form)
 
 
-@app.route("/logout")
+@auth_blueprint.route("/logout")
 def logout() -> Response:
     logout_user()
     return redirect(url_for("main.index"))
 
 
-@app.route("/register", methods=["GET", "POST"])
+@auth_blueprint.route("/register", methods=["GET", "POST"])
 def register() -> str | Response:
     if current_user.is_authenticated:  # type: ignore
         return redirect(url_for("main.index"))
@@ -89,5 +90,5 @@ def register() -> str | Response:
         db.session.add(user)
         db.session.commit()
         flash(_("Congratulations, you are now a registered user!"))
-        return redirect(url_for("login"))
+        return redirect(url_for("auth.login"))
     return render_template("auth/register.html", title="Register", form=form)

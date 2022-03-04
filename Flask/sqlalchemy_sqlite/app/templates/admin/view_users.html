@@ -2,7 +2,7 @@
 {% block content %}
     <h1>{{_('User List')}}</h1>    
     
-        <a href="{{ url_for('add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
+        <a href="{{ url_for('admin.add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
         <br>
         <br>
         <table class="table table-hover table-bordered table-striped">
@@ -38,10 +38,10 @@
                         {% if current_user.administrator %}
                         <td>
                             <form method="post" action="/">
-                                <a type="button" class="btn btn-danger" href="{{ url_for('delete', id=user.id)}}" aria-label="Close">
+                                <a type="button" class="btn btn-danger" href="{{ url_for('admin.delete', id=user.id)}}" aria-label="Close">
                                 {{_('Delete')}}
                                 </a>
-                                <a type="button" class="btn btn-primary" href="{{ url_for('edit', id=user.id)}}" aria-label="Close">
+                                <a type="button" class="btn btn-primary" href="{{ url_for('admin.edit', id=user.id)}}" aria-label="Close">
                                 {{_('Edit')}}
                                 </a>
                             </form>

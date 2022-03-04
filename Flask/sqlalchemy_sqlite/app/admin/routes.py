@@ -2,7 +2,8 @@ from datetime import datetime
 from typing import Callable, Literal
 from xmlrpc.client import DateTime
 
-from app import app, db
+from app import db
+from app.admin import admin_blueprint
 from app.auth.email import send_password_reset_email
 from app.auth.forms import (
     AdminForm,
@@ -22,7 +23,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.urls import url_parse
 
 
-@app.route("/register/user", methods=["GET", "POST"])
+@admin_blueprint.route("/register/user", methods=["GET", "POST"])
 @login_required
 def add_user() -> str | Response:
     form = EditUserForm()
@@ -42,7 +43,7 @@ def add_user() -> str | Response:
     return render_template("admin/add_user.html", title=_("Add New User"), form=form)
 
 
-@app.route("/user/list", methods=["GET"])
+@admin_blueprint.route("/user/list", methods=["GET"])
 @login_required
 def view_users() -> str | Response:
     if not current_user.administrator:  # type: ignore
@@ -52,7 +53,7 @@ def view_users() -> str | Response:
     return render_template("admin/view_users.html", form=form, users=users)
 
 
-@app.route("/user/list/<int:id>")
+@admin_blueprint.route("/user/list/<int:id>")
 @login_required
 def delete(id):
     print(id)
@@ -73,7 +74,7 @@ def delete(id):
         return render_template("admin/view_users.html", form=form, users=users)
 
 
-@app.route("/edit/<int:id>", methods=["GET", "POST"])
+@admin_blueprint.route("/edit/<int:id>", methods=["GET", "POST"])
 @login_required
 def edit(id):
     if not current_user.administrator:  # type: ignore
@@ -97,12 +98,13 @@ def edit(id):
                 flash(
                     _("{username} Successfully edited!").format(username=user.username)
                 )
-                return redirect(url_for("view_users"))
+                return redirect(url_for("admin.view_users"))
 
             return render_template(
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
-        except:
+        except Exception as e:
+            print(e)
             flash(_("Error! A problem has occurred!"))
             return redirect(url_for("main.index"))
     else:

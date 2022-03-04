@@ -25,10 +25,10 @@
     </form>
     <p>
         {{ _('Forgot Your Password?') }}
-        <a href="{{ url_for('reset_password_request') }}" class="link-secondary">{{_('Click to Reset It')}}</a>
+        <a href="{{ url_for('auth.reset_password_request') }}" class="link-secondary">{{_('Click to Reset It')}}</a>
     </p>
     <p>
         {{_('Not yet registered?')}}
-        <a href="{{ url_for('register') }}" class="link-secondary">{{_('Click to Register!')}}</a>
+        <a href="{{ url_for('auth.register') }}" class="link-secondary">{{_('Click to Register!')}}</a>
     </p>
 {% endblock %}
