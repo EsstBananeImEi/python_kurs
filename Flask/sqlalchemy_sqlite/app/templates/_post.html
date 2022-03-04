@@ -6,7 +6,7 @@
     </div>
 </li> -->
 
- <a href="{{ url_for('user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
+ <a href="{{ url_for('main.user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
     <picture>
         <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
     </picture>

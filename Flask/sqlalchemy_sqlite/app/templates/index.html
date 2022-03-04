@@ -28,5 +28,5 @@
     {% if prev_url %}
     <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
     {% endif %}
-    <a href="{{ url_for('explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>
+    {% if form %}<a href="{{ url_for('main.explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>{% endif %}
 {% endblock %}
