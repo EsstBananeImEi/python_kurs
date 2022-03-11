@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>{{_('User:')}} {{user.username}}</h1>
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form action="{{ url_for('admin.edit', id=user.id) }}" method="POST">
+		{{ form.hidden_tag() }}
+
+        {{ form.firstname.label(class="form-check-label") }}
+        {{ form.firstname(size=32, class="form-control", value=user.firstname) }}
+        {% for error in form.firstname.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+        {{ form.lastname.label(class="form-check-label") }}
+        {{ form.lastname(size=32, class="form-control", value=user.lastname) }}
+        {% for error in form.lastname.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+		{{ form.username.label(class="form-check-label") }}
+		{{ form.username(class="form-control", value=user.username) }}
+        {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+		{{ form.email.label(class="form-check-label") }}
+		{{ form.email(class="form-control", value=user.email) }}
+        {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+		{{ form.password.label(class="form-check-label") }}
+		{{ form.password(class="form-control") }}
+        {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+
+		{{ form.password2.label(class="form-check-label") }}
+		{{ form.password2(class="form-control") }}
+        {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+
+        <div class="form-check form-switch" >
+            {{ form.admin(class="form-check-input", checked=is_admin, disabled=current_user.id == user.id) }}
+            {{ form.admin.label(class="form-check-label") }}
+        </div>
+            {% if current_user.id == user.id %}
+            <span style="color: red;">{{ _("You cannot remove the admin from yourself") }}</span><br>
+            {% endif %}
+		<br/>
+		
+		{{ form.submit(class="btn btn-secondary") }}
+
+		<a href="{{ url_for('admin.delete', id=id)}}" class="btn btn-danger {{'disabled' if current_user.id == user.id}}">{{_('Delete')}}</a>
+
+
+	</form>
+</div>
+
+
+{% endblock %}
