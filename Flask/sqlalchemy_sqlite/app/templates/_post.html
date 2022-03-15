@@ -6,15 +6,19 @@
     </div>
 </li> -->
 
- <a href="{{ url_for('main.user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
-    <picture>
-        <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
-    </picture>
-    <div class="w-100">
-        <div class="d-flex w-100 justify-content-between">
-        <p class="mb-1"><strong>{{ post.author.username }} </strong> {{_('said')}} {{ moment(post.timestamp).fromNow() }}:</p>
+ <div >
+    <a href="{{ url_for('main.user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
+        <picture>
+            <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
+        </picture>
+        <div class="w-100">
+            <div class="d-flex w-100 justify-content-between">
+            <p class="mb-1"><strong>{{ post.author.username }} </strong> {{_('said')}} {{ moment(post.timestamp).fromNow() }}:</p>
+            </div>
+            <p class="mb-1">{{ post.body }}</p>
         </div>
-        <p class="mb-1">{{ post.body }}</p>
-    </div>
-
-  </a>
+    </a>
+        {% if current_user.id == post.user_id %}
+        <i class="bi bi-trash3" href="test"></i>
+        {% endif %}
+  </div>

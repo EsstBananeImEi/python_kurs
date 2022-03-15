@@ -3,6 +3,7 @@ import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
 from config import Config
+from elasticsearch import Elasticsearch
 from flask import Flask, current_app, request
 from flask_babel import Babel
 from flask_babel import lazy_gettext as _l
@@ -44,6 +45,8 @@ def init_app():
         app.register_blueprint(auth_blueprint, url_prefix="/auth")
         app.register_blueprint(error_blueprint)
         app.register_blueprint(main_blueprint)
+
+        app.elasticsearch = Elasticsearch(app.config.get("ELASTICSEARCH_URL"))  # type: ignore
 
         if not app.debug and not app.testing:
             if app.config["MAIL_SERVER"]:

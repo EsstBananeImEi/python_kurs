@@ -19,6 +19,8 @@
     <ol class="list-group">
         {% for post in posts %}
             {% include '_post.html' %} 
+            {% if current_user.id == post.user_id %}
+            {% endif %}
         {% endfor %}
     </ol>
     

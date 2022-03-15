@@ -3,7 +3,7 @@ from typing import Callable
 
 from app import db
 from app.main import main_blueprint
-from app.main.forms import EditProfileForm, EmptyForm, PostForm
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm
 from app.models import Post, User
 from flask import current_app, flash, g, redirect, render_template, request, url_for
 from flask_babel import _, get_locale
@@ -33,7 +33,37 @@ def before_request():
     if current_user.is_authenticated:  # type: ignore
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.locale = str(get_locale())
+        g.search_form = SearchForm()
+    g.locale = str(get_locale())
+
+
+@main_blueprint.route("/search")
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for("main.explore"))
+    page = request.args.get("page", 1, type=int)
+    posts, total = Post.search(
+        g.search_form.q.data, page, current_app.config["POSTS_PER_PAGE"]
+    )
+    next_url = (
+        url_for("main.search", search_field=g.search_form.q.data, page=page + 1)
+        if total > page * current_app.config["POSTS_PER_PAGE"]
+        else None
+    )
+    prev_url = (
+        url_for("main.search", q=g.search_form.q.data, page=page - 1)
+        if page > 1
+        else None
+    )
+    return render_template(
+        "search.html",
+        title=_("Search"),
+        total=total,
+        posts=posts,
+        next_url=next_url,
+        prev_url=prev_url,
+    )
 
 
 @main_blueprint.route("/", methods=["GET", "POST"])
@@ -42,7 +72,7 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, author=current_user)  # type:ignore
         db.session.add(post)
         db.session.commit()
         flash(_("Your post is now live!"))

@@ -1,26 +1,24 @@
 from datetime import datetime
-from typing import Callable, Literal
-from xmlrpc.client import DateTime
 
 from app import db
 from app.admin import admin_blueprint
-from app.auth.email import send_password_reset_email
-from app.auth.forms import (
-    AdminForm,
-    EditUserForm,
-    LoginForm,
-    NameForm,
-    RegistrationForm,
-    ResetPasswordForm,
-    ResetPasswordRequestForm,
-)
+from app.auth.forms import AdminForm, EditUserForm
+from app.main.forms import SearchForm
 from app.models import Post, User
-from flask import flash, g, redirect, render_template, request, url_for
+from flask import current_app, flash, g, redirect, render_template, request, url_for
 from flask_babel import _, get_locale
-from flask_login import current_user, login_required, login_user, logout_user
+from flask_login import current_user, login_required
 from werkzeug import Response
-from werkzeug.security import check_password_hash, generate_password_hash
-from werkzeug.urls import url_parse
+from werkzeug.security import generate_password_hash
+
+
+@admin_blueprint.before_request
+def before_request():
+    if current_user.is_authenticated:  # type: ignore
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+        g.search_form = SearchForm()
+    g.locale = str(get_locale())
 
 
 @admin_blueprint.route("/register/user", methods=["GET", "POST"])
@@ -39,7 +37,7 @@ def add_user() -> str | Response:
         db.session.add(user)
         db.session.commit()
         flash(_("User was successfully created!"))
-        return redirect(url_for("view_users"))
+        return redirect(url_for("admin.view_users"))
     return render_template("admin/add_user.html", title=_("Add New User"), form=form)
 
 
