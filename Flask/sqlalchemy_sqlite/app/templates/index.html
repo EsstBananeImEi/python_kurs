@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{_('Hello,')}} {{ current_user.username | title }}!</h1>
+    <h1>{{_( title ) | title}}</h1>
     {% if form %}
         <form action="" method="post">
             {{ form.hidden_tag() }}
@@ -22,11 +22,21 @@
         {% endfor %}
     </ol>
     
-    {% if next_url %}
-    <a href="{{ next_url }} "class="btn btn-dark bi bi-arrow-left-square"></a>  
-    {% endif %}
-    {% if prev_url %}
-    <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
-    {% endif %}
-    {% if form %}<a href="{{ url_for('main.explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>{% endif %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+            <a href="{{ url_for('main.explore') }}" class="bi bi-search page-link"></a>
+            </li>
+            <li class="page-item">
+            <a  href="{{ prev_url if prev_url else '' }}" class="page-link">Previous</a>
+            </li>
+            
+
+            <li class="page-item">
+            <a class="page-link" href="{{ next_url if next_url else '' }}">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+   
 {% endblock %}

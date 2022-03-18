@@ -1,9 +1,10 @@
+import math
 from datetime import datetime
 from typing import Callable
 
 from app import db
 from app.main import main_blueprint
-from app.main.forms import EditProfileForm, EmptyForm, PostForm
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm
 from app.models import Post, User
 from flask import current_app, flash, g, redirect, render_template, request, url_for
 from flask_babel import _, get_locale
@@ -33,7 +34,37 @@ def before_request():
     if current_user.is_authenticated:  # type: ignore
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.locale = str(get_locale())
+        g.search_form = SearchForm()
+    g.locale = str(get_locale())
+
+
+@main_blueprint.route("/search")
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for("main.explore"))
+    page = request.args.get("page", 1, type=int)
+    posts, total = Post.search(
+        g.search_form.q.data, page, current_app.config["POSTS_PER_PAGE"]
+    )
+    next_url = (
+        url_for("main.search", search_field=g.search_form.q.data, page=page + 1)
+        if total > page * current_app.config["POSTS_PER_PAGE"]
+        else None
+    )
+    prev_url = (
+        url_for("main.search", q=g.search_form.q.data, page=page - 1)
+        if page > 1
+        else None
+    )
+    return render_template(
+        "search.html",
+        title=_("Search"),
+        total=total,
+        posts=posts,
+        next_url=next_url,
+        prev_url=prev_url,
+    )
 
 
 @main_blueprint.route("/", methods=["GET", "POST"])
@@ -42,10 +73,10 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, author=current_user)  # type:ignore
         db.session.add(post)
         db.session.commit()
-        flash(_("Your post is now live!"))
+        flash(_("Your post is now live!"), "success")
         return redirect(url_for("main.index"))
     page = request.args.get("page", 1, type=int)
     posts = current_user.followed_posts().paginate(page, current_app.config["POSTS_PER_PAGE"], False)  # type: ignore
@@ -53,7 +84,7 @@ def index():
     prev_url = url_for("main.index", page=posts.prev_num) if posts.has_prev else None
     return render_template(
         "index.html",
-        title="Home",
+        title=_("Welcome {username}").format(username=current_user.username),  # type: ignore
         form=form,
         posts=posts.items,
         next_url=next_url,
@@ -72,7 +103,7 @@ def explore():
     prev_url = url_for("main.explore", page=posts.prev_num) if posts.has_prev else None
     return render_template(
         "index.html",
-        title=_("Explore"),
+        title=_("Explore all posts"),
         posts=posts.items,
         next_url=next_url,
         prev_url=prev_url,
@@ -129,7 +160,7 @@ def edit_profile(id):
 
         if form.validate_on_submit():
             db.session.commit()
-            flash(_("Your changes have been saved."))
+            flash(_("Your changes have been saved."), "success")
             user = User.query.get_or_404(id)
             return redirect(url_for("main.edit_profile", id=user.id))
         return render_template(
@@ -147,14 +178,14 @@ def follow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
-            flash(_("User {username} not found.").format(username=username))
+            flash(_("User {username} not found.").format(username=username), "warning")
             return redirect(url_for("main.index"))
         if user == current_user:
-            flash(_("You cannot follow yourself!"))
+            flash(_("You cannot follow yourself!"), "warning")
             return redirect(url_for("main.user", username=username))
         current_user.follow(user)  # type: ignore
         db.session.commit()
-        flash(_("You are following {username}!").format(username=username))
+        flash(_("You are following {username}!").format(username=username), "success")
         return redirect(url_for("main.user", username=username))
     else:
         return redirect(url_for("main.index"))
@@ -167,14 +198,16 @@ def unfollow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
-            flash(_("User {username} not found.").format(username=username))
+            flash(_("User {username} not found.").format(username=username), "warning")
             return redirect(url_for("main.index"))
         if user == current_user:
-            flash(_("You cannot unfollow yourself!"))
+            flash(_("You cannot unfollow yourself!"), "warning")
             return redirect(url_for("main.user", username=username))
         current_user.unfollow(user)  # type: ignore
         db.session.commit()
-        flash(_("You are not following {username}.").format(username=username))
+        flash(
+            _("You are not following {username}.").format(username=username), "success"
+        )
         return redirect(url_for("main.user", username=username))
     else:
         return redirect(url_for("main.index"))

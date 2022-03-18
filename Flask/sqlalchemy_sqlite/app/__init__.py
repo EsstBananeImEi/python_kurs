@@ -3,6 +3,7 @@ import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
 from config import Config
+from elasticsearch import Elasticsearch
 from flask import Flask, current_app, request
 from flask_babel import Babel
 from flask_babel import lazy_gettext as _l
@@ -12,10 +13,11 @@ from flask_migrate import Migrate
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+db: SQLAlchemy = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 login.login_view = "auth.login"  # type: ignore
+login.login_message_category = "info"  # type: ignore
 login.login_message = _l("Please log in to access this page.")  # type: ignore
 mail = Mail()
 moment = Moment()
@@ -45,6 +47,7 @@ def init_app():
         app.register_blueprint(error_blueprint)
         app.register_blueprint(main_blueprint)
 
+        app.elasticsearch = Elasticsearch(app.config.get("ELASTICSEARCH_URL"))  # type: ignore
         if not app.debug and not app.testing:
             if app.config["MAIL_SERVER"]:
                 auth = None
@@ -75,6 +78,7 @@ def init_app():
                     "[in %(pathname)s:%(lineno)d]"
                 )
             )
+            logger = logging.getLogger()
             file_handler.setLevel(logging.INFO)
             app.logger.addHandler(file_handler)
 
