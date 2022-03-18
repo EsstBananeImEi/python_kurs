@@ -1,5 +1,7 @@
+import sqlite3
 from datetime import datetime
 
+import sqlalchemy
 from app import db
 from app.admin import admin_blueprint
 from app.auth.forms import AdminForm, EditUserForm
@@ -26,6 +28,8 @@ def before_request():
 def add_user() -> str | Response:
     form = EditUserForm()
     if form.validate_on_submit():
+        message = ""
+        message_categorie = "info"
         user = User(
             firstname=request.form.get("firstname"),
             lastname=request.form.get("lastname"),
@@ -33,11 +37,20 @@ def add_user() -> str | Response:
             email=request.form.get("email"),
             administrator=True if request.form.get("admin") == "y" else False,
         )  # type: ignore
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash(_("User was successfully created!"))
-        return redirect(url_for("admin.view_users"))
+        try:
+            user.set_password(form.password.data)
+            db.session.add(user)
+            db.session.commit()
+            message = _("User was successfully created!")
+            message_categorie = "success"
+
+            return redirect(url_for("admin.view_users"))
+        except Exception:
+            message = _("Whoops! There was a prssoblem!")
+            message_categorie = "danger"
+            db.session.rollback()
+        finally:
+            flash(message, message_categorie)
     return render_template("admin/add_user.html", title=_("Add New User"), form=form)
 
 
@@ -57,17 +70,17 @@ def delete(id):
     print(id)
     user = User.query.get_or_404(id)
     if id == current_user.id:  # type: ignore
-        flash(_("Deleting the own user is not allowed!"))
-        return redirect(url_for("view_users"))  # type: ignore
+        flash(_("Deleting the own user is not allowed!"), "danger")
+        return redirect(url_for("admin.view_users"))  # type: ignore
     form = AdminForm()
     users = None
     try:
         db.session.delete(user)
         db.session.commit()
-        flash(_("User was successfully deleted!"))
+        flash(_("User was successfully deleted!"), "success")
         users = User.query.order_by(User.id)
     except:
-        flash(_("Whoops! There was a problem!"))
+        flash(_("Whoops! There was a problem!"), "danger")
     finally:
         return render_template("admin/view_users.html", form=form, users=users)
 
@@ -94,17 +107,22 @@ def edit(id):
             if form.validate_on_submit():
                 db.session.commit()
                 flash(
-                    _("{username} Successfully edited!").format(username=user.username)
+                    _("{username} Successfully edited!").format(username=user.username),
+                    "success",
                 )
                 return redirect(url_for("admin.view_users"))
 
             return render_template(
                 "user/edit.html", form=form, user=user, id=id, is_admin=is_admin
             )
-        except Exception as e:
-            print(e)
-            flash(_("Error! A problem has occurred!"))
-            return redirect(url_for("main.index"))
+        except sqlalchemy.exc.IntegrityError as e:
+            flash(str(e), "danger")
+            db.session.rollback()
+            return redirect(url_for("admin.view_users"))
+        except Exception:
+            flash(_("Error! A problem has occurred!"), "danger")
+            return redirect(url_for("admin.view_users"))
+
     else:
         return render_template(
             "admin/edit.html", form=form, user=user, id=id, is_admin=is_admin

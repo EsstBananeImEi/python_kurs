@@ -1,1 +1,3 @@
-document.getElementById('demo').innerHTML = "Mit Javascript verändert"
+window.setTimeout(function () {
+    $(".AMessage").fadeOut('slow')
+}, 2000); 

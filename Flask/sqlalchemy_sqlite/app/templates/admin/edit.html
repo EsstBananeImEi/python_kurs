@@ -49,9 +49,13 @@
             {% endif %}
 		<br/>
 		
-		{{ form.submit(class="btn btn-secondary") }}
+        <div class="vstack gap-2 col-md-5 mx-auto">
 
-		<a href="{{ url_for('admin.delete', id=id)}}" class="btn btn-danger {{'disabled' if current_user.id == user.id}}">{{_('Delete')}}</a>
+        <button type="submit" class="btn btn-secondary">Save changes</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'admin.view_users') }}';" class="btn btn-outline-secondary">Cancel</button>
+		<a href="{{ url_for('admin.delete', id=id)}}" class="btn btn-outline-danger {{'disabled' if current_user.id == user.id}}">{{_('Delete User')}}</a>
+        </div>
+		
 
 
 	</form>

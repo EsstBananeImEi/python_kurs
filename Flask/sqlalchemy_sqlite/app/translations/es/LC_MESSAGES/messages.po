@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-02 15:05+0100\n"
+"POT-Creation-Date: 2022-03-16 13:36+0100\n"
 "PO-Revision-Date: 2022-03-01 16:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,181 +18,202 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/__init__.py:22
+#: app/__init__.py:21
 msgid "Please log in to access this page."
 msgstr ""
 
-#: app/auth/forms.py:17 app/auth/forms.py:67
-#: app/templates/admin/view_users.html:15
+#: app/admin/forms.py:17 app/admin/forms.py:67 app/auth/forms.py:17
+#: app/auth/forms.py:67 app/templates/admin/view_users.html:15
 msgid "Email"
 msgstr ""
 
-#: app/auth/forms.py:18 app/auth/forms.py:46
+#: app/admin/forms.py:18 app/admin/forms.py:46 app/auth/forms.py:18
+#: app/auth/forms.py:46
 msgid "Request Password Reset"
 msgstr ""
 
-#: app/auth/forms.py:23 app/auth/forms.py:58 app/auth/forms.py:77
-#: app/auth/forms.py:114
+#: app/admin/forms.py:23 app/admin/forms.py:58 app/admin/forms.py:77
+#: app/admin/forms.py:114 app/auth/forms.py:23 app/auth/forms.py:58
+#: app/auth/forms.py:77 app/auth/forms.py:114
 msgid "Password"
 msgstr ""
 
+#: app/admin/forms.py:26 app/admin/forms.py:80 app/admin/forms.py:117
 #: app/auth/forms.py:26 app/auth/forms.py:80 app/auth/forms.py:117
 msgid "Password be at least 8 characters"
 msgstr ""
 
+#: app/admin/forms.py:29 app/admin/forms.py:83 app/admin/forms.py:120
 #: app/auth/forms.py:29 app/auth/forms.py:83 app/auth/forms.py:120
 msgid "Password must contain lowercase letters"
 msgstr ""
 
+#: app/admin/forms.py:33 app/admin/forms.py:87 app/admin/forms.py:124
 #: app/auth/forms.py:33 app/auth/forms.py:87 app/auth/forms.py:124
 msgid "Password must contain capital letters"
 msgstr ""
 
+#: app/admin/forms.py:35 app/admin/forms.py:89 app/admin/forms.py:126
 #: app/auth/forms.py:35 app/auth/forms.py:89 app/auth/forms.py:126
 msgid "Password must contain numbers"
 msgstr ""
 
+#: app/admin/forms.py:38 app/admin/forms.py:92 app/admin/forms.py:129
 #: app/auth/forms.py:38 app/auth/forms.py:92 app/auth/forms.py:129
 msgid "Password must contain characters"
 msgstr ""
 
+#: app/admin/forms.py:43 app/admin/forms.py:97 app/admin/forms.py:134
 #: app/auth/forms.py:43 app/auth/forms.py:97 app/auth/forms.py:134
 msgid "Repeat Password"
 msgstr ""
 
-#: app/auth/forms.py:51
+#: app/admin/forms.py:51 app/auth/forms.py:51
 msgid "What is your name"
 msgstr ""
 
-#: app/auth/forms.py:53 app/auth/forms.py:68 app/main/forms.py:14
-#: app/main/forms.py:22
+#: app/admin/forms.py:53 app/admin/forms.py:68 app/auth/forms.py:53
+#: app/auth/forms.py:68 app/main/forms.py:22 app/main/forms.py:30
 msgid "Submit"
 msgstr ""
 
-#: app/auth/forms.py:57 app/auth/forms.py:64
-#: app/templates/admin/view_users.html:14
+#: app/admin/forms.py:57 app/admin/forms.py:64 app/auth/forms.py:57
+#: app/auth/forms.py:64 app/templates/admin/view_users.html:14
 msgid "Username"
 msgstr ""
 
-#: app/auth/forms.py:59
+#: app/admin/forms.py:59 app/auth/forms.py:59
 msgid "Remember Me"
 msgstr ""
 
-#: app/auth/forms.py:60 app/templates/auth/login.html:4
+#: app/admin/forms.py:60 app/auth/forms.py:60 app/templates/auth/login.html:4
 msgid "Sign In"
 msgstr ""
 
-#: app/auth/forms.py:65 app/templates/admin/view_users.html:12
+#: app/admin/forms.py:65 app/auth/forms.py:65
+#: app/templates/admin/view_users.html:12
 msgid "Firstname"
 msgstr ""
 
-#: app/auth/forms.py:66 app/templates/admin/view_users.html:13
+#: app/admin/forms.py:66 app/auth/forms.py:66
+#: app/templates/admin/view_users.html:13
 msgid "Lastname"
 msgstr ""
 
-#: app/auth/forms.py:72
+#: app/admin/forms.py:72 app/auth/forms.py:72
 msgid "Administrator"
 msgstr ""
 
-#: app/auth/forms.py:104 app/main/forms.py:36
+#: app/admin/forms.py:104 app/auth/forms.py:104 app/main/forms.py:44
 msgid "Please use a different username."
 msgstr ""
 
-#: app/auth/forms.py:109
+#: app/admin/forms.py:109 app/auth/forms.py:109
 msgid "Please use a different email address."
 msgstr ""
 
-#: app/auth/routes.py:45
-msgid "Check your email for the instructions to reset your password"
-msgstr ""
-
-#: app/auth/routes.py:63
-msgid "Your password has been reset."
-msgstr ""
-
-#: app/auth/routes.py:93
-msgid "Invalid username or password"
-msgstr ""
-
-#: app/auth/routes.py:119
-msgid "Congratulations, you are now a registered user!"
-msgstr ""
-
-#: app/auth/routes.py:139
+#: app/admin/routes.py:44
 msgid "User was successfully created!"
 msgstr ""
 
-#: app/auth/routes.py:141
+#: app/admin/routes.py:49
+msgid "Whoops! There was a prssoblem!"
+msgstr ""
+
+#: app/admin/routes.py:54
 msgid "Add New User"
 msgstr ""
 
-#: app/auth/routes.py:160
+#: app/admin/routes.py:73
 msgid "Deleting the own user is not allowed!"
 msgstr ""
 
-#: app/auth/routes.py:167
+#: app/admin/routes.py:80
 msgid "User was successfully deleted!"
 msgstr ""
 
-#: app/auth/routes.py:170
+#: app/admin/routes.py:83
 msgid "Whoops! There was a problem!"
 msgstr ""
 
-#: app/auth/routes.py:197
+#: app/admin/routes.py:110
 msgid "{username} Successfully edited!"
 msgstr ""
 
-#: app/auth/routes.py:205
+#: app/admin/routes.py:123
 msgid "Error! A problem has occurred!"
 msgstr ""
 
-#: app/main/forms.py:19
+#: app/auth/routes.py:35
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+
+#: app/auth/routes.py:53
+msgid "Your password has been reset."
+msgstr ""
+
+#: app/auth/routes.py:66
+msgid "Invalid username or password"
+msgstr ""
+
+#: app/auth/routes.py:72
+msgid "Welcome Back {username}"
+msgstr ""
+
+#: app/auth/routes.py:93
+msgid "Congratulations, you are now a registered user!"
+msgstr ""
+
+#: app/main/forms.py:11 app/main/routes.py:62
+msgid "Search"
+msgstr ""
+
+#: app/main/forms.py:27
 msgid "Your Message"
 msgstr ""
 
-#: app/main/forms.py:26
+#: app/main/forms.py:34
 msgid "About me"
 msgstr ""
 
-#: app/main/routes.py:30
+#: app/main/routes.py:79
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/main/routes.py:57 app/templates/index.html:31
-#: app/templates/navbar.html:17 app/templates/user/user.html:52
-msgid "Explore"
+#: app/main/routes.py:87
+msgid "Welcome {username}"
 msgstr ""
 
-#: app/main/routes.py:114
+#: app/main/routes.py:106
+msgid "Explore all posts"
+msgstr ""
+
+#: app/main/routes.py:163
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/main/routes.py:132 app/main/routes.py:152
+#: app/main/routes.py:181 app/main/routes.py:201
 msgid "User {username} not found."
 msgstr ""
 
-#: app/main/routes.py:135
+#: app/main/routes.py:184
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/main/routes.py:139
+#: app/main/routes.py:188
 msgid "You are following {username}!"
 msgstr ""
 
-#: app/main/routes.py:155
+#: app/main/routes.py:204
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/main/routes.py:159
+#: app/main/routes.py:209
 msgid "You are not following {username}."
 msgstr ""
 
-#: app/templates/_post.html:15
+#: app/templates/_post.html:8
 msgid "said"
-msgstr ""
-
-#: app/templates/index.html:4
-msgid "Hello,"
 msgstr ""
 
 #: app/templates/navbar.html:4
@@ -203,24 +224,50 @@ msgstr ""
 msgid "View Users"
 msgstr ""
 
-#: app/templates/navbar.html:23
-msgid "Search"
-msgstr ""
-
-#: app/templates/navbar.html:27
-msgid "Login"
+#: app/templates/navbar.html:17 app/templates/search.html:21
+#: app/templates/user/user.html:52
+msgid "Explore"
 msgstr ""
 
 #: app/templates/navbar.html:30
+msgid "Login"
+msgstr ""
+
+#: app/templates/navbar.html:33
 msgid "Register"
 msgstr ""
 
-#: app/templates/navbar.html:34
+#: app/templates/navbar.html:37
 msgid "Profile"
 msgstr ""
 
-#: app/templates/navbar.html:37
+#: app/templates/navbar.html:40
 msgid "Logout"
+msgstr ""
+
+#: app/templates/search.html:5
+msgid "Results"
+msgstr ""
+
+#: app/templates/search.html:11
+msgid "No Results found"
+msgstr ""
+
+#: app/templates/errors/404.html:6 app/templates/errors/500.html:7
+#: app/templates/search.html:12
+msgid "Back"
+msgstr ""
+
+#: app/templates/admin/edit.html:6 app/templates/user/edit_profile.html:4
+msgid "User:"
+msgstr ""
+
+#: app/templates/admin/edit.html:48
+msgid "You cannot remove the admin from yourself"
+msgstr "No puedes quitarte el admin a ti mismo"
+
+#: app/templates/admin/edit.html:55
+msgid "Delete User"
 msgstr ""
 
 #: app/templates/admin/view_users.html:3
@@ -247,7 +294,7 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: app/templates/admin/view_users.html:42 app/templates/user/edit.html:54
+#: app/templates/admin/view_users.html:42
 msgid "Delete"
 msgstr ""
 
@@ -313,10 +360,6 @@ msgstr ""
 msgid "File Not Found"
 msgstr ""
 
-#: app/templates/errors/404.html:6 app/templates/errors/500.html:7
-msgid "Back"
-msgstr ""
-
 #: app/templates/errors/500.html:5
 msgid "An unexpected error has occurred"
 msgstr ""
@@ -324,14 +367,6 @@ msgstr ""
 #: app/templates/errors/500.html:6
 msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
-
-#: app/templates/user/edit.html:6 app/templates/user/edit_profile.html:4
-msgid "User:"
-msgstr ""
-
-#: app/templates/user/edit.html:48
-msgid "You cannot remove the admin from yourself"
-msgstr "No puedes quitarte el admin a ti mismo"
 
 #: app/templates/user/user.html:10
 msgid "User"
@@ -362,5 +397,8 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Name"
+#~ msgstr ""
+
+#~ msgid "Hello,"
 #~ msgstr ""
 
