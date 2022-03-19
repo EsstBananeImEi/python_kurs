@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-16 13:36+0100\n"
+"POT-Creation-Date: 2022-03-19 08:56+0100\n"
 "PO-Revision-Date: 2022-03-01 15:30+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -112,38 +112,50 @@ msgstr "Bitte verwenden Sie einen anderen Benutzernamen."
 msgid "Please use a different email address."
 msgstr "Bitte verwenden Sie eine andere E-Mail-Adresse."
 
-#: app/admin/routes.py:44
+#: app/admin/routes.py:45
 msgid "User was successfully created!"
 msgstr "Benutzer wurde erfolgreich erstellt!"
 
-#: app/admin/routes.py:49
+#: app/admin/routes.py:50
+msgid "There is already a user with this email!"
+msgstr "Es gibt bereits einen Benutzer mit dieser E-Mail!"
+
+#: app/admin/routes.py:54
 #, fuzzy
 msgid "Whoops! There was a prssoblem!"
 msgstr "Huch! Es gab ein Problem!"
 
-#: app/admin/routes.py:54
+#: app/admin/routes.py:59
 msgid "Add New User"
 msgstr "Neuen Benutzer hinzufügen"
 
-#: app/admin/routes.py:73
+#: app/admin/routes.py:78
 msgid "Deleting the own user is not allowed!"
 msgstr "Das Löschen des eigenen Benutzers ist nicht erlaubt!"
 
-#: app/admin/routes.py:80
+#: app/admin/routes.py:83
 msgid "User was successfully deleted!"
 msgstr "Benutzer wurde erfolgreich gelöscht!"
 
-#: app/admin/routes.py:83
+#: app/admin/routes.py:85 app/main/routes.py:154
 msgid "Whoops! There was a problem!"
 msgstr "Huch! Es gab ein Problem!"
 
-#: app/admin/routes.py:110
+#: app/admin/routes.py:113
 msgid "{username} Successfully edited!"
 msgstr "{username} Erfolgreich bearbeitet!"
 
-#: app/admin/routes.py:123
+#: app/admin/routes.py:126
 msgid "Error! A problem has occurred!"
 msgstr "Fehler! Es ist ein Problem aufgetreten!"
+
+#: app/auth/email.py:13
+msgid "[Flask Blog] Reset Your Password"
+msgstr "[Flask Blog] Ihr Passwort zurücksetzen"
+
+#: app/auth/email.py:24
+msgid "[Flask Blog] Account was Deleted"
+msgstr "[Flask Blog] Konto wurde gelöscht"
 
 #: app/auth/routes.py:35
 msgid "Check your email for the instructions to reset your password"
@@ -167,7 +179,7 @@ msgstr "Willkommen zurück {username}"
 msgid "Congratulations, you are now a registered user!"
 msgstr "Herzlichen Glückwunsch, Sie sind jetzt ein registrierter Benutzer!"
 
-#: app/main/forms.py:11 app/main/routes.py:62
+#: app/main/forms.py:11 app/main/routes.py:63
 msgid "Search"
 msgstr "Suchen"
 
@@ -179,39 +191,44 @@ msgstr "Ihre Nachricht"
 msgid "About me"
 msgstr "Über mich"
 
-#: app/main/routes.py:79
+#: app/main/routes.py:80
 msgid "Your post is now live!"
 msgstr "Ihr Beitrag ist jetzt live!"
 
-#: app/main/routes.py:87
+#: app/main/routes.py:88
 msgid "Welcome {username}"
 msgstr "Willkommen {username}"
 
-#: app/main/routes.py:106
+#: app/main/routes.py:107
 msgid "Explore all posts"
 msgstr "Alle Beiträge erkunden"
 
-#: app/main/routes.py:163
+#: app/main/routes.py:152
+#, fuzzy
+msgid "Account was successfully deleted!"
+msgstr "Benutzer wurde erfolgreich gelöscht!"
+
+#: app/main/routes.py:182
 msgid "Your changes have been saved."
 msgstr "Ihre Änderungen wurden gespeichert."
 
-#: app/main/routes.py:181 app/main/routes.py:201
+#: app/main/routes.py:200 app/main/routes.py:220
 msgid "User {username} not found."
 msgstr "Benutzer {username} nicht gefunden."
 
-#: app/main/routes.py:184
+#: app/main/routes.py:203
 msgid "You cannot follow yourself!"
 msgstr "Sie können sich selbst nicht folgen!"
 
-#: app/main/routes.py:188
+#: app/main/routes.py:207
 msgid "You are following {username}!"
 msgstr "Sie folgen {username}!"
 
-#: app/main/routes.py:204
+#: app/main/routes.py:223
 msgid "You cannot unfollow yourself!"
 msgstr "Sie können sich nicht selbst entfolgen!"
 
-#: app/main/routes.py:209
+#: app/main/routes.py:228
 msgid "You are not following {username}."
 msgstr "Sie folgen {username} nicht."
 
@@ -269,7 +286,9 @@ msgstr "Benutzer:"
 msgid "You cannot remove the admin from yourself"
 msgstr "Sie können den Admin nicht von sich selbst entfernen"
 
-#: app/templates/admin/edit.html:55
+#: app/templates/admin/edit.html:56 app/templates/admin/view_users.html:47
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
 msgid "Delete User"
 msgstr "Benutzer Löschen"
 
@@ -297,13 +316,24 @@ msgstr "Admin"
 msgid "Actions"
 msgstr "Aktionen"
 
-#: app/templates/admin/view_users.html:42
-msgid "Delete"
-msgstr "Löschen"
+#: app/templates/admin/view_users.html:43
+#, fuzzy
+msgid "Edit User"
+msgstr "Benutzer Löschen"
 
-#: app/templates/admin/view_users.html:45 app/templates/user/user.html:17
-msgid "Edit"
-msgstr "Bearbeiten"
+#: app/templates/admin/view_users.html:53
+msgid "Are you sure you want to delete the user ?"
+msgstr "Sind Sie sicher, dass Sie den Benutzer löschen wollen?"
+
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
+msgid "No"
+msgstr "Nein"
+
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
+msgid "Yes (Delete)"
+msgstr "Ja (Löschen)"
 
 #: app/templates/auth/login.html:27
 msgid "Forgot Your Password?"
@@ -329,37 +359,37 @@ msgstr "Ihr Passwort zurücksetzen"
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
-#: app/templates/email/reset_password.html:1
+#: app/templates/email/deleted_user.html:1
 msgid "Dear"
 msgstr "Sehr geehrte"
 
-#: app/templates/email/reset_password.html:3
-msgid "To reset your password"
-msgstr "Um Ihr Passwort zurückzusetzen"
+#: app/templates/email/deleted_user.html:3
+msgid "Your account has been successfully deleted."
+msgstr "Benutzer wurde erfolgreich gelöscht!"
 
-#: app/templates/email/reset_password.html:5
-msgid "click here"
-msgstr "Klicken Sie hier"
+#: app/templates/email/deleted_user.html:5
+msgid "We are very sorry to no longer welcome you to our blog."
+msgstr ""
+"Es tut uns sehr leid, dass wir Sie nicht mehr in unserem Blog begrüßen "
+"können."
 
-#: app/templates/email/reset_password.html:8
+#: app/templates/email/deleted_user.html:6
 msgid ""
-"Alternatively, you can paste the following link in your browser's address"
-" bar:"
+"For your information, with the deletion of your account, all your blog "
+"entries were also deleted"
 msgstr ""
-"Alternativ können Sie auch den folgenden Link in die Adressleiste Ihres "
-"Browsers einfügen:"
+"Zu Ihrer Information: Mit der Löschung Ihres Kontos wurden auch alle Ihre"
+" Blogeinträge gelöscht."
 
-#: app/templates/email/reset_password.html:10
-msgid "If you have not requested a password reset simply ignore this message."
-msgstr ""
-"Wenn Sie kein neues Passwort beantragt haben, ignorieren Sie diese "
-"Meldung einfach."
+#: app/templates/email/deleted_user.html:7
+msgid "You are free to create a new account at any time if you wish to do so."
+msgstr "Sie können jederzeit ein neues Konto einrichten, wenn Sie dies wünschen."
 
-#: app/templates/email/reset_password.html:11
+#: app/templates/email/deleted_user.html:9
 msgid "Sincerely,"
 msgstr "Mit freundlichen Grüßen,"
 
-#: app/templates/email/reset_password.html:12
+#: app/templates/email/deleted_user.html:10
 msgid "The Flask Blog Team"
 msgstr "Das Flask Blog Team"
 
@@ -377,6 +407,26 @@ msgstr ""
 "Der Administrator wurde benachrichtigt. Entschuldigung für die "
 "Unannehmlichkeiten!"
 
+#: app/templates/user/edit_profile.html:54
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+#: app/templates/user/edit_profile.html:55
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: app/templates/user/edit_profile.html:56
+msgid "Delete Account"
+msgstr "Konto löschen"
+
+#: app/templates/user/edit_profile.html:60
+msgid ""
+"Are you sure you want to delete your Account <br> This means that all "
+"your blog entries will be deleted as well ?"
+msgstr ""
+"Sind Sie sicher, dass Sie Ihr Konto löschen möchten ? <br> Dies bedeutet,"
+" dass alle Ihre Blogeinträge ebenfalls gelöscht werden."
+
 #: app/templates/user/user.html:10
 msgid "User"
 msgstr "Benutzer"
@@ -392,6 +442,10 @@ msgstr "followers"
 #: app/templates/user/user.html:15
 msgid "following"
 msgstr "following"
+
+#: app/templates/user/user.html:17
+msgid "Edit"
+msgstr "Bearbeiten"
 
 #~ msgid "Form Successfully Sent"
 #~ msgstr "Formular erfolgreich gesendet"
@@ -410,4 +464,28 @@ msgstr "following"
 
 #~ msgid "Hello,"
 #~ msgstr "Hallo,"
+
+#~ msgid "Delete"
+#~ msgstr "Löschen"
+
+#~ msgid "To reset your password"
+#~ msgstr "Um Ihr Passwort zurückzusetzen"
+
+#~ msgid "click here"
+#~ msgstr "Klicken Sie hier"
+
+#~ msgid ""
+#~ "Alternatively, you can paste the "
+#~ "following link in your browser's address"
+#~ " bar:"
+#~ msgstr ""
+#~ "Alternativ können Sie auch den folgenden"
+#~ " Link in die Adressleiste Ihres "
+#~ "Browsers einfügen:"
+
+#~ msgid "If you have not requested a password reset simply ignore this message."
+#~ msgstr ""
+#~ "Wenn Sie kein neues Passwort beantragt"
+#~ " haben, ignorieren Sie diese Meldung "
+#~ "einfach."
 

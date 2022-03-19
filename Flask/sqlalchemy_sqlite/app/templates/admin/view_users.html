@@ -41,9 +41,18 @@
                             <div class="hstack gap-3">
 
                                 <button type="button" onclick="window.location.href='{{ url_for('admin.edit', id=user.id) }}';" class="btn btn-secondary">{{ _('Edit User') }}</button>
-                                <button class="btn btn-outline-danger {{'disabled' if current_user.id == user.id}}" onclick="window.location.href='{{ url_for('admin.delete', id=user.id) }}';">{{_('Delete User')}}</button>
+                                       
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-outline-danger {{'invisible' if current_user.id == user.id}}" data-bs-toggle="modal" data-bs-target={{"#deleteModal"+user.id | string}}>
+                                {{_('Delete User')}}
+                                </button>
                             </div>
                         </td>
+                        
+                        <!-- Modal -->
+                        {% with func="window.location.href=" + "\'" + url_for('admin.delete', id=user.id) + "\'" + ";" , modal_id="deleteModal"+user.id | string, user=user, title=_("Delete User"), sub_text=_("Are you sure you want to delete the user ?"),btn_close_label=_("No"),btn_submit_label=_("Yes (Delete)") %}
+                            {% include '_modal.html' %}
+                        {% endwith %}
                             
                         {% endif %}
                     </tr>
@@ -52,4 +61,8 @@
                 
             </tbody>
         </table>
+
+ 
+
+
 {% endblock %}

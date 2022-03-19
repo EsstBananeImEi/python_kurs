@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Callable
 
 from app import db
+from app.auth.email import send_user_deleted_email
 from app.main import main_blueprint
 from app.main.forms import EditProfileForm, EmptyForm, PostForm, SearchForm
 from app.models import Post, User
@@ -139,9 +140,27 @@ def user(username):
     )
 
 
-@main_blueprint.route("/edit_profile/<int:id>", methods=["GET", "POST"])
+@main_blueprint.route("/user/<username>/<int:id>")
 @login_required
-def edit_profile(id):
+def delete(username, id):
+    if not current_user.is_authenticated or id != current_user.id:  # type: ignore
+        return redirect(url_for("main.user"))  # type: ignore
+    user = User.query.get_or_404(id)
+    try:
+        db.session.delete(user)
+        db.session.commit()
+        flash(_("Account was successfully deleted!"), "success")
+    except:
+        flash(_("Whoops! There was a problem!"), "danger")
+    finally:
+        if user:
+            send_user_deleted_email(user)
+        return redirect(url_for("auth.logout"))
+
+
+@main_blueprint.route("/user/<username>/edit=<int:id>", methods=["GET", "POST"])
+@login_required
+def edit_profile(username, id):
     form = EditProfileForm(current_user.username)  # type: ignore
     user = User.query.get_or_404(id)
     if not id == current_user.id:  # type: ignore
@@ -162,7 +181,7 @@ def edit_profile(id):
             db.session.commit()
             flash(_("Your changes have been saved."), "success")
             user = User.query.get_or_404(id)
-            return redirect(url_for("main.edit_profile", id=user.id))
+            return redirect(url_for("main.user", username=current_user.username))  # type: ignore
         return render_template(
             "user/edit_profile.html", title="Edit Profile", form=form, user=user
         )

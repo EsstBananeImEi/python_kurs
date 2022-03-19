@@ -71,7 +71,7 @@ class User(UserMixin, db.Model):  # type: ignore
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship("Post", backref="author", lazy="dynamic")
+    posts = db.relationship("Post", cascade="delete", backref="author", lazy="dynamic")
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     last_modify = db.Column(db.DateTime, default=datetime.utcnow)
     administrator = db.Column(db.Boolean, default=False)

@@ -49,8 +49,17 @@
             <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
 
-        {{ form.submit(class="btn btn-secondary") }}
+        <div class="vstack gap-2 col-md-5 mx-auto">
 
+        <button type="submit" class="btn btn-secondary">{{ _("Save changes") }}</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'main.edit_profile', username=current_user.username, id=current_user.id) }}';" class="btn btn-outline-secondary">{{ _("Cancel") }}</button>
+        <button type="button" class="btn btn-outline-danger {{'disabled' if current_user.administrator and current_user.id == user.id}}" data-bs-toggle="modal" data-bs-target={{"#deleteModal"+user.id | string}}>{{ _("Delete Account") }}</button>
+        </div>
+
+        <!-- Modal -->
+        {% with func="window.location.href=" + "\'" + url_for('main.delete', username=user.username, id=user.id) + "\'" + ";" , modal_id="deleteModal"+user.id | string, user=user, title=_("Delete User"), sub_text=_("Are you sure you want to delete your Account <br> This means that all your blog entries will be deleted as well ?") | safe ,btn_close_label=_("No"),btn_submit_label=_("Yes (Delete)") %}
+            {% include '_modal.html' %}
+        {% endwith %}
 
     </form>
 </div>

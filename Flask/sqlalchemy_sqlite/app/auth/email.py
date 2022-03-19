@@ -9,11 +9,22 @@ from flask_mail import Message
 def send_password_reset_email(user):
     token = user.get_reset_password_token()
     send_email(
-        f"[Flask Blog] {_('Reset Your Password')}",
+        _("[Flask Blog] Reset Your Password"),
         sender=current_app.config["SENDER_EMAIL"],
         recipients=[user.email],
         text_body=render_template("email/reset_password.txt", user=user, token=token),
         html_body=render_template("email/reset_password.html", user=user, token=token),
+    )
+
+
+def send_user_deleted_email(user):
+    token = user.get_reset_password_token()
+    send_email(
+        _("[Flask Blog] Account was Deleted"),
+        sender=current_app.config["SENDER_EMAIL"],
+        recipients=[user.email],
+        text_body=render_template("email/deleted_user.txt", user=user, token=token),
+        html_body=render_template("email/deleted_user.html", user=user, token=token),
     )
 
 

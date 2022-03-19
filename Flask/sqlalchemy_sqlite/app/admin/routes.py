@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+from typing import Callable
 
 import sqlalchemy
 from app import db
@@ -45,6 +46,10 @@ def add_user() -> str | Response:
             message_categorie = "success"
 
             return redirect(url_for("admin.view_users"))
+        except sqlalchemy.exc.IntegrityError:
+            message = _("There is already a user with this email!")
+            message_categorie = "danger"
+            db.session.rollback()
         except Exception:
             message = _("Whoops! There was a prssoblem!")
             message_categorie = "danger"
@@ -64,25 +69,23 @@ def view_users() -> str | Response:
     return render_template("admin/view_users.html", form=form, users=users)
 
 
-@admin_blueprint.route("/user/list/<int:id>")
+@admin_blueprint.route("/delete/<int:id>")
 @login_required
 def delete(id):
-    print(id)
     user = User.query.get_or_404(id)
-    if id == current_user.id:  # type: ignore
-        flash(_("Deleting the own user is not allowed!"), "danger")
-        return redirect(url_for("admin.view_users"))  # type: ignore
-    form = AdminForm()
-    users = None
-    try:
-        db.session.delete(user)
-        db.session.commit()
-        flash(_("User was successfully deleted!"), "success")
-        users = User.query.order_by(User.id)
-    except:
-        flash(_("Whoops! There was a problem!"), "danger")
-    finally:
-        return render_template("admin/view_users.html", form=form, users=users)
+    if current_user.administrator:  # type: ignore
+        if id == current_user.id:  # type: ignore
+            flash(_("Deleting the own user is not allowed!"), "danger")
+            return redirect(url_for("admin.view_users"))  # type: ignore
+        try:
+            db.session.delete(user)
+            db.session.commit()
+            flash(_("User was successfully deleted!"), "success")
+        except:
+            flash(_("Whoops! There was a problem!"), "danger")
+        finally:
+            return redirect(url_for("admin.view_users"))
+    return redirect(url_for("main.index"))
 
 
 @admin_blueprint.route("/edit/<int:id>", methods=["GET", "POST"])
