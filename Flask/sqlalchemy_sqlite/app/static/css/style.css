@@ -1,3 +1,6 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 h1 {
     color: darkblue;
     font-size: 40px;
@@ -10,4 +13,9 @@ body {
 #demo {
     color: darkblue;
     font-size: 12px;
+}
+
+.post-style{
+    white-space: break-spaces;
+    overflow-wrap: anywhere;
 }
