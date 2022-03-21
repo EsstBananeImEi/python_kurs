@@ -1,1 +1,0 @@
-document.getElementById('demo').innerHTML = "Mit Javascript verändert"
