@@ -16,4 +16,3 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     LANGUAGES = ["en", "de"]
     ELASTICSEARCH_URL = os.environ.get("ELASTICSEARCH_URL")
-    REDIS_URL = os.environ.get("REDIS_URL") or "redis://"

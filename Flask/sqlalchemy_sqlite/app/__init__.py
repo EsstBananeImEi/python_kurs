@@ -1,8 +1,6 @@
 import logging
 import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
-import rq
-from redis import Redis
 
 from config import Config
 from elasticsearch import Elasticsearch
@@ -52,8 +50,6 @@ def init_app() -> Flask:
         """ Ende Register Blueprints """
 
         app.elasticsearch = Elasticsearch(app.config.get("ELASTICSEARCH_URL"))  # type: ignore
-        app.redis = Redis.from_url(app.config["REDIS_URL"])  # type: ignore
-        app.task_queue = rq.Queue("microblog-tasks", connection=app.redis)  # type: ignore
 
         """ Initialize Mailhander for Prod """
         if not app.debug and not app.testing:
