@@ -12,6 +12,12 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+            <!-- TODO Button Spinner bearbeiten (Doppeltes Posten) -->
+            <button class="btn btn-primary" type="button" disabled>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span>
+            </button>
+            <!--  -->
              {{ form.submit(class="btn btn-secondary") }}
         </form>
         {% endif %}
@@ -21,6 +27,7 @@
             {% include '_post.html' %} 
         {% endfor %}
     </ol>
+    
     
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
