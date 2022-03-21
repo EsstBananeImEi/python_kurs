@@ -14,17 +14,17 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 
 db: SQLAlchemy = SQLAlchemy()
-migrate = Migrate()
-login = LoginManager()
+migrate: Migrate = Migrate()
+login: LoginManager = LoginManager()
 login.login_view = "auth.login"  # type: ignore
 login.login_message_category = "info"  # type: ignore
 login.login_message = _l("Please log in to access this page.")  # type: ignore
-mail = Mail()
-moment = Moment()
-babel = Babel()
+mail: Mail = Mail()
+moment: Moment = Moment()
+babel: Babel = Babel()
 
 
-def init_app():
+def init_app() -> Flask:
     """Initialize the core application."""
     app: Flask = Flask(__name__, instance_relative_config=False)
     app.config.from_object(Config)
@@ -37,6 +37,7 @@ def init_app():
     babel.init_app(app)
 
     with app.app_context():
+        """Register Blueprints"""
         from app.admin import admin_blueprint
         from app.auth import auth_blueprint
         from app.errors import error_blueprint
@@ -46,8 +47,11 @@ def init_app():
         app.register_blueprint(auth_blueprint, url_prefix="/auth")
         app.register_blueprint(error_blueprint)
         app.register_blueprint(main_blueprint)
+        """ Ende Register Blueprints """
 
         app.elasticsearch = Elasticsearch(app.config.get("ELASTICSEARCH_URL"))  # type: ignore
+
+        """ Initialize Mailhander for Prod """
         if not app.debug and not app.testing:
             if app.config["MAIL_SERVER"]:
                 auth = None
@@ -67,6 +71,7 @@ def init_app():
                 mail_handler.setLevel(logging.ERROR)
                 app.logger.addHandler(mail_handler)
 
+            """ Initialize RotatingFilehandler for logging """
             if not os.path.exists("logs"):
                 os.mkdir("logs")
             file_handler = RotatingFileHandler(
@@ -78,8 +83,9 @@ def init_app():
                     "[in %(pathname)s:%(lineno)d]"
                 )
             )
-            logger = logging.getLogger()
+            """ Set Logging Level """
             file_handler.setLevel(logging.INFO)
+            """ Add RotatingFileHandler to Logger """
             app.logger.addHandler(file_handler)
 
             app.logger.setLevel(logging.INFO)

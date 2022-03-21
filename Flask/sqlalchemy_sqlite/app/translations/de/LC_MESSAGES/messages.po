@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-19 08:56+0100\n"
+"POT-Creation-Date: 2022-03-21 14:29+0100\n"
 "PO-Revision-Date: 2022-03-01 15:30+0100\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -74,6 +74,7 @@ msgstr "Wie lautet Ihr Name"
 
 #: app/admin/forms.py:53 app/admin/forms.py:68 app/auth/forms.py:53
 #: app/auth/forms.py:68 app/main/forms.py:22 app/main/forms.py:30
+#: app/main/forms.py:51
 msgid "Submit"
 msgstr "Absenden"
 
@@ -121,7 +122,6 @@ msgid "There is already a user with this email!"
 msgstr "Es gibt bereits einen Benutzer mit dieser E-Mail!"
 
 #: app/admin/routes.py:54
-#, fuzzy
 msgid "Whoops! There was a prssoblem!"
 msgstr "Huch! Es gab ein Problem!"
 
@@ -137,7 +137,7 @@ msgstr "Das Löschen des eigenen Benutzers ist nicht erlaubt!"
 msgid "User was successfully deleted!"
 msgstr "Benutzer wurde erfolgreich gelöscht!"
 
-#: app/admin/routes.py:85 app/main/routes.py:154
+#: app/admin/routes.py:85 app/main/routes.py:158
 msgid "Whoops! There was a problem!"
 msgstr "Huch! Es gab ein Problem!"
 
@@ -149,11 +149,11 @@ msgstr "{username} Erfolgreich bearbeitet!"
 msgid "Error! A problem has occurred!"
 msgstr "Fehler! Es ist ein Problem aufgetreten!"
 
-#: app/auth/email.py:13
+#: app/auth/email.py:12
 msgid "[Flask Blog] Reset Your Password"
 msgstr "[Flask Blog] Ihr Passwort zurücksetzen"
 
-#: app/auth/email.py:24
+#: app/auth/email.py:23
 msgid "[Flask Blog] Account was Deleted"
 msgstr "[Flask Blog] Konto wurde gelöscht"
 
@@ -179,7 +179,7 @@ msgstr "Willkommen zurück {username}"
 msgid "Congratulations, you are now a registered user!"
 msgstr "Herzlichen Glückwunsch, Sie sind jetzt ein registrierter Benutzer!"
 
-#: app/main/forms.py:11 app/main/routes.py:63
+#: app/main/forms.py:11 app/main/routes.py:67
 msgid "Search"
 msgstr "Suchen"
 
@@ -191,46 +191,57 @@ msgstr "Ihre Nachricht"
 msgid "About me"
 msgstr "Über mich"
 
-#: app/main/routes.py:80
+#: app/main/forms.py:49
+msgid "Message"
+msgstr "Nachricht"
+
+#: app/main/routes.py:84
 msgid "Your post is now live!"
 msgstr "Ihr Beitrag ist jetzt live!"
 
-#: app/main/routes.py:88
+#: app/main/routes.py:92
 msgid "Welcome {username}"
 msgstr "Willkommen {username}"
 
-#: app/main/routes.py:107
+#: app/main/routes.py:111
 msgid "Explore all posts"
 msgstr "Alle Beiträge erkunden"
 
-#: app/main/routes.py:152
-#, fuzzy
+#: app/main/routes.py:156
 msgid "Account was successfully deleted!"
 msgstr "Benutzer wurde erfolgreich gelöscht!"
 
-#: app/main/routes.py:182
+#: app/main/routes.py:186
 msgid "Your changes have been saved."
 msgstr "Ihre Änderungen wurden gespeichert."
 
-#: app/main/routes.py:200 app/main/routes.py:220
+#: app/main/routes.py:204 app/main/routes.py:224
 msgid "User {username} not found."
 msgstr "Benutzer {username} nicht gefunden."
 
-#: app/main/routes.py:203
+#: app/main/routes.py:207
 msgid "You cannot follow yourself!"
 msgstr "Sie können sich selbst nicht folgen!"
 
-#: app/main/routes.py:207
+#: app/main/routes.py:211
 msgid "You are following {username}!"
 msgstr "Sie folgen {username}!"
 
-#: app/main/routes.py:223
+#: app/main/routes.py:227
 msgid "You cannot unfollow yourself!"
 msgstr "Sie können sich nicht selbst entfolgen!"
 
-#: app/main/routes.py:228
+#: app/main/routes.py:232
 msgid "You are not following {username}."
 msgstr "Sie folgen {username} nicht."
+
+#: app/main/routes.py:248
+msgid "Your message has been sent."
+msgstr "Ihre Nachricht wurde gesendet."
+
+#: app/main/routes.py:251
+msgid "Send Message"
+msgstr "Nachricht senden"
 
 #: app/templates/_post.html:8
 msgid "said"
@@ -245,7 +256,7 @@ msgid "View Users"
 msgstr "Benutzer ansehen"
 
 #: app/templates/navbar.html:17 app/templates/search.html:21
-#: app/templates/user/user.html:52
+#: app/templates/user/user.html:58
 msgid "Explore"
 msgstr "Erkunden"
 
@@ -257,13 +268,21 @@ msgstr "Anmelden"
 msgid "Register"
 msgstr "Register"
 
-#: app/templates/navbar.html:37
+#: app/templates/navbar.html:38 app/templates/private_messages.html:4
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: app/templates/navbar.html:46
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/navbar.html:40
+#: app/templates/navbar.html:49
 msgid "Logout"
 msgstr "Abmelden"
+
+#: app/templates/private_messages.html:15
+msgid "wrote"
+msgstr "schrieb"
 
 #: app/templates/search.html:5
 msgid "Results"
@@ -277,6 +296,11 @@ msgstr "Keine Ergebnisse gefunden"
 #: app/templates/search.html:12
 msgid "Back"
 msgstr "Zurück"
+
+#: app/templates/send_message.html:4
+#, python-format
+msgid "Send Message to %(recipient)s"
+msgstr "Nachricht senden an %(recipient)s"
 
 #: app/templates/admin/edit.html:6 app/templates/user/edit_profile.html:4
 msgid "User:"
@@ -317,9 +341,8 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: app/templates/admin/view_users.html:43
-#, fuzzy
 msgid "Edit User"
-msgstr "Benutzer Löschen"
+msgstr "Benutzer bearbeiten"
 
 #: app/templates/admin/view_users.html:53
 msgid "Are you sure you want to delete the user ?"
@@ -488,4 +511,13 @@ msgstr "Bearbeiten"
 #~ "Wenn Sie kein neues Passwort beantragt"
 #~ " haben, ignorieren Sie diese Meldung "
 #~ "einfach."
+
+#~ msgid "Newer messages"
+#~ msgstr "Neuere Nachrichten"
+
+#~ msgid "Older messages"
+#~ msgstr "Ältere Nachrichten"
+
+#~ msgid "Send private message"
+#~ msgstr "Private Nachricht senden"
 

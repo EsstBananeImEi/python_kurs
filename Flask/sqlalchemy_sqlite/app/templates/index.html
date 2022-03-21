@@ -12,19 +12,15 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <!-- TODO Button Spinner bearbeiten (Doppeltes Posten) -->
-            <button class="btn btn-primary" type="button" disabled>
-                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                <span class="visually-hidden">Loading...</span>
-            </button>
-            <!--  -->
              {{ form.submit(class="btn btn-secondary") }}
         </form>
         {% endif %}
     <hr>
     <ol class="list-group">
         {% for post in posts %}
-            {% include '_post.html' %} 
+            {% with username = post.author.username, avatar=post.author.avatar, type=_("said"), message=post %}
+                {% include '_post.html' %} 
+            {% endwith %}
         {% endfor %}
     </ol>
     
