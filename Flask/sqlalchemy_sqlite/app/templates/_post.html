@@ -1,14 +1,14 @@
- <div >
-    <a href="{{ url_for('main.user', username=post.author.username) }}" class="d-flex list-group-item list-group-item-action mb-2">
+
+<div >
+    <a href="{{ url_for('main.user', username=username) }}" class="d-flex list-group-item list-group-item-action mb-2">
         <picture>
-            <img src="{{ post.author.avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
+            <img src="{{ avatar(36) }}" class="img-fluid img-thumbnail rounded center-block mt-1 me-3" alt="...">
         </picture>
         <div class="w-100">
             <div class="d-flex w-100 justify-content-between">
-            <p class="mb-1"><strong>{{ post.author.username }} </strong> {{_('said')}} {{ moment(post.timestamp).fromNow() }}:</p>
+            <p class="mb-1"><strong>{{ username }} </strong> {{ type }} {{ moment(message.timestamp).fromNow() }}:</p>
             </div>
-            <p class="mb-1">{{ post.body }}</p>
+            <p class="mb-1">{{ message.body }}</p>
         </div>
     </a>
-  </div>
-  
+</div>

@@ -4,7 +4,9 @@
     {% if total %}
         <h1>{{ _('Results') }}</h1>
         {% for post in posts %}
-            {% include '_post.html' %}
+            {% with username = post.author.username, avatar=post.author.avatar, type=_("said"), message=post %}
+                {% include '_post.html' %} 
+            {% endwith %}
         {% endfor %}
     {% else %}
         <center>

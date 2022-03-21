@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-19 08:56+0100\n"
+"POT-Creation-Date: 2022-03-21 14:29+0100\n"
 "PO-Revision-Date: 2022-03-01 16:15+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -74,6 +74,7 @@ msgstr ""
 
 #: app/admin/forms.py:53 app/admin/forms.py:68 app/auth/forms.py:53
 #: app/auth/forms.py:68 app/main/forms.py:22 app/main/forms.py:30
+#: app/main/forms.py:51
 msgid "Submit"
 msgstr ""
 
@@ -136,7 +137,7 @@ msgstr ""
 msgid "User was successfully deleted!"
 msgstr ""
 
-#: app/admin/routes.py:85 app/main/routes.py:154
+#: app/admin/routes.py:85 app/main/routes.py:158
 msgid "Whoops! There was a problem!"
 msgstr ""
 
@@ -148,12 +149,12 @@ msgstr ""
 msgid "Error! A problem has occurred!"
 msgstr ""
 
-#: app/auth/email.py:13
+#: app/auth/email.py:12
 msgid "[Flask Blog] Reset Your Password"
 msgstr ""
 
-#: app/auth/email.py:24
-msgid "[Flask Blog] User was Deleted"
+#: app/auth/email.py:23
+msgid "[Flask Blog] Account was Deleted"
 msgstr ""
 
 #: app/auth/routes.py:35
@@ -176,7 +177,7 @@ msgstr ""
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/main/forms.py:11 app/main/routes.py:63
+#: app/main/forms.py:11 app/main/routes.py:67
 msgid "Search"
 msgstr ""
 
@@ -188,44 +189,56 @@ msgstr ""
 msgid "About me"
 msgstr ""
 
-#: app/main/routes.py:80
+#: app/main/forms.py:49
+msgid "Message"
+msgstr ""
+
+#: app/main/routes.py:84
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/main/routes.py:88
+#: app/main/routes.py:92
 msgid "Welcome {username}"
 msgstr ""
 
-#: app/main/routes.py:107
+#: app/main/routes.py:111
 msgid "Explore all posts"
 msgstr ""
 
-#: app/main/routes.py:152
+#: app/main/routes.py:156
 msgid "Account was successfully deleted!"
 msgstr ""
 
-#: app/main/routes.py:182
+#: app/main/routes.py:186
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/main/routes.py:200 app/main/routes.py:220
+#: app/main/routes.py:204 app/main/routes.py:224
 msgid "User {username} not found."
 msgstr ""
 
-#: app/main/routes.py:203
+#: app/main/routes.py:207
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/main/routes.py:207
+#: app/main/routes.py:211
 msgid "You are following {username}!"
 msgstr ""
 
-#: app/main/routes.py:223
+#: app/main/routes.py:227
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/main/routes.py:228
+#: app/main/routes.py:232
 msgid "You are not following {username}."
+msgstr ""
+
+#: app/main/routes.py:248
+msgid "Your message has been sent."
+msgstr ""
+
+#: app/main/routes.py:251
+msgid "Send Message"
 msgstr ""
 
 #: app/templates/_post.html:8
@@ -241,7 +254,7 @@ msgid "View Users"
 msgstr ""
 
 #: app/templates/navbar.html:17 app/templates/search.html:21
-#: app/templates/user/user.html:52
+#: app/templates/user/user.html:58
 msgid "Explore"
 msgstr ""
 
@@ -253,12 +266,20 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: app/templates/navbar.html:37
+#: app/templates/navbar.html:38 app/templates/private_messages.html:4
+msgid "Messages"
+msgstr ""
+
+#: app/templates/navbar.html:46
 msgid "Profile"
 msgstr ""
 
-#: app/templates/navbar.html:40
+#: app/templates/navbar.html:49
 msgid "Logout"
+msgstr ""
+
+#: app/templates/private_messages.html:15
+msgid "wrote"
 msgstr ""
 
 #: app/templates/search.html:5
@@ -272,6 +293,11 @@ msgstr ""
 #: app/templates/errors/404.html:6 app/templates/errors/500.html:7
 #: app/templates/search.html:12
 msgid "Back"
+msgstr ""
+
+#: app/templates/send_message.html:4
+#, python-format
+msgid "Send Message to %(recipient)s"
 msgstr ""
 
 #: app/templates/admin/edit.html:6 app/templates/user/edit_profile.html:4
@@ -468,5 +494,17 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "If you have not requested a password reset simply ignore this message."
+#~ msgstr ""
+
+#~ msgid "[Flask Blog] User was Deleted"
+#~ msgstr ""
+
+#~ msgid "Newer messages"
+#~ msgstr ""
+
+#~ msgid "Older messages"
+#~ msgstr ""
+
+#~ msgid "Send private message"
 #~ msgstr ""
 

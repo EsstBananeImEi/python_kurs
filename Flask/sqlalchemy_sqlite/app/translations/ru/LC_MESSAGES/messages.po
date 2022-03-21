@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-03-19 08:56+0100\n"
+"POT-Creation-Date: 2022-03-21 14:29+0100\n"
 "PO-Revision-Date: 2022-03-01 15:57+0100\n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -75,6 +75,7 @@ msgstr "Как вас зовут"
 
 #: app/admin/forms.py:53 app/admin/forms.py:68 app/auth/forms.py:53
 #: app/auth/forms.py:68 app/main/forms.py:22 app/main/forms.py:30
+#: app/main/forms.py:51
 msgid "Submit"
 msgstr "Отправить"
 
@@ -138,7 +139,7 @@ msgstr "Удаление собственного пользователя за�
 msgid "User was successfully deleted!"
 msgstr "Пользователь был успешно удален!"
 
-#: app/admin/routes.py:85 app/main/routes.py:154
+#: app/admin/routes.py:85 app/main/routes.py:158
 msgid "Whoops! There was a problem!"
 msgstr "Упс! Возникла проблема!"
 
@@ -150,13 +151,14 @@ msgstr "{username} Успешно отредактировано!"
 msgid "Error! A problem has occurred!"
 msgstr "Ошибка! Возникла проблема!"
 
-#: app/auth/email.py:13
+#: app/auth/email.py:12
 #, fuzzy
 msgid "[Flask Blog] Reset Your Password"
 msgstr "Сбросить пароль"
 
-#: app/auth/email.py:24
-msgid "[Flask Blog] User was Deleted"
+#: app/auth/email.py:23
+#, fuzzy
+msgid "[Flask Blog] Account was Deleted"
 msgstr "[Flask Blog] Пользователь был удален"
 
 #: app/auth/routes.py:35
@@ -179,7 +181,7 @@ msgstr "С возвращением {username}"
 msgid "Congratulations, you are now a registered user!"
 msgstr "Поздравляем, теперь вы зарегистрированный пользователь!"
 
-#: app/main/forms.py:11 app/main/routes.py:63
+#: app/main/forms.py:11 app/main/routes.py:67
 msgid "Search"
 msgstr "Поиск"
 
@@ -191,46 +193,60 @@ msgstr "Ваше сообщение"
 msgid "About me"
 msgstr "Обо мне"
 
-#: app/main/routes.py:80
+#: app/main/forms.py:49
+#, fuzzy
+msgid "Message"
+msgstr "Ваше сообщение"
+
+#: app/main/routes.py:84
 msgid "Your post is now live!"
 msgstr "Ваш пост теперь в прямом эфире!"
 
-#: app/main/routes.py:88
+#: app/main/routes.py:92
 msgid "Welcome {username}"
 msgstr "Добро пожаловать {username}"
 
-#: app/main/routes.py:107
+#: app/main/routes.py:111
 msgid "Explore all posts"
 msgstr "Просмотреть все сообщения"
 
-#: app/main/routes.py:152
+#: app/main/routes.py:156
 #, fuzzy
 msgid "Account was successfully deleted!"
 msgstr "Пользователь был успешно удален!"
 
-#: app/main/routes.py:182
+#: app/main/routes.py:186
 msgid "Your changes have been saved."
 msgstr "Ваши изменения были сохранены."
 
-#: app/main/routes.py:200 app/main/routes.py:220
+#: app/main/routes.py:204 app/main/routes.py:224
 msgid "User {username} not found."
 msgstr "Пользователь {username} не найден."
 
-#: app/main/routes.py:203
+#: app/main/routes.py:207
 msgid "You cannot follow yourself!"
 msgstr "Вы не можете следовать за собой!"
 
-#: app/main/routes.py:207
+#: app/main/routes.py:211
 msgid "You are following {username}!"
 msgstr "Вы следуете за {username}!"
 
-#: app/main/routes.py:223
+#: app/main/routes.py:227
 msgid "You cannot unfollow yourself!"
 msgstr "Вы не можете отписаться от себя!"
 
-#: app/main/routes.py:228
+#: app/main/routes.py:232
 msgid "You are not following {username}."
 msgstr "Вы не следите за {username}."
+
+#: app/main/routes.py:248
+#, fuzzy
+msgid "Your message has been sent."
+msgstr "Ваш пароль был восстановлен."
+
+#: app/main/routes.py:251
+msgid "Send Message"
+msgstr ""
 
 #: app/templates/_post.html:8
 msgid "said"
@@ -245,7 +261,7 @@ msgid "View Users"
 msgstr "Просмотр пользователей"
 
 #: app/templates/navbar.html:17 app/templates/search.html:21
-#: app/templates/user/user.html:52
+#: app/templates/user/user.html:58
 msgid "Explore"
 msgstr "Посетите сайт"
 
@@ -257,13 +273,22 @@ msgstr "Вход в систему"
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: app/templates/navbar.html:37
+#: app/templates/navbar.html:38 app/templates/private_messages.html:4
+#, fuzzy
+msgid "Messages"
+msgstr "Ваше сообщение"
+
+#: app/templates/navbar.html:46
 msgid "Profile"
 msgstr "Профиль"
 
-#: app/templates/navbar.html:40
+#: app/templates/navbar.html:49
 msgid "Logout"
 msgstr "Выход из системы"
+
+#: app/templates/private_messages.html:15
+msgid "wrote"
+msgstr ""
 
 #: app/templates/search.html:5
 msgid "Results"
@@ -277,6 +302,11 @@ msgstr "Результаты не найдены"
 #: app/templates/search.html:12
 msgid "Back"
 msgstr "Назад"
+
+#: app/templates/send_message.html:4
+#, python-format
+msgid "Send Message to %(recipient)s"
+msgstr ""
 
 #: app/templates/admin/edit.html:6 app/templates/user/edit_profile.html:4
 msgid "User:"
@@ -374,11 +404,15 @@ msgstr "Нам очень жаль, что мы больше не можем п�
 msgid ""
 "For your information, with the deletion of your account, all your blog "
 "entries were also deleted"
-msgstr "К вашему сведению, вместе с удалением вашего аккаунта были удалены и все ваши записи в блоге"
+msgstr ""
+"К вашему сведению, вместе с удалением вашего аккаунта были удалены и все "
+"ваши записи в блоге"
 
 #: app/templates/email/deleted_user.html:7
 msgid "You are free to create a new account at any time if you wish to do so."
-msgstr "Вы можете создать новую учетную запись в любое время, если пожелаете это сделать."
+msgstr ""
+"Вы можете создать новую учетную запись в любое время, если пожелаете это "
+"сделать."
 
 #: app/templates/email/deleted_user.html:9
 msgid "Sincerely,"
@@ -416,7 +450,9 @@ msgstr "Удалить аккаунт"
 msgid ""
 "Are you sure you want to delete your Account <br> This means that all "
 "your blog entries will be deleted as well ?"
-msgstr "Вы уверены, что хотите удалить свой аккаунт <br> Это означает, что все ваши записи в блоге также будут удалены?"
+msgstr ""
+"Вы уверены, что хотите удалить свой аккаунт <br> Это означает, что все "
+"ваши записи в блоге также будут удалены?"
 
 #: app/templates/user/user.html:10
 msgid "User"
@@ -478,4 +514,13 @@ msgstr "Редактировать"
 #~ msgstr ""
 #~ "Если вы не запрашивали сброс пароля, "
 #~ "просто проигнорируйте это сообщение."
+
+#~ msgid "Newer messages"
+#~ msgstr "Ваше сообщение"
+
+#~ msgid "Older messages"
+#~ msgstr "Ваше сообщение"
+
+#~ msgid "Send private message"
+#~ msgstr ""
 
