@@ -17,4 +17,4 @@ class Config(object):
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     LANGUAGES = ["en", "de"]
-    ELASTICSEARCH_URL = os.environ.get("ELASTICSEARCH_URL")
+    ELASTICSEARCH_URL = "http://0.0.0.0:9200"
