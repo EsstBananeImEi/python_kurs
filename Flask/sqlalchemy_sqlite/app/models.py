@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from hashlib import md5
 from time import time
@@ -95,6 +96,13 @@ class User(UserMixin, db.Model):  # type: ignore
         lazy="dynamic",
     )
     last_message_read_time = db.Column(db.DateTime)
+    notifications = db.relationship("Notification", backref="user", lazy="dynamic")
+
+    def add_notification(self, name, data):
+        self.notifications.filter_by(name=name).delete()
+        notification = Notification(name=name, payload_json=json.dumps(data), user=self)
+        db.session.add(notification)
+        return notification
 
     def new_messages(self):
         last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
@@ -178,3 +186,14 @@ class Message(db.Model):  # type: ignore
 
     def __repr__(self):
         return "<Message {}>".format(self.body)
+
+
+class Notification(db.Model):  # type: ignore
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    timestamp = db.Column(db.Float, index=True, default=time)
+    payload_json = db.Column(db.Text)
+
+    def get_data(self):
+        return json.loads(str(self.payload_json))

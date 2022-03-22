@@ -5,13 +5,15 @@
     {% if form %}
         <form action="" method="post">
             {{ form.hidden_tag() }}
-            <p>
+            <div>
                 {{ form.post.label(class="form-check-label") }}
-                {{ form.post(cols=32, rows=4, class="form-control") }}
+                {{ form.post(cols=32, rows=4, class="form-control", id="tweet") }}
+                <span id="charactersRemaining">300/300</span>
                 {% for error in form.post.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
-            </p>
+            </div>
+            
              {{ form.submit(class="btn btn-secondary") }}
         </form>
         {% endif %}
