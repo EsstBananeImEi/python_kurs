@@ -39,7 +39,8 @@
                 {% set new_messages = current_user.new_messages() %}
                     <span 
                         id="message_count" 
-                        style="visibility: {% if new_messages %} visible {% else %} hidden {% endif %};" 
+                        
+                        style="visibility: hidden" 
                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
                     </span>
             </a>

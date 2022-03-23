@@ -3,9 +3,9 @@ window.setTimeout(function () {
     $(".AMessage").fadeOut('slow')
 }, 2000);
 
-function set_message_count(n) {
-    $('#message_count').text(n);
-    $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+function set_message_count(notificationCount) {
+    $('#message_count').text(notificationCount);
+    $('#message_count').css('visibility', notificationCount ? 'visible' : 'hidden');
 }
 
 $(function () {
