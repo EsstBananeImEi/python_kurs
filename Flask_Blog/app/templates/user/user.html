@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="shadow p-3 mb-5 bg-body rounded">
+
+     <table>
+        <tr valign="top">
+            <td><img src="{{ user.avatar(128) }}"></td>
+            <td>
+                <h1>{{_('User')}}: {{ user.username }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}
+                <p>{{_('Last seen on:')}} {{ moment(user.last_seen).format('LLL') }}</p>
+                {% endif %}
+                <p>{{ user.followers.count() }} {{_('followers')}}, {{ user.followed.count() }} {{_('following')}}.</p>
+                {% if user == current_user %}
+                    <p><a class="link-secondary" href="{{ url_for('main.edit_profile', username=current_user.username , id=current_user.id) }}">{{_('Edit')}}</a></p>
+                {% elif not current_user.is_following(user) %}
+                <p>
+                    <form action="{{ url_for('main.follow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Follow') }}
+                    </form>
+                </p>
+                {% else %}
+                <p>
+                    <form action="{{ url_for('main.unfollow', username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Unfollow') }}
+                    </form>
+                </p>
+                {% endif %}
+                {% if user != current_user %}
+                <p>
+                    <form action="{{ url_for('main.send_message', recipient=user.username) }}" method="post">
+                        {{ form.submit(value='Send Message') }}
+                    </form>
+                </p>
+                {% endif %}
+            </td>
+            
+        </tr>
+    </table>
+    </div>
+    <hr>
+    <ol class="list-group">
+        {% for post in posts %}
+            {% with username = post.author.username, avatar=post.author.avatar, type=_("said"), message=post %}
+                {% include '_post.html' %} 
+            {% endwith %}
+        {% endfor %}
+    </ol>
+
+    {% if next_url %}
+    <a href="{{ next_url }} "class="btn btn-dark bi bi-arrow-left-square"></a>  
+    {% endif %}
+    {% if prev_url %}
+    <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
+    {% endif %}
+    <a href="{{ url_for('main.explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>
+    
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ _('Send Message to %(recipient)s', recipient=recipient) }}</h1>
+        {% if form %}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.message.label(class="form-check-label") }}
+                {{ form.message(cols=32, rows=4, class="form-control") }}
+            </p>
+             {{ form.submit(class="btn btn-secondary") }}
+        </form>
+        {% endif %}
+{% endblock %}

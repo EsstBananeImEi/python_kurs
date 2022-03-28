@@ -1,0 +1,17 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+    color: darkblue;
+    font-size: 40px;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+
+.post-style{
+    white-space: break-spaces;
+    overflow-wrap: anywhere;
+}

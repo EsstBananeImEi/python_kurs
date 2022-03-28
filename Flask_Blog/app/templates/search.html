@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if total %}
+        <h1>{{ _('Results') }}</h1>
+        {% for post in posts %}
+            {% with username = post.author.username, avatar=post.author.avatar, type=_("said"), message=post %}
+                {% include '_post.html' %} 
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        <center>
+            <h1>{{_('No Results found')}}</h1>
+            <p><a href="{{ url_for('main.index') }}">{{_('Back')}}</a></p>
+        </center>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }} "class="btn btn-dark bi bi-arrow-left-square"></a>  
+    {% endif %}
+    {% if prev_url %}
+    <a href="{{ prev_url }} "class="btn btn-dark bi bi-arrow-right-square"></a>  
+    {% endif %}
+    {% if form %}<a href="{{ url_for('main.explore') }} "class="btn btn-dark bi bi-signpost-split">{{_('Explore')}}</a>{% endif %}
+{% endblock %}
