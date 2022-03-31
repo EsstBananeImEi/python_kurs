@@ -1,0 +1,26 @@
+from dataclasses import dataclass
+from enum import Enum
+from typing import Optional
+from uuid import UUID, uuid4
+
+from pydantic import BaseModel
+
+
+@dataclass
+class Gender(str, Enum):
+    male = "male"
+    female = "female"
+
+@dataclass
+class Role(str, Enum):
+    admin = "admin"
+    user = "user"
+    student = "student"
+
+class User(BaseModel):
+    id: Optional[UUID] = uuid4()
+    first_name: str
+    middle_name: Optional[str]
+    last_name: str
+    gender: Gender
+    roles: list[Role]
