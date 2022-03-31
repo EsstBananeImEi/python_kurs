@@ -6,12 +6,10 @@ from uuid import UUID, uuid4
 from pydantic import BaseModel
 
 
-@dataclass
 class Gender(str, Enum):
     male = "male"
     female = "female"
 
-@dataclass
 class Role(str, Enum):
     admin = "admin"
     user = "user"
