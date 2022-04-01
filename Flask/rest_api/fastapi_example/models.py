@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from enum import Enum
 from typing import Optional
 from uuid import UUID, uuid4
@@ -22,3 +23,15 @@ class User(BaseModel):
     last_name: str
     gender: Gender
     roles: list[Role]
+
+class UserUpdateRequest(BaseModel):
+    first_name: Optional[str]
+    last_name: Optional[str]
+    middle_name: Optional[str]
+    roles: Optional[list[Role]]
+
+class Blog(BaseModel):
+    title: str
+    body: str
+    published: Optional[bool]
+    
