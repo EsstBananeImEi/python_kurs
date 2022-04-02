@@ -1,0 +1,526 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-03-21 14:29+0100\n"
+"PO-Revision-Date: 2022-03-01 15:57+0100\n"
+"Last-Translator: \n"
+"Language: ru\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/__init__.py:21
+msgid "Please log in to access this page."
+msgstr "Пожалуйста, войдите в систему, чтобы получить доступ к этой странице."
+
+#: app/admin/forms.py:17 app/admin/forms.py:67 app/auth/forms.py:17
+#: app/auth/forms.py:67 app/templates/admin/view_users.html:15
+msgid "Email"
+msgstr "Пишите на"
+
+#: app/admin/forms.py:18 app/admin/forms.py:46 app/auth/forms.py:18
+#: app/auth/forms.py:46
+msgid "Request Password Reset"
+msgstr "Запрос сброса пароля"
+
+#: app/admin/forms.py:23 app/admin/forms.py:58 app/admin/forms.py:77
+#: app/admin/forms.py:114 app/auth/forms.py:23 app/auth/forms.py:58
+#: app/auth/forms.py:77 app/auth/forms.py:114
+msgid "Password"
+msgstr "Пароль"
+
+#: app/admin/forms.py:26 app/admin/forms.py:80 app/admin/forms.py:117
+#: app/auth/forms.py:26 app/auth/forms.py:80 app/auth/forms.py:117
+msgid "Password be at least 8 characters"
+msgstr "Пароль должен содержать не менее 8 символов"
+
+#: app/admin/forms.py:29 app/admin/forms.py:83 app/admin/forms.py:120
+#: app/auth/forms.py:29 app/auth/forms.py:83 app/auth/forms.py:120
+msgid "Password must contain lowercase letters"
+msgstr "Пароль должен содержать строчные буквы"
+
+#: app/admin/forms.py:33 app/admin/forms.py:87 app/admin/forms.py:124
+#: app/auth/forms.py:33 app/auth/forms.py:87 app/auth/forms.py:124
+msgid "Password must contain capital letters"
+msgstr "Пароль должен содержать заглавные буквы"
+
+#: app/admin/forms.py:35 app/admin/forms.py:89 app/admin/forms.py:126
+#: app/auth/forms.py:35 app/auth/forms.py:89 app/auth/forms.py:126
+msgid "Password must contain numbers"
+msgstr "Пароль должен содержать цифры"
+
+#: app/admin/forms.py:38 app/admin/forms.py:92 app/admin/forms.py:129
+#: app/auth/forms.py:38 app/auth/forms.py:92 app/auth/forms.py:129
+msgid "Password must contain characters"
+msgstr "Пароль должен содержать символы"
+
+#: app/admin/forms.py:43 app/admin/forms.py:97 app/admin/forms.py:134
+#: app/auth/forms.py:43 app/auth/forms.py:97 app/auth/forms.py:134
+msgid "Repeat Password"
+msgstr "Повторить пароль"
+
+#: app/admin/forms.py:51 app/auth/forms.py:51
+msgid "What is your name"
+msgstr "Как вас зовут"
+
+#: app/admin/forms.py:53 app/admin/forms.py:68 app/auth/forms.py:53
+#: app/auth/forms.py:68 app/main/forms.py:22 app/main/forms.py:30
+#: app/main/forms.py:51
+msgid "Submit"
+msgstr "Отправить"
+
+#: app/admin/forms.py:57 app/admin/forms.py:64 app/auth/forms.py:57
+#: app/auth/forms.py:64 app/templates/admin/view_users.html:14
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: app/admin/forms.py:59 app/auth/forms.py:59
+msgid "Remember Me"
+msgstr "Помни меня"
+
+#: app/admin/forms.py:60 app/auth/forms.py:60 app/templates/auth/login.html:4
+msgid "Sign In"
+msgstr "Войти"
+
+#: app/admin/forms.py:65 app/auth/forms.py:65
+#: app/templates/admin/view_users.html:12
+msgid "Firstname"
+msgstr "Имя"
+
+#: app/admin/forms.py:66 app/auth/forms.py:66
+#: app/templates/admin/view_users.html:13
+msgid "Lastname"
+msgstr "фамилия"
+
+#: app/admin/forms.py:72 app/auth/forms.py:72
+msgid "Administrator"
+msgstr "Администратор"
+
+#: app/admin/forms.py:104 app/auth/forms.py:104 app/main/forms.py:44
+msgid "Please use a different username."
+msgstr "Пожалуйста, используйте другое имя пользователя."
+
+#: app/admin/forms.py:109 app/auth/forms.py:109
+msgid "Please use a different email address."
+msgstr "Пожалуйста, используйте другой адрес электронной почты."
+
+#: app/admin/routes.py:45
+msgid "User was successfully created!"
+msgstr "Пользователь был успешно создан!"
+
+#: app/admin/routes.py:50
+msgid "There is already a user with this email!"
+msgstr "Пользователь с таким email уже есть!"
+
+#: app/admin/routes.py:54
+#, fuzzy
+msgid "Whoops! There was a prssoblem!"
+msgstr "Упс! Возникла проблема!"
+
+#: app/admin/routes.py:59
+msgid "Add New User"
+msgstr "Добавить нового пользователя"
+
+#: app/admin/routes.py:78
+msgid "Deleting the own user is not allowed!"
+msgstr "Удаление собственного пользователя запрещено!"
+
+#: app/admin/routes.py:83
+msgid "User was successfully deleted!"
+msgstr "Пользователь был успешно удален!"
+
+#: app/admin/routes.py:85 app/main/routes.py:158
+msgid "Whoops! There was a problem!"
+msgstr "Упс! Возникла проблема!"
+
+#: app/admin/routes.py:113
+msgid "{username} Successfully edited!"
+msgstr "{username} Успешно отредактировано!"
+
+#: app/admin/routes.py:126
+msgid "Error! A problem has occurred!"
+msgstr "Ошибка! Возникла проблема!"
+
+#: app/auth/email.py:12
+#, fuzzy
+msgid "[Flask Blog] Reset Your Password"
+msgstr "Сбросить пароль"
+
+#: app/auth/email.py:23
+#, fuzzy
+msgid "[Flask Blog] Account was Deleted"
+msgstr "[Flask Blog] Пользователь был удален"
+
+#: app/auth/routes.py:35
+msgid "Check your email for the instructions to reset your password"
+msgstr "Проверьте свою электронную почту на наличие инструкций по сбросу пароля"
+
+#: app/auth/routes.py:53
+msgid "Your password has been reset."
+msgstr "Ваш пароль был восстановлен."
+
+#: app/auth/routes.py:66
+msgid "Invalid username or password"
+msgstr "Неверное имя пользователя или пароль"
+
+#: app/auth/routes.py:72
+msgid "Welcome Back {username}"
+msgstr "С возвращением {username}"
+
+#: app/auth/routes.py:93
+msgid "Congratulations, you are now a registered user!"
+msgstr "Поздравляем, теперь вы зарегистрированный пользователь!"
+
+#: app/main/forms.py:11 app/main/routes.py:67
+msgid "Search"
+msgstr "Поиск"
+
+#: app/main/forms.py:27
+msgid "Your Message"
+msgstr "Ваше сообщение"
+
+#: app/main/forms.py:34
+msgid "About me"
+msgstr "Обо мне"
+
+#: app/main/forms.py:49
+#, fuzzy
+msgid "Message"
+msgstr "Ваше сообщение"
+
+#: app/main/routes.py:84
+msgid "Your post is now live!"
+msgstr "Ваш пост теперь в прямом эфире!"
+
+#: app/main/routes.py:92
+msgid "Welcome {username}"
+msgstr "Добро пожаловать {username}"
+
+#: app/main/routes.py:111
+msgid "Explore all posts"
+msgstr "Просмотреть все сообщения"
+
+#: app/main/routes.py:156
+#, fuzzy
+msgid "Account was successfully deleted!"
+msgstr "Пользователь был успешно удален!"
+
+#: app/main/routes.py:186
+msgid "Your changes have been saved."
+msgstr "Ваши изменения были сохранены."
+
+#: app/main/routes.py:204 app/main/routes.py:224
+msgid "User {username} not found."
+msgstr "Пользователь {username} не найден."
+
+#: app/main/routes.py:207
+msgid "You cannot follow yourself!"
+msgstr "Вы не можете следовать за собой!"
+
+#: app/main/routes.py:211
+msgid "You are following {username}!"
+msgstr "Вы следуете за {username}!"
+
+#: app/main/routes.py:227
+msgid "You cannot unfollow yourself!"
+msgstr "Вы не можете отписаться от себя!"
+
+#: app/main/routes.py:232
+msgid "You are not following {username}."
+msgstr "Вы не следите за {username}."
+
+#: app/main/routes.py:248
+#, fuzzy
+msgid "Your message has been sent."
+msgstr "Ваш пароль был восстановлен."
+
+#: app/main/routes.py:251
+msgid "Send Message"
+msgstr ""
+
+#: app/templates/_post.html:8
+msgid "said"
+msgstr "сказал"
+
+#: app/templates/navbar.html:4
+msgid "Flask Basics"
+msgstr "Основы фляги"
+
+#: app/templates/navbar.html:12
+msgid "View Users"
+msgstr "Просмотр пользователей"
+
+#: app/templates/navbar.html:17 app/templates/search.html:21
+#: app/templates/user/user.html:58
+msgid "Explore"
+msgstr "Посетите сайт"
+
+#: app/templates/navbar.html:30
+msgid "Login"
+msgstr "Вход в систему"
+
+#: app/templates/navbar.html:33
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: app/templates/navbar.html:38 app/templates/private_messages.html:4
+#, fuzzy
+msgid "Messages"
+msgstr "Ваше сообщение"
+
+#: app/templates/navbar.html:46
+msgid "Profile"
+msgstr "Профиль"
+
+#: app/templates/navbar.html:49
+msgid "Logout"
+msgstr "Выход из системы"
+
+#: app/templates/private_messages.html:15
+msgid "wrote"
+msgstr ""
+
+#: app/templates/search.html:5
+msgid "Results"
+msgstr "Результаты"
+
+#: app/templates/search.html:11
+msgid "No Results found"
+msgstr "Результаты не найдены"
+
+#: app/templates/errors/404.html:6 app/templates/errors/500.html:7
+#: app/templates/search.html:12
+msgid "Back"
+msgstr "Назад"
+
+#: app/templates/send_message.html:4
+#, python-format
+msgid "Send Message to %(recipient)s"
+msgstr ""
+
+#: app/templates/admin/edit.html:6 app/templates/user/edit_profile.html:4
+msgid "User:"
+msgstr "Пользователь:"
+
+#: app/templates/admin/edit.html:48
+msgid "You cannot remove the admin from yourself"
+msgstr "Вы не можете отписаться от себя!"
+
+#: app/templates/admin/edit.html:56 app/templates/admin/view_users.html:47
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
+msgid "Delete User"
+msgstr "Удалить пользователя"
+
+#: app/templates/admin/view_users.html:3
+msgid "User List"
+msgstr "Список пользователей"
+
+#: app/templates/admin/view_users.html:11
+msgid "Id"
+msgstr "Id"
+
+#: app/templates/admin/view_users.html:16
+msgid "About Me"
+msgstr "Обо мне"
+
+#: app/templates/admin/view_users.html:17
+msgid "Last Seen"
+msgstr "Последний раз видели"
+
+#: app/templates/admin/view_users.html:18
+msgid "Admin"
+msgstr "Админ"
+
+#: app/templates/admin/view_users.html:20
+msgid "Actions"
+msgstr "Действия"
+
+#: app/templates/admin/view_users.html:43
+msgid "Edit User"
+msgstr "Редактировать пользователя"
+
+#: app/templates/admin/view_users.html:53
+msgid "Are you sure you want to delete the user ?"
+msgstr "Вы уверены, что хотите удалить пользователя?"
+
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
+msgid "No"
+msgstr "Нет"
+
+#: app/templates/admin/view_users.html:53
+#: app/templates/user/edit_profile.html:60
+msgid "Yes (Delete)"
+msgstr "Да (Удалить)"
+
+#: app/templates/auth/login.html:27
+msgid "Forgot Your Password?"
+msgstr "Забыли пароль?"
+
+#: app/templates/auth/login.html:28
+msgid "Click to Reset It"
+msgstr "Нажмите, чтобы сбросить его"
+
+#: app/templates/auth/login.html:31
+msgid "Not yet registered?"
+msgstr "Еще не зарегистрированы?"
+
+#: app/templates/auth/login.html:32
+msgid "Click to Register!"
+msgstr "Нажмите, чтобы зарегистрироваться!"
+
+#: app/templates/auth/reset_password.html:4
+msgid "Reset Your Password"
+msgstr "Сбросить пароль"
+
+#: app/templates/auth/reset_password_request.html:4
+msgid "Reset Password"
+msgstr "Сброс пароля"
+
+#: app/templates/email/deleted_user.html:1
+msgid "Dear"
+msgstr "Уважаемый"
+
+#: app/templates/email/deleted_user.html:3
+msgid "Your account has been successfully deleted."
+msgstr "Пользователь был успешно удален!"
+
+#: app/templates/email/deleted_user.html:5
+msgid "We are very sorry to no longer welcome you to our blog."
+msgstr "Нам очень жаль, что мы больше не можем приветствовать вас в нашем блоге."
+
+#: app/templates/email/deleted_user.html:6
+msgid ""
+"For your information, with the deletion of your account, all your blog "
+"entries were also deleted"
+msgstr ""
+"К вашему сведению, вместе с удалением вашего аккаунта были удалены и все "
+"ваши записи в блоге"
+
+#: app/templates/email/deleted_user.html:7
+msgid "You are free to create a new account at any time if you wish to do so."
+msgstr ""
+"Вы можете создать новую учетную запись в любое время, если пожелаете это "
+"сделать."
+
+#: app/templates/email/deleted_user.html:9
+msgid "Sincerely,"
+msgstr "Искренне,"
+
+#: app/templates/email/deleted_user.html:10
+msgid "The Flask Blog Team"
+msgstr "Команда блога Flask"
+
+#: app/templates/errors/404.html:5
+msgid "File Not Found"
+msgstr "Файл не найден"
+
+#: app/templates/errors/500.html:5
+msgid "An unexpected error has occurred"
+msgstr "Произошла непредвиденная ошибка"
+
+#: app/templates/errors/500.html:6
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Администратор был уведомлен. Извините за причиненные неудобства!"
+
+#: app/templates/user/edit_profile.html:54
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: app/templates/user/edit_profile.html:55
+msgid "Cancel"
+msgstr "Отмена"
+
+#: app/templates/user/edit_profile.html:56
+msgid "Delete Account"
+msgstr "Удалить аккаунт"
+
+#: app/templates/user/edit_profile.html:60
+msgid ""
+"Are you sure you want to delete your Account <br> This means that all "
+"your blog entries will be deleted as well ?"
+msgstr ""
+"Вы уверены, что хотите удалить свой аккаунт <br> Это означает, что все "
+"ваши записи в блоге также будут удалены?"
+
+#: app/templates/user/user.html:10
+msgid "User"
+msgstr "Пользователь"
+
+#: app/templates/user/user.html:13
+msgid "Last seen on:"
+msgstr "Последний раз видели на:"
+
+#: app/templates/user/user.html:15
+msgid "followers"
+msgstr "подписчики"
+
+#: app/templates/user/user.html:15
+msgid "following"
+msgstr "следующий"
+
+#: app/templates/user/user.html:17
+msgid "Edit"
+msgstr "Редактировать"
+
+#~ msgid "Form Successfully Sent"
+#~ msgstr "Форма успешно отправлена"
+
+#~ msgid "Hello"
+#~ msgstr "Здравствуйте,"
+
+#~ msgid "We learn Flask"
+#~ msgstr "Мы изучаем флягу"
+
+#~ msgid "What is your name?"
+#~ msgstr "Как вас зовут?"
+
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Hello,"
+#~ msgstr "Здравствуйте,"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "To reset your password"
+#~ msgstr "Чтобы сбросить пароль"
+
+#~ msgid "click here"
+#~ msgstr "нажмите здесь"
+
+#~ msgid ""
+#~ "Alternatively, you can paste the "
+#~ "following link in your browser's address"
+#~ " bar:"
+#~ msgstr ""
+#~ "Также вы можете вставить следующую "
+#~ "ссылку в адресную строку вашего "
+#~ "браузера:"
+
+#~ msgid "If you have not requested a password reset simply ignore this message."
+#~ msgstr ""
+#~ "Если вы не запрашивали сброс пароля, "
+#~ "просто проигнорируйте это сообщение."
+
+#~ msgid "Newer messages"
+#~ msgstr "Ваше сообщение"
+
+#~ msgid "Older messages"
+#~ msgstr "Ваше сообщение"
+
+#~ msgid "Send private message"
+#~ msgstr ""
+

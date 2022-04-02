@@ -1,0 +1,8 @@
+{
+    "sensor_data": {
+        "sensor_id": "sensor_id",
+        "sensor_type": "sensor_type",
+        "sensor_value": "sensor_value",
+        "sensor_timestamp": "sensor_timestamp"
+    }
+}

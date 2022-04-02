@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{_('User List')}}</h1>    
+    
+        <a href="{{ url_for('admin.add_user') }} "class="btn btn-dark bi bi-person-plus-fill"></a>  
+        <br>
+        <br>
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                <th scope="col">{{_('Id')}}</th>
+                <th scope="col">{{_('Firstname')}}</th>
+                <th scope="col">{{_('Lastname')}}</th>
+                <th scope="col">{{_('Username')}}</th>
+                <th scope="col">{{_('Email')}}</th>
+                <th scope="col">{{_('About Me')}}</th>
+                <th scope="col">{{_('Last Seen')}}</th>
+                <th scope="col">{{_('Admin')}}</th>
+                {% if current_user.administrator %}
+                    <th scope="col">{{_('Actions')}}</th>
+                {% endif %}
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th> {{ user.id }} </th>
+                        <td>{{ user.firstname }} </td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.username }} </td>
+                        <td>{{ user.email}}</td>
+                        <td>{{ user.about_me}}</td>
+                        <td>{{ moment(user.last_seen).fromNow() }}</td>
+                        <td>
+                            {{ form.admin(class="form-check-input", checked=user.administrator==True, disabled=True) }}
+                        </td>
+                        {% if current_user.administrator %}
+
+                         <td>
+                            <div class="hstack gap-3">
+
+                                <button type="button" onclick="window.location.href='{{ url_for('admin.edit', id=user.id) }}';" class="btn btn-secondary">{{ _('Edit User') }}</button>
+                                       
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-outline-danger {{'invisible' if current_user.id == user.id}}" data-bs-toggle="modal" data-bs-target={{"#deleteModal"+user.id | string}}>
+                                {{_('Delete User')}}
+                                </button>
+                            </div>
+                        </td>
+                        
+                        <!-- Modal -->
+                        {% with func="window.location.href=" + "\'" + url_for('admin.delete', id=user.id) + "\'" + ";" , modal_id="deleteModal"+user.id | string, user=user, title=_("Delete User"), sub_text=_("Are you sure you want to delete the user ?"),btn_close_label=_("No"),btn_submit_label=_("Yes (Delete)") %}
+                            {% include '_modal.html' %}
+                        {% endwith %}
+                            
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+                
+            </tbody>
+        </table>
+
+ 
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ _('Messages') }}</h1>
+    <ol class="list-group">
+        {% for message in messages %}
+            {% with username = get_user_data(message.sender_id).username, avatar=get_user_data(message.sender_id).avatar, type=_("wrote"), message=message %}
+                {% include '_post.html' %}
+            {% endwith %}
+        {% endfor %}
+    </ol>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+            <a  href="{{ prev_url if prev_url else '' }}" class="page-link">Previous</a>
+            </li>
+            <li class="page-item">
+            <a class="page-link" href="{{ next_url if next_url else '' }}">Next</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

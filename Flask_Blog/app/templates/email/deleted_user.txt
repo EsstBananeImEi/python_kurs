@@ -1,0 +1,8 @@
+{{_('Dear')}} {{ user.username }},
+{{_('Your account has been successfully deleted.')}}
+
+{{_("We are very sorry to no longer welcome you to our blog.")}}
+{{_('You are free to create a new account at any time if you wish to do so.')}}
+{{_('Sincerely,')}}
+{{_('The Flask Blog Team')}}
+
