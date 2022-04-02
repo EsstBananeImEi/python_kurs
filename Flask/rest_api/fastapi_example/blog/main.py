@@ -1,17 +1,15 @@
 from datetime import datetime
-from typing import Optional
-from uuid import UUID, uuid4
 
-import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from sqlalchemy.orm import Session
 
-from . import models, schemas
-from .database import SessionLocal, engine, get_db, write_in_db
+from . import hashing, models, schemas
+from .database import engine, get_db, write_in_db
 
 app = FastAPI()
 
 models.Base.metadata.create_all(engine)
+
 
 
 @app.get("/")
@@ -20,6 +18,7 @@ def read_root(request: Request):
 
 @app.post("/api/v1/user", status_code=status.HTTP_201_CREATED)
 async def create_user(request: schemas.User, response: Response, db : Session = Depends(get_db)):
+    hashed_password = hashing.HashPassword.bcrypt_hash_password(request.password)
     new_user = write_in_db(
         models.User, 
         db,
@@ -27,7 +26,7 @@ async def create_user(request: schemas.User, response: Response, db : Session = 
             "email": request.email,
             "first_name": request.first_name,
             "last_name": request.last_name,
-            "password": request.password
+            "password": hashed_password
         }
         )
     print(new_user)
