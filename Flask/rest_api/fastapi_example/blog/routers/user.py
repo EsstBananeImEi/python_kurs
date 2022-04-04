@@ -10,10 +10,10 @@ from blog.schemas import ShowUser
 from blog.schemas import User as UserSchema
 
 """ Initialize the router """
-router = APIRouter()
+router = APIRouter(tags=["User"], prefix="/api/v1/user")
 
 
-@router.get("/api/v1/user/{user_id}", response_model=ShowUser, tags=["Users"])
+@router.get("/{user_id}", response_model=ShowUser)
 def get_user(user_id: int, db: Session = Depends(get_db)):
     user = db.query(UserModel).filter(UserModel.id == user_id).first()
     if user is None:
@@ -22,10 +22,9 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
 
 @router.post(
-    "/api/v1/user",
+    "/",
     status_code=status.HTTP_201_CREATED,
     response_model=ShowUser,
-    tags=["Users"],
 )
 async def create_user(
     request: UserSchema, response: Response, db: Session = Depends(get_db)
