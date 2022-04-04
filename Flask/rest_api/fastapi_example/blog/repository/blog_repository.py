@@ -7,15 +7,11 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 """ Show all blogs """
-
-
 def get_all(db: Session):
     return db.query(Blog).all()
 
 
 """ Show specific blog """
-
-
 def show(db: Session, blog_id: int):
     blog = db.query(Blog).filter(Blog.id == blog_id).first()
     if blog is None:
@@ -24,8 +20,6 @@ def show(db: Session, blog_id: int):
 
 
 """ Create new blog """
-
-
 def create(db: Session, request: Blog | BlogSchema):
     blog = write_in_db(
         Blog,
@@ -43,8 +37,6 @@ def create(db: Session, request: Blog | BlogSchema):
 
 
 """ Delete specific blog """
-
-
 def delete(db: Session, blog_id: int):
     blog = db.query(Blog).filter(Blog.id == blog_id)
 
@@ -57,8 +49,6 @@ def delete(db: Session, blog_id: int):
 
 
 """ Update specific blog """
-
-
 def update(db: Session, blog_id: int, request: Blog | BlogSchema):
     blog = db.query(Blog).filter(Blog.id == blog_id)
 
