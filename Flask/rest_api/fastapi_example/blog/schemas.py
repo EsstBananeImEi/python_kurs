@@ -13,13 +13,24 @@ class User(BaseModel):
     last_name: str
     password: str
 
+
+class ShowUser(BaseModel):
+    email: str
+    first_name: str
+    last_name: str
+
+    class Config:
+        orm_mode = True
+
+
 class Blog(BaseModel):
     title: str
     body: str
-    
+
+
 class ShowBlog(BaseModel):
     title: str
     body: str
 
-    class Config():
+    class Config:
         orm_mode = True
