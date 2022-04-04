@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Request
 
-from . import models
-from .database import engine
-from .routers import authentication, blog, user
+from blog import models
+from blog.database import engine
+from blog.routers import authentication, blog, user
 
 """ Initialize the app """
 app = FastAPI()
