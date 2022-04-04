@@ -8,6 +8,8 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 """ Get specific user """
+
+
 def show(db: Session, user_id: int):
     user = db.query(User).filter(User.id == user_id).first()
     if user is None:
@@ -16,7 +18,12 @@ def show(db: Session, user_id: int):
 
 
 """ Create new user """
+
+
 def create(db: Session, request: UserSchema):
+    user = db.query(User).filter(User.email == request.email).first()
+    if user:
+        raise HTTPException(status_code=400, detail="User already exists")
     hashed_password = HashPassword.bcrypt_hash_password(request.password)
     new_user = write_in_db(
         User,

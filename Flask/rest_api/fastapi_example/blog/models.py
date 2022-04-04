@@ -20,6 +20,6 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String(50))
     last_name = Column(String(50))
-    email = Column(String(120))
+    email = Column(String(120), unique=True)
     password = Column(String(120))
     blogs = relationship("Blog", back_populates="creator")
