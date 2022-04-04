@@ -31,7 +31,7 @@ class ShowUser(BaseModel):
     email: str
     first_name: str
     last_name: str
-    blogs: list[Blog]
+    blogs: list[Blog] = []
 
     class Config:
         orm_mode = True
