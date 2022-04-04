@@ -2,6 +2,7 @@ from datetime import timedelta
 from os import access
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
 from blog.database import get_db
@@ -14,7 +15,9 @@ router = APIRouter(tags=["Auth"], prefix="/api/v1/auth")
 
 
 @router.post("/login")
-async def login(request: Login, db: Session = Depends(get_db)):
+async def login(
+    request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
+):
     user = db.query(User).filter(User.email == request.username).first()
     if user is None:
         raise HTTPException(status_code=404, detail="Invalid Credentials")
