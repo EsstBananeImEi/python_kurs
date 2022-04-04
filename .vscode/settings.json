@@ -10,10 +10,9 @@
         "-p",
         "*_test.py"
     ],
+    // Interessante Settings
     "sync.autoUpload": true,
     "bracketPairColorizer.depreciation-notice": false,
-    "vscode-edge-devtools.mirrorEdits": true,
-    "vscode-edge-devtools.themes": "Dark",
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "right"
