@@ -119,6 +119,7 @@ async def create_blog(
             "title": request.title,
             "body": request.body,
             "published": datetime.utcnow(),
+            "user_id": 1,
         },
     )
     if blog is None:
