@@ -35,8 +35,18 @@ print(ice_cream["Klaus"])
     Wert begint, sollten wir ein defaultdict verwenden.
 """
 
-city_list = [('TX', 'Austin'), ('TX', 'Houston'), ('NY', 'Albany'), ('NY', 'Syracuse'), ('NY', 'Buffalo'),
-             ('NY', 'Rochester'), ('TX', 'Dallas'), ('CA', 'Sacramento'), ('CA', 'Palo Alto'), ('GA', 'Atlanta')]
+city_list = [
+    ("TX", "Austin"),
+    ("TX", "Houston"),
+    ("NY", "Albany"),
+    ("NY", "Syracuse"),
+    ("NY", "Buffalo"),
+    ("NY", "Rochester"),
+    ("TX", "Dallas"),
+    ("CA", "Sacramento"),
+    ("CA", "Palo Alto"),
+    ("GA", "Atlanta"),
+]
 
 cities_by_state_norm = {}
 
