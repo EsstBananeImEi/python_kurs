@@ -1,16 +1,16 @@
-class Component():
+class Component:
     """
-        Die Basisschnittstelle "Component" definiert Operationen, die durch "Dekoratoren" geändert werden können.
+    Die Basisschnittstelle "Component" definiert Operationen, die durch "Dekoratoren" geändert werden können.
     """
 
     def operation(self) -> str:
-        pass
+        ...
 
 
 class ConcreteComponent(Component):
     """
-        Konkrete Komponenten bieten Standardimplementierungen der Operationen.
-        Es kann mehrere Varianten dieser Klassen geben.
+    Konkrete Komponenten bieten Standardimplementierungen der Operationen.
+    Es kann mehrere Varianten dieser Klassen geben.
     """
 
     def operation(self) -> str:
@@ -19,14 +19,14 @@ class ConcreteComponent(Component):
 
 class Decorator(Component):
     """
-        Die Basisklasse Decorator folgt der gleichen Schnittstelle wie die anderen Komponenten.
-        Der primäre Zweck dieser Klasse ist die Definition der Wrapping-Schnittstelle für
-        alle konkreten Dekoratoren. Die Standardimplementierung des Wrapping-Codes
-        könnte ein Feld zum Speichern einer wrapper Komponente und die Mittel zum
-        initialisieren sein.
+    Die Basisklasse Decorator folgt der gleichen Schnittstelle wie die anderen Komponenten.
+    Der primäre Zweck dieser Klasse ist die Definition der Wrapping-Schnittstelle für
+    alle konkreten Dekoratoren. Die Standardimplementierung des Wrapping-Codes
+    könnte ein Feld zum Speichern einer wrapper Komponente und die Mittel zum
+    initialisieren sein.
     """
 
-    _component: Component = None
+    _component: Component = None  # type: ignore
 
     def __init__(self, component: Component) -> None:
         self._component = component
@@ -34,7 +34,7 @@ class Decorator(Component):
     @property
     def component(self) -> Component:
         """
-            Der Decorator delegiert die gesamte Arbeit an die wrapper Komponente.
+        Der Decorator delegiert die gesamte Arbeit an die wrapper Komponente.
         """
 
         return self._component
@@ -50,17 +50,17 @@ class ConcreteDecoratorA(Decorator):
 
     def operation(self) -> str:
         """
-            Dekorateure können die übergeordnete Implementierung der Operation aufrufen, anstatt
-            das gewrappte Objekt direkt aufzurufen. Dieser Ansatz vereinfacht die Erweiterung
-            von Dekoratorklassen.
+        Dekorateure können die übergeordnete Implementierung der Operation aufrufen, anstatt
+        das gewrappte Objekt direkt aufzurufen. Dieser Ansatz vereinfacht die Erweiterung
+        von Dekoratorklassen.
         """
         return f"ConcreteDecoratorA({self.component.operation()})"
 
 
 class ConcreteDecoratorB(Decorator):
     """
-        Decorators können ihr Verhalten entweder vor oder nach dem Aufruf eines
-        gewrappten Objekts ausführen.
+    Decorators können ihr Verhalten entweder vor oder nach dem Aufruf eines
+    gewrappten Objekts ausführen.
     """
 
     def operation(self) -> str:
@@ -80,7 +80,7 @@ def client_code(component: Component) -> None:
 
 
 if __name__ == "__main__":
-    """ Auf diese Weise kann der Client-Code sowohl einfache Komponenten unterstützen... """
+    """Auf diese Weise kann der Client-Code sowohl einfache Komponenten unterstützen..."""
     simple = ConcreteComponent()
     print("Client: Ich habe eine einfache Komponente:")
     client_code(simple)
