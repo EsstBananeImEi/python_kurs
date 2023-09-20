@@ -32,10 +32,16 @@ def task():
     #                     help='gib die erste zahl an')
     # parser.add_argument('--value2', type=float, default=0,
     #                     help='gib die zweite zahl an ')
-    parser.add_argument('--values', nargs="+", default=0,
-                        help='gib die zweite zahl an ')
-    parser.add_argument('--operator', type=str,
-                        default="+", help='gib den operator an')
+    parser.add_argument(
+        "-v",
+        "--values",
+        nargs="+",
+        default=0,
+        help="gib alle zahlen an ohne komma getrennt e.g. 1 2 3 4 5",
+    )
+    parser.add_argument(
+        "-o", "--operator", type=str, default="+", help='gib den operator an e.g. "*"'
+    )
     arguments = parser.parse_args()
     print(calc(arguments))
 
@@ -51,5 +57,5 @@ def calc(arguments):
         return reduce(lambda a, b: a / b, map(float, arguments.values))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     task()

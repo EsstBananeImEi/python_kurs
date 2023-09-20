@@ -13,7 +13,7 @@ if __name__ == "__main__":
         type=str,
         default="Keine nachricht vorhanden",
         help="'Schreib eine Nachricht...'",
-        required=True
+        required=False,
     )
     parser.add_argument(
         "-f",
@@ -29,4 +29,8 @@ if __name__ == "__main__":
         help="{key:value}",
     )
     arguments = parser.parse_args()
-    print(arguments)
+    for arg in vars(arguments):
+        if arg == "json":
+            print(f"json: {json.dumps(getattr(arguments, arg), indent=4)}")
+            continue
+        print(f"{arg}: {getattr(arguments, arg)}")

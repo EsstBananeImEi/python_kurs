@@ -49,4 +49,8 @@
         "HTML (Eex)",
         "django-html"
     ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none",
 }
