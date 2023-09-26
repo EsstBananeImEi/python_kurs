@@ -21,7 +21,7 @@ async def login(
     user = db.query(User).filter(User.email == request.username).first()
     if user is None:
         raise HTTPException(status_code=404, detail="Invalid Credentials")
-    if not HashPassword.verify(request.password, user.password):
+    if not HashPassword.verify(request.password, user.password):  # type: ignore
         raise HTTPException(status_code=404, detail="Username or Password is incorrect")
 
     access_token = create_access_token(data={"sub": user.email})

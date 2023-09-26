@@ -38,3 +38,10 @@ def create(db: Session, request: UserSchema):
     if new_user is None:
         raise HTTPException(status_code=400, detail="User not created")
     return new_user
+
+
+""" Get all users """
+
+
+def get_all(db: Session):
+    return db.query(User).all()

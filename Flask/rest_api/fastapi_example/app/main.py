@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.responses import RedirectResponse
 
 from blog import models
 from blog.database import engine
@@ -17,5 +18,5 @@ app.include_router(authentication.router)
 
 
 @app.get("/")
-def read_root(request: Request):
-    return {"text": "FastApi Section"}
+async def docs_redirect():
+    return RedirectResponse(url="/docs")
