@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="logo.svg" width="256"/>
+</p>
+
 # Python Kurs - Materialien und Beispiele
 
 Willkommen zu den Begleitmaterialien für den Python-Kurs auf Udemy! Diese Sammlung enthält Aufgaben, Lösungen und weiterführende Informationen, die den Teilnehmern helfen sollen, ihr Wissen zu erweitern und zu vertiefen.
