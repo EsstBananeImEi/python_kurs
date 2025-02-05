@@ -26,7 +26,7 @@ def show(db: Session, blog_id: int):
 """ Create new blog """
 
 
-def create(db: Session, request: Blog):
+def create(db: Session, request: BlogSchema):
     blog = write_in_db(
         Blog,
         db,
@@ -59,7 +59,7 @@ def delete(db: Session, blog_id: int):
 """ Update specific blog """
 
 
-def update(db: Session, blog_id: int, request: Blog):
+def update(db: Session, blog_id: int, request: BlogSchema):
     blog = db.query(Blog).filter(Blog.id == blog_id)
 
     if not blog.first():

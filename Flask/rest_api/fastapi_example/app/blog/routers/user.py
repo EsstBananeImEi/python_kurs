@@ -10,6 +10,15 @@ from blog.schemas import ShowUser, User
 router = APIRouter(tags=["User"], prefix="/api/v1/user")
 
 
+@router.get("/", status_code=status.HTTP_200_OK, response_model=list[ShowUser])
+async def get_all(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+    limit=5,
+):
+    return user_repository.get_all(db)[: int(limit)]
+
+
 @router.get("/{user_id}", response_model=ShowUser)
 def show(
     user_id: int,
@@ -24,5 +33,9 @@ def show(
     status_code=status.HTTP_201_CREATED,
     response_model=ShowUser,
 )
-async def create(request: User, db: Session = Depends(get_db)):
+async def create(
+    request: User,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     return user_repository.create(db, request)
