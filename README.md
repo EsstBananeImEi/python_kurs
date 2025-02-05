@@ -2,7 +2,12 @@
 
 Willkommen zu den Begleitmaterialien für den Python-Kurs auf Udemy! Diese Sammlung enthält Aufgaben, Lösungen und weiterführende Informationen, die den Teilnehmern helfen sollen, ihr Wissen zu erweitern und zu vertiefen.
 
+## 📝 Kurzbeschreibung
+
+Dieses Projekt dient als Materialsammlung für einen umfassenden Python-Kurs. Es bietet praxisnahe Beispiele, Aufgaben und Lösungen, um Python auf einem modernen und professionellen Niveau zu erlernen. Neben Grundlagen werden auch fortgeschrittene Konzepte wie Clean Code, TDD und Microservices behandelt. Am Ende des Kurses entwickeln die Teilnehmer ein Abschlussprojekt – einen kleinen Blog mit Flask und FastAPI.
+
 ## ✨ Features
+
 - **Python 3.10+**: Nutzung moderner Features der Sprache
 - **Clean Code & Best Practices**: Einführung in SOLID, TDD und sauberen Code
 - **Praxisnahe Projekte**: Aufgaben und Lösungen für ein besseres Verständnis
@@ -11,6 +16,7 @@ Willkommen zu den Begleitmaterialien für den Python-Kurs auf Udemy! Diese Samml
 - **Abschlussprojekt**: Erstellung eines kleinen Blogs mit Flask und FastAPI
 
 ## 📚 Installation
+
 Einige kleinere Projekte besitzen eigene virtuelle Umgebungen. Falls notwendig, installiere die Abhängigkeiten mit:
 
 ```bash
@@ -27,7 +33,9 @@ pip install -r requirements.txt
 ```
 
 ## 📚 Nutzung
+
 Diese Materialien richten sich an alle, die Python lernen oder ihr Wissen auf den neuesten Stand bringen wollen. Besonders behandelt werden neue Sprachfeatures ab Python 3.10 sowie fortgeschrittene Konzepte wie:
+
 - **Test-Driven Development (TDD)**
 - **SOLID-Prinzipien**
 - **Clean Code Praktiken**
@@ -37,7 +45,9 @@ Diese Materialien richten sich an alle, die Python lernen oder ihr Wissen auf de
 Jede Aufgabe besitzt eine eigene Lösung, die dir beim Verständnis helfen soll.
 
 ## 📅 Inhalte
+
 Die Materialien enthalten:
+
 - **Grundlagen**: Einführung in Python
 - **Fortgeschrittene Themen**: Async Programming, Decorators, Dataclasses
 - **Moderne Konzepte**: TDD, SOLID, Clean Code
@@ -46,9 +56,9 @@ Die Materialien enthalten:
 - **Abschlussprojekt**: Entwicklung eines kleinen Blogs mit Flask und FastAPI
 
 ## ⚖ Lizenz
-Dieses Projekt steht unter der **MIT-Lizenz**, d.h. jeder kann es frei nutzen, verändern und weitergeben. 
+
+Dieses Projekt steht unter der **MIT-Lizenz**, d.h. jeder kann es frei nutzen, verändern und weitergeben.
 
 ---
 
 Viel Spaß beim Lernen und viel Erfolg mit Python! 🚀
-
