@@ -4,6 +4,7 @@
 *__pycache__
 venv
 *.venv/
+*.env/
 my_python_env
 *.log*
 *.coverage

@@ -5,7 +5,7 @@ Als du zur Arbeit kommst, kommt dir ziemlich hecktisch dein Kollege Peter entgeg
 Peter: Yo Digga, bist ja schon da... auf deim Tisch ist ein Zettel... muss weg... bis dann
 Du: ähm... ja okay... bis dann?!
 
-Als du an deinem Tisch liegt dort wirklich ein kleiner Zettel, den du nur sehr schwer
+Als du an deinem Tisch ankommst liegt dort wirklich ein kleiner Zettel, den du nur sehr schwer
 entziffern kannst, da die schreibkünste deines Kollegen einem Kind aus der 1. Klasse ähneln.
 
 Zettel:
